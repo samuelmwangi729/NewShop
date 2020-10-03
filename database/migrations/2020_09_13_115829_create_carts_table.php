@@ -17,6 +17,7 @@ class CreateCartsTable extends Migration
             $table->id();
             $table->string('ProductSKU');
             $table->string('User');
+            $table->string('OrderNumber');
             $table->string('Qty')->default('1');
             $table->string('Status')->default('0');
             $table->timestamps();

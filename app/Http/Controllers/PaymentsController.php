@@ -44,35 +44,36 @@ class PaymentsController extends Controller
             $paymentNumber=$number;
         }
         //the stkpush code
-        // return $totalAmount
-        $mpesa= new \Safaricom\Mpesa\Mpesa();
-        $token=$mpesa::generateSandBoxToken();
-        $BusinessShortCode=174379;
-        $LipaNaMpesaPasskey='bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
-        $TransactionType='CustomerPayBillOnline';
-        $Amount=$totalAmount;
-        // $Amount=1;
-        //phone number and partyA are the same
-         $PartyA=$paymentNumber;
-        $PartyB=$this->BusinessCode;
-        $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://xpresskenya.tk/api/ConfirmPayment';
-        $AccountReference=$paymentNumber;
-        $TransactionDesc='Being Payment for Comodity Ordered';
-        $Remark='Being Payment for Order Id  Comodity Ordered';
-       $stkpush= $mpesa->STKPushSimulation($BusinessShortCode, $LipaNaMpesaPasskey, $TransactionType, $Amount, $PartyA, $PartyB, $PhoneNumber, $CallBackURL, $AccountReference, $TransactionDesc, $Remark);
-       $data=json_decode($stkpush,true);
-       PaymentRequests::create([
-        'MerchantRequestID'=>$data['MerchantRequestID'],
-        'CheckoutRequestID'=>$data['CheckoutRequestID'],
-        'ResponseCode'=>$data['ResponseCode'],
-        'ResponseDescription'=>$data['ResponseDescription'],
-        'CustomerMessage'=>$data['CustomerMessage'],
-        'user'=>Session::get('Username'),
-        'Phone'=>$paymentNumber,
-       ]);
-       session(['PhoneNumber'=>$paymentNumber]);
-        return $data['CustomerMessage'];
+    //     // return $totalAmount
+    //     $mpesa= new \Safaricom\Mpesa\Mpesa();
+    //     $token=$mpesa::generateSandBoxToken();
+    //     $BusinessShortCode=174379;
+    //     $LipaNaMpesaPasskey='bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
+    //     $TransactionType='CustomerPayBillOnline';
+    //     $Amount=$totalAmount;
+    //     // $Amount=1;
+    //     //phone number and partyA are the same
+    //      $PartyA=$paymentNumber;
+    //     $PartyB=$this->BusinessCode;
+    //     $PhoneNumber=$paymentNumber;
+    //     $CallBackURL='https://0b676c87bd86.ngrok.io/api/ConfirmPayment';
+    //     $AccountReference=$paymentNumber;
+    //     $TransactionDesc='Being Payment for Comodity Ordered';
+    //     $Remark='Being Payment for Order Id  Comodity Ordered';
+    //    $stkpush= $mpesa->STKPushSimulation($BusinessShortCode, $LipaNaMpesaPasskey, $TransactionType, $Amount, $PartyA, $PartyB, $PhoneNumber, $CallBackURL, $AccountReference, $TransactionDesc, $Remark);
+    //    $data=json_decode($stkpush,true);
+    //    PaymentRequests::create([
+    //     'MerchantRequestID'=>$data['MerchantRequestID'],
+    //     'CheckoutRequestID'=>$data['CheckoutRequestID'],
+    //     'ResponseCode'=>$data['ResponseCode'],
+    //     'ResponseDescription'=>$data['ResponseDescription'],
+    //     'CustomerMessage'=>$data['CustomerMessage'],
+    //     'user'=>Session::get('Username'),
+    //     'Phone'=>$paymentNumber,
+    //    ]);
+        session(['PhoneNumber'=>$paymentNumber]);
+        $data=['status'=>'success','message'=>'Transaction Successfully Initiated'];
+        return $data;
     }
     protected function getCartTotal(){
         $username=Session::get('Username');
@@ -114,7 +115,6 @@ class PaymentsController extends Controller
         $mpesa= new \Safaricom\Mpesa\Mpesa();
         $callbackData=$mpesa->getDataFromCallback();
         //this goes to the main posting of the data
-        $data=json_decode($callbackData);
         Storage::put('final.txt',$callbackData);
         //save the mpesa log
         Storage::append('Mpesa.log',$callbackData);
@@ -171,8 +171,8 @@ class PaymentsController extends Controller
         session(['OrderNumber'=>$OrderId]);
         $file=Storage::get('final.txt');
         $data=json_decode($file,true);
-        // return $data['Body']['stkCallback']['MerchantRequestID'];
-        if($data['Body']['stkCallback']['ResultCode'] !=0){
+        return $data['Body']['stkCallback']['ResultCode'];
+        if($data['Body']['stkCallback']['ResultCode']=='1032'){
             //you should go back with the error message
             //save the cancelled request into the database
             Cancelled::create([
@@ -186,6 +186,23 @@ class PaymentsController extends Controller
                 'LastName'=>Auth::user()->Last_Name,
             ]);
             $data=['status'=>'error','message'=>'Payment for the Order #'.Session::get('OrderNumber').' Cancelled By the User'];
+            return $data;
+        }
+        if($data['Body']['stkCallback']['ResultCode']=='1'){
+            //you should go back with the error message
+            //save the cancelled request into the database
+            Cancelled::create([
+                'TransactionType'=>'Mpesa',
+                'OrderId'=>$OrderId,
+                'MechantId'=>$data['Body']['stkCallback']['MerchantRequestID'],
+                'CheckOutRequestId'=>$data['Body']['stkCallback']['CheckoutRequestID'],
+                'MSISDN'=>Session::get('PhoneNumber'),
+                'FirstName'=>Auth::user()->First_Name,
+                'Email'=>Auth::user()->email,
+                'LastName'=>Auth::user()->Last_Name,
+                'Status'=>'Insufficient Balance'
+            ]);
+            $data=['status'=>'less','message'=>'Payment for the Order #'.Session::get('OrderNumber').' Could not be completed. Insufficient Balance'];
             return $data;
         }
         // return $request->all();

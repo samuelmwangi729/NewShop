@@ -9,6 +9,7 @@ class Cart extends Model
     protected $fillable=[
         'ProductSKU',
         'User',
+        'OrderNumber',
         'Qty',
         'Status'
     ];

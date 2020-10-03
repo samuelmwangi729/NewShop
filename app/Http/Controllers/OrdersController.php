@@ -14,7 +14,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-
+        return view('Orders.Index');
     }
 
     /**
@@ -65,6 +65,7 @@ class OrdersController extends Controller
                   //5, the order has been placed
                   //6, the order has been dispatched
                   //7, order received
+                  $cart[$i]->OrderNumber='#'.Session::get('OrderNumber');
                   $cart[$i]->Status=5;
                   $cart[$i]->save();
               }

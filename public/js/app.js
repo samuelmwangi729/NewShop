@@ -2896,7 +2896,7 @@ __webpack_require__.r(__webpack_exports__);
               _token: _this2.token
             }).then(function (response) {
               //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
-              console.log(response.data);
+              window.open('/HTVW00xzDT5AAAW', '_parent');
             });
           }
 
@@ -2909,8 +2909,18 @@ __webpack_require__.r(__webpack_exports__);
             });
             return;
           }
+
+          if (response.data.status == 'less') {
+            //show sweetalert, cancelled by the user
+            swal({
+              title: 'Error',
+              text: 'Insufficient Balance in your Mpesa Account. Kindly Top Up and Try Again',
+              icon: 'error'
+            });
+            return;
+          }
         });
-      }, 60000);
+      }, 5000);
     },
     getCartTotal: function getCartTotal() {
       var _this3 = this;
