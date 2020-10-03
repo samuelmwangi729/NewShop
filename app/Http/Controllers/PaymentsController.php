@@ -7,7 +7,7 @@ use App\User;
 use Auth;
 use Str;
 use Storage;
-use App\{CartsController,Cart,Product,Pickup,PaymentRequests,MpesaTransactions,Order};
+use App\{CartsController,Cart,Product,Pickup,PaymentRequests,MpesaTransactions,Order,Cancelled};
 use Session;
 class PaymentsController extends Controller
 {
@@ -49,13 +49,13 @@ class PaymentsController extends Controller
         $BusinessShortCode=174379;
         $LipaNaMpesaPasskey='bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType='CustomerPayBillOnline';
-        // $Amount=$totalAmount;
-        $Amount=1;
+        $Amount=$totalAmount;
+        // $Amount=1;
         //phone number and partyA are the same
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://xpresskenya.tk/api/ConfirmPayment';
+        $CallBackURL='https://abed19af9b47.ngrok.io/api/ConfirmPayment';
         $AccountReference='123456';
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
@@ -70,6 +70,7 @@ class PaymentsController extends Controller
         'user'=>Session::get('Username'),
         'Phone'=>$paymentNumber,
        ]);
+       session(['PhoneNumber'=>$paymentNumber]);
         return $data['CustomerMessage'];
     }
     protected function getCartTotal(){
@@ -165,11 +166,29 @@ class PaymentsController extends Controller
         //
     }
     protected function getFileData(){
-        $file=Storage::get('final.txt');
-        $data=json_decode($file,true);
-        // return $request->all();
         $OrderId= Str::random(10);
         session(['OrderNumber'=>$OrderId]);
+        $file=Storage::get('final.txt');
+        $data=json_decode($file,true);
+        // return $data['Body']['stkCallback']['MerchantRequestID'];
+        if($data['Body']['stkCallback']['ResultCode'] !=0){
+            //you should go back with the error message
+            //save the cancelled request into the database
+            Cancelled::create([
+                'TransactionType'=>'Mpesa',
+                'OrderId'=>$OrderId,
+                'MechantId'=>$data['Body']['stkCallback']['MerchantRequestID'],
+                'CheckOutRequestId'=>$data['Body']['stkCallback']['CheckoutRequestID'],
+                'MSISDN'=>Session::get('PhoneNumber'),
+                'FirstName'=>Auth::user()->First_Name,
+                'Email'=>Auth::user()->email,
+                'LastName'=>Auth::user()->Last_Name,
+            ]);
+            $data=['status'=>'error','message'=>'Payment for the Order #'.Session::get('OrderNumber').' Cancelled By the User'];
+            return $data;
+        }
+        // return $request->all();
+
         // return Auth::user()->Last_Name;
     //    return $data['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value'];
         $Amount=$data['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value'];

@@ -76,6 +76,9 @@ class PickupsController extends Controller
     {
         //
     }
+    protected function getCost($station){
+        return Pickup::where('StationName','=',$station)->get()->first()->Shipping;
+    }
 
     /**
      * Update the specified resource in storage.

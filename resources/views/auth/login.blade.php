@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-block btn-primary">
-                           Register With Us
+                           Sign In
                             </button>
                         </form>
                     </div>

@@ -246,31 +246,35 @@
                     })
                 }
             },
-            getDetails(){
-                axios.get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW').then((response)=>{
-                    //check the response
-                    if(response.data.status=='success'){
-                        //then call the order function
-                        this.MakeOrder()
-                    }
-                })
-            },
-            MakeOrder(){
-                axios.post('/HTVW00xzDT5AAAW',{
-                    _token:this.token
-                }).then((response)=>{
-                    //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
-                    console.log(response.data)
-                })
-            },
             PayWithMpesa(){
-                // alert(this.FirstName)
+                // // alert(this.FirstName)
                 axios.get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/'+this.MpesaNumber).then((response)=>{
                     //if i pay, then let the data be posted into the database
                     //then check if its working
-                    setTimeout(this.getDetails(), 60000)
-
                 })
+                 setTimeout(function(){
+                   axios.get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW').then((response)=>{
+                    //check the response
+                    if(response.data.status=='success'){
+                        //then call the order function
+                         axios.post('/HTVW00xzDT5AAAW',{
+                            _token:this.token
+                        }).then((response)=>{
+                            //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
+                            console.log(response.data)
+                        })
+                    }
+                    if(response.data.status=='error'){
+                        //show sweetalert, cancelled by the user
+                        swal({
+                            title:'Error',
+                            text:'Transaction Cancelled by the User. Please Try Again',
+                            icon:'error'
+                        })
+                        return;
+                    }
+                })
+                }, 60000)
             },
             getCartTotal(){
                 axios.get('/k1HT1eDwpUe5LG95ey7').then((response)=>{
@@ -340,7 +344,11 @@
                 })
             },
             PickUp:function(){
-                this.Shipping=200;
+                //get shipping cost
+                // alert(this.PickUp)
+                axios.get('/getShippingCost/'+this.PickUp).then((response)=>{
+                    this.Shipping=response.data;
+                })
             },
             Town:function(){
                 axios.get('/5228JaeyweZCBBZPb2Vc/'+this.Town).then((response)=>{

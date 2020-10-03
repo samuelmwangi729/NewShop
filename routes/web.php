@@ -38,6 +38,9 @@ Route::get('/k6BL331sXw4S00cN4BaX8D',[
 Route::get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW',[
     'uses'=>'PaymentsController@getFileData'
 ]);
+Route::get('/getShippingCost/{station}',[
+    'uses'=>'PickupsController@getCost'
+]);
 Route::get('/ClywjTdDiB7G3yYmszGO',[
   'uses'=>'CategoriesController@index'
 ]);

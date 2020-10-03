@@ -2878,45 +2878,48 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    getDetails: function getDetails() {
-      var _this2 = this;
-
-      axios.get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW').then(function (response) {
-        //check the response
-        if (response.data.status == 'success') {
-          //then call the order function
-          _this2.MakeOrder();
-        }
-      });
-    },
-    MakeOrder: function MakeOrder() {
-      axios.post('/HTVW00xzDT5AAAW', {
-        _token: this.token
-      }).then(function (response) {
-        //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
-        console.log(response.data);
-      });
-    },
     PayWithMpesa: function PayWithMpesa() {
-      var _this3 = this;
-
-      // alert(this.FirstName)
-      axios.get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/' + this.MpesaNumber).then(function (response) {
-        //if i pay, then let the data be posted into the database
+      // // alert(this.FirstName)
+      axios.get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/' + this.MpesaNumber).then(function (response) {//if i pay, then let the data be posted into the database
         //then check if its working
-        setTimeout(_this3.getDetails(), 60000);
       });
+      setTimeout(function () {
+        var _this2 = this;
+
+        axios.get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW').then(function (response) {
+          //check the response
+          if (response.data.status == 'success') {
+            //then call the order function
+            axios.post('/HTVW00xzDT5AAAW', {
+              _token: _this2.token
+            }).then(function (response) {
+              //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
+              console.log(response.data);
+            });
+          }
+
+          if (response.data.status == 'error') {
+            //show sweetalert, cancelled by the user
+            swal({
+              title: 'Error',
+              text: 'Transaction Cancelled by the User. Please Try Again',
+              icon: 'error'
+            });
+            return;
+          }
+        });
+      }, 60000);
     },
     getCartTotal: function getCartTotal() {
-      var _this4 = this;
+      var _this3 = this;
 
       axios.get('/k1HT1eDwpUe5LG95ey7').then(function (response) {
-        _this4.CartTotal = response.data;
+        _this3.CartTotal = response.data;
       });
       return this.CartTotal;
     },
     Register: function Register() {
-      var _this5 = this;
+      var _this4 = this;
 
       if (this.County.length == 0) {
         this.ClassCounty = 'is-invalid';
@@ -2934,16 +2937,16 @@ __webpack_require__.r(__webpack_exports__);
         Town: this.Town
       }).then(function (response) {
         if (response.data.status == 'success') {
-          _this5.Class = 'd-none';
-          _this5.HClass = 'container-fluid', _this5.Hidden = 'container-fluid';
+          _this4.Class = 'd-none';
+          _this4.HClass = 'container-fluid', _this4.Hidden = 'container-fluid';
         }
       });
     },
     getLocations: function getLocations() {
-      var _this6 = this;
+      var _this5 = this;
 
       axios.get('/5228JaeyweZCBBZPb2VcdgCZAMGpgqEFZIPKKFd').then(function (response) {
-        _this6.Locations = response.data;
+        _this5.Locations = response.data;
       })["catch"](function (error) {
         console.log('user could not be registered');
       });
@@ -2974,17 +2977,23 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     County: function County() {
-      var _this7 = this;
+      var _this6 = this;
 
       this.Town = ''; //get te towns and populate them into towns field
 
       axios.get('/5228JaeyweZCBBZPb2VcdgCZAMGp/' + this.County).then(function (response) {
         // console.log(response.data)
-        _this7.Towns = response.data;
+        _this6.Towns = response.data;
       });
     },
     PickUp: function PickUp() {
-      this.Shipping = 200;
+      var _this7 = this;
+
+      //get shipping cost
+      // alert(this.PickUp)
+      axios.get('/getShippingCost/' + this.PickUp).then(function (response) {
+        _this7.Shipping = response.data;
+      });
     },
     Town: function Town() {
       var _this8 = this;

@@ -14,34 +14,6 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        // return Session::get('Number');
-        $number=Session::get('Number');
-        //then confirm receipt of Payment
-        $payment=MpesaTransactions::where('MSISDN','=',$number)->get()->first();
-        if($payment->Status=='Success'){
-            $orderNumber='#'.Session::get('OrderNumber');
-            $client=Auth::user()->email;
-            $DatePlaced=date('Y-m-d');
-            Order::create([
-                'OrderNumber'=>$orderNumber,
-                'Client'=>$client,
-                'DatePlaced'=>$DatePlaced,
-            ]);
-            //make the order
-            //update the cart now
-          $cart=Cart::where([
-              ['User','=',Auth::user()->email],
-              ['Status','=','0']
-          ])->get();
-          for ($i=0; $i < count($cart); $i++) {
-              //5, the order has been placed
-              //6, the order has been dispatched
-              //7, order received
-              $cart[$i]->Status=5;
-              $cart[$i]->save();
-          }
-            return $cart;
-        }
 
     }
 
@@ -63,7 +35,43 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // return Session::get('Number');
+        $number=Session::get('Number');
+        //then confirm receipt of Payment
+        $payment=MpesaTransactions::where('MSISDN','=',$number)->get()->first();
+        if(is_null($payment)){
+            //then no payment as been received
+            $data=['status'=>'error','message'=>'No payment received, Kindly Contact Us if any query'];
+            return $data;
+        }else{
+            //payment received and we continue to place the order
+            if($payment->Status=='Success'){
+                $orderNumber='#'.Session::get('OrderNumber');
+                $client=Auth::user()->email;
+                $DatePlaced=date('Y-m-d');
+                Order::create([
+                    'OrderNumber'=>$orderNumber,
+                    'Client'=>$client,
+                    'DatePlaced'=>$DatePlaced,
+                ]);
+                //make the order
+                //update the cart now
+              $cart=Cart::where([
+                  ['User','=',Auth::user()->email],
+                  ['Status','=','0']
+              ])->get();
+              for ($i=0; $i < count($cart); $i++) {
+                  //5, the order has been placed
+                  //6, the order has been dispatched
+                  //7, order received
+                  $cart[$i]->Status=5;
+                  $cart[$i]->save();
+              }
+              $data=['status'=>'success','message'=>'order successfully placed'];
+                return $data;
+            }
+        }
     }
 
     /**
