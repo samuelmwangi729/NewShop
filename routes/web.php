@@ -35,6 +35,9 @@ Route::post('/5228JaeyweZCBBZREG',[
 Route::get('/k6BL331sXw4S00cN4BaX8D',[
     'uses'=>'IndexController@getTemp'
 ]);
+Route::get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW',[
+    'uses'=>'PaymentsController@getFileData'
+]);
 Route::get('/ClywjTdDiB7G3yYmszGO',[
   'uses'=>'CategoriesController@index'
 ]);
@@ -143,6 +146,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('EfGTGYkBDAqW/lbpg/ajYPPyb2',[
         'uses'=>'IndexController@GenRand'
     ]);
+    Route::resource('HTVW00xzDT5AAAW','OrdersController');
     Route::get('/checkout',[
         'uses'=>'CartsController@CheckOut'
     ]);

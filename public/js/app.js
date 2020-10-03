@@ -2796,62 +2796,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      FirstName: '',
-      ErrorFirst: '',
-      ClassFirst: '',
-      LastName: '',
-      ErrorLast: '',
-      ClassLast: '',
-      ClassEmail: '',
-      ClassPhone: '',
       ClassCounty: '',
       ClassTown: '',
-      ClassAddress: '',
-      ClassPass: '',
-      ClassPassc: '',
-      email: '',
-      PhoneNumber: '',
-      Address: '',
-      password: '',
-      password_confirmation: '',
       Account: false,
       Class: 'checkout-form',
       HClass: 'd-none',
@@ -2929,51 +2878,45 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    PayWithMpesa: function PayWithMpesa() {
+    getDetails: function getDetails() {
       var _this2 = this;
+
+      axios.get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW').then(function (response) {
+        //check the response
+        if (response.data.status == 'success') {
+          //then call the order function
+          _this2.MakeOrder();
+        }
+      });
+    },
+    MakeOrder: function MakeOrder() {
+      axios.post('/HTVW00xzDT5AAAW', {
+        _token: this.token
+      }).then(function (response) {
+        //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
+        console.log(response.data);
+      });
+    },
+    PayWithMpesa: function PayWithMpesa() {
+      var _this3 = this;
 
       // alert(this.FirstName)
       axios.get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/' + this.MpesaNumber).then(function (response) {
         //if i pay, then let the data be posted into the database
         //then check if its working
-        setTimeout(_this2.Register(), 60000);
+        setTimeout(_this3.getDetails(), 60000);
       });
     },
     getCartTotal: function getCartTotal() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/k1HT1eDwpUe5LG95ey7').then(function (response) {
-        _this3.CartTotal = response.data;
+        _this4.CartTotal = response.data;
       });
       return this.CartTotal;
     },
     Register: function Register() {
-      if (this.FirstName.length == 0) {
-        this.ErrorFirst = 'First Name is Required';
-        this.ClassFirst = 'is-invalid';
-        return;
-      }
-
-      if (this.LastName.length == 0) {
-        this.ErrorLast = 'Last Name is Required';
-        this.ClassLast = 'is-invalid';
-        return;
-      }
-
-      if (this.email.length == 0) {
-        this.ClassEmail = 'is-invalid';
-        return;
-      }
-
-      if (this.PhoneNumber.length == 0) {
-        this.ClassPhone = 'is-invalid';
-        return;
-      }
-
-      if (this.Address.length == 0) {
-        this.ClassAddress = 'is-invalid';
-        return;
-      }
+      var _this5 = this;
 
       if (this.County.length == 0) {
         this.ClassCounty = 'is-invalid';
@@ -2985,34 +2928,35 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      axios.post('/api/rngL1uWwlBDtTrrOQf8uVqqjes17nEW', {
+      axios.post('/5228JaeyweZCBBZREG', {
         _token: this.token,
-        FirstName: this.FirstName,
-        LastName: this.LastName,
-        email: this.email,
-        PhoneNumber: this.PhoneNumber,
         County: this.County,
-        Town: this.Town,
-        Address: this.Address,
-        password: this.password,
-        password_confirmation: this.password_confirmation
+        Town: this.Town
       }).then(function (response) {
-        // this.Class='d-none'
-        // this.HClass='container-fluid',
-        console.log(response.data);
+        if (response.data.status == 'success') {
+          _this5.Class = 'd-none';
+          _this5.HClass = 'container-fluid', _this5.Hidden = 'container-fluid';
+        }
       });
     },
     getLocations: function getLocations() {
-      var _this4 = this;
+      var _this6 = this;
 
       axios.get('/5228JaeyweZCBBZPb2VcdgCZAMGpgqEFZIPKKFd').then(function (response) {
-        _this4.Locations = response.data;
+        _this6.Locations = response.data;
       })["catch"](function (error) {
         console.log('user could not be registered');
       });
     }
   },
   watch: {
+    Account: function Account() {
+      if (this.Account == true) {
+        //  alert(this.County+' and '+this.Town)
+        //post the county and town to update the user's  details
+        this.Register();
+      }
+    },
     Mpesa: function Mpesa() {
       if (this.Mpesa) {
         this.MpesaClass = 'card';
@@ -3030,20 +2974,20 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     County: function County() {
-      var _this5 = this;
+      var _this7 = this;
 
       this.Town = ''; //get te towns and populate them into towns field
 
       axios.get('/5228JaeyweZCBBZPb2VcdgCZAMGp/' + this.County).then(function (response) {
         // console.log(response.data)
-        _this5.Towns = response.data;
+        _this7.Towns = response.data;
       });
     },
     PickUp: function PickUp() {
       this.Shipping = 200;
     },
     Town: function Town() {
-      var _this6 = this;
+      var _this8 = this;
 
       axios.get('/5228JaeyweZCBBZPb2Vc/' + this.Town).then(function (response) {
         if (response.data.length == 0) {
@@ -3053,9 +2997,9 @@ __webpack_require__.r(__webpack_exports__);
             icon: 'error'
           });
         } else {
-          _this6.Stations = response.data;
-          _this6.Shipping = parseInt(response.data[0].Shipping);
-          _this6.total = _this6.CartTotal + _this6.Shipping;
+          _this8.Stations = response.data;
+          _this8.Shipping = parseInt(response.data[0].Shipping);
+          _this8.total = _this8.CartTotal + _this8.Shipping;
         }
       });
     },
@@ -44545,167 +44489,19 @@ var render = function() {
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-lg-8 col-12" }, [
               _c("div", { class: _vm.Class }, [
-                _c("h2", [_vm._v("Make Your Checkout Here")]),
+                _c("h2", [_vm._v("Enter Your Details Here")]),
                 _vm._v(" "),
                 _c("p", [
-                  _vm._v("Please register in order to checkout more quickly")
+                  _vm._v(
+                    "Kindly Make Sure that you use your Original Address. Your Goods will be sent to this address"
+                  )
                 ]),
                 _vm._v(" "),
                 _c("form", { attrs: { method: "post", action: "#" } }, [
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("label", { staticClass: "label-control" }, [
-                          _vm._v("First Name")
-                        ]),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm.ErrorFirst
-                          ? _c("span", { staticStyle: { color: "red" } }, [
-                              _vm._v(_vm._s(_vm.ErrorFirst))
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.FirstName,
-                              expression: "FirstName"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: _vm.ClassFirst,
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.FirstName },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.FirstName = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Last Name")]),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm.ErrorLast
-                          ? _c("span", { staticStyle: { color: "red" } }, [
-                              _vm._v(_vm._s(_vm.ErrorLast))
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.LastName,
-                              expression: "LastName"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: _vm.ClassLast,
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.LastName },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.LastName = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                      _c("div", { staticClass: "form" }, [
                         _vm._m(1),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm.ClassEmail
-                          ? _c("span", { staticStyle: { color: "red" } }, [
-                              _vm._v(
-                                "\n                                                   Email Is Required\n                                               "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.email,
-                              expression: "email"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: _vm.ClassEmail,
-                          attrs: { type: "email" },
-                          domProps: { value: _vm.email },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.email = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _vm._m(2),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm.ClassPhone
-                          ? _c("span", { staticStyle: { color: "red" } }, [
-                              _vm._v(
-                                "\n                                                   PhoneNumber Is Required\n                                               "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.PhoneNumber,
-                              expression: "PhoneNumber"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: _vm.ClassPhone,
-                          attrs: { type: "number" },
-                          domProps: { value: _vm.PhoneNumber },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.PhoneNumber = $event.target.value
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _vm._m(3),
                         _vm._v(" "),
                         _c("br"),
                         _vm.ClassCounty
@@ -44821,43 +44617,47 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { staticClass: "label-control" }, [
-                          _vm._v("Address")
-                        ]),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm.ClassAddress
-                          ? _c("span", { staticStyle: { color: "red" } }, [
-                              _vm._v(
-                                "\n                                                   Address Is Required\n                                               "
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
+                    _c("div", { staticClass: "col-12" }, [
+                      _c("div", { staticClass: "form-group create-account" }, [
                         _c("input", {
                           directives: [
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.Address,
-                              expression: "Address"
+                              value: _vm.Account,
+                              expression: "Account"
                             }
                           ],
-                          staticClass: "form-control",
-                          class: _vm.ClassAddress,
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.Address },
+                          attrs: { id: "cbox", type: "checkbox" },
+                          domProps: {
+                            checked: Array.isArray(_vm.Account)
+                              ? _vm._i(_vm.Account, null) > -1
+                              : _vm.Account
+                          },
                           on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                            change: function($event) {
+                              var $$a = _vm.Account,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = null,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 && (_vm.Account = $$a.concat([$$v]))
+                                } else {
+                                  $$i > -1 &&
+                                    (_vm.Account = $$a
+                                      .slice(0, $$i)
+                                      .concat($$a.slice($$i + 1)))
+                                }
+                              } else {
+                                _vm.Account = $$c
                               }
-                              _vm.Address = $event.target.value
                             }
                           }
-                        })
+                        }),
+                        _vm._v(" "),
+                        _c("label", [_vm._v("Confirm the Details?")])
                       ])
                     ])
                   ])
@@ -44866,11 +44666,11 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-8" }, [
                 _c("div", { class: _vm.HClass }, [
-                  _vm._m(4),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c("form", { attrs: { action: "" } }, [
                     _c("div", { staticClass: "form-group" }, [
-                      _vm._m(5),
+                      _vm._m(3),
                       _vm._v(" "),
                       _c(
                         "select",
@@ -45016,7 +44816,7 @@ var render = function() {
                           "form",
                           { staticClass: "form", attrs: { action: "" } },
                           [
-                            _vm._m(6),
+                            _vm._m(4),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -45265,9 +45065,9 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(7),
+                _vm._m(5),
                 _vm._v(" "),
-                _vm._m(8)
+                _vm._m(6)
               ])
             ])
           ])
@@ -45311,21 +45111,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_vm._v("Email Address"), _c("span", [_vm._v("*")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "label-control" }, [
-      _vm._v("Phone Number"),
-      _c("span", [_vm._v("*")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("label", { staticClass: "label-control" }, [
       _vm._v("County"),
       _c("span", [_vm._v("*")])
@@ -45338,7 +45123,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "alert alert-success" }, [
       _c("strong", [
         _vm._v(
-          "\n                                       Account Successfully Created,Please choose your Pickup Station In your County\n                                   "
+          "\n                                       Account Successfully Updated,Please choose your Pickup Station\n                                   "
         )
       ])
     ])

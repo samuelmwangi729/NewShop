@@ -51,7 +51,7 @@ Route::middleware('api')->post('/Compare', function (Request $request) {
 Route::post('/ConfirmPayment',[
     'uses'=>'PaymentsController@store'
 ]);
-Route::post('/rngL1uWwlBDtTrrOQf8uVqqjes17nEW',[
+Route::get('/rngL1uWwlBDtTrrOQf8uVqqjes17nEW',[
     'uses'=>'PaymentsController@getFileData'
 ]);
 Route::get('/rngL1uWwlBDtTrrOQ',[

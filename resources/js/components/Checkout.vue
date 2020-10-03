@@ -24,43 +24,11 @@
 				<div class="row">
 					<div class="col-lg-8 col-12">
 						<div :class="Class">
-							<h2>Make Your Checkout Here</h2>
-							<p>Please register in order to checkout more quickly</p>
+							<h2>Enter Your Details Here</h2>
+							<p>Kindly Make Sure that you use your Original Address. Your Goods will be sent to this address</p>
 							<!-- Form -->
 							<form class="" method="post" action="#">
 								<div class="row">
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label class="label-control">First Name</label>
-                                            <br><span v-if="ErrorFirst" style="color:red">{{ErrorFirst}}</span>
-											<input type="text" v-model="FirstName" class="form-control" :class="ClassFirst">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Last Name</label>
-                                            <br><span v-if="ErrorLast" style="color:red">{{ErrorLast}}</span>
-											<input type="text" v-model="LastName" class="form-control" :class="ClassLast">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form">
-											<label>Email Address<span>*</span></label>
-                                               <br><span v-if="ClassEmail" style="color:red">
-                                                   Email Is Required
-                                               </span>
-											<input type="email" v-model="email" class="form-control" :class="ClassEmail">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label class="label-control">Phone Number<span>*</span></label>
-                                             <br><span v-if="ClassPhone" style="color:red">
-                                                   PhoneNumber Is Required
-                                               </span>
-											<input type="number" v-model="PhoneNumber" class="form-control" :class="ClassPhone">
-										</div>
-									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label class="label-control">County<span>*</span></label>
@@ -85,13 +53,10 @@
 											</select>
 										</div>
 									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label class="label-control">Address</label>
-                                             <br><span v-if="ClassAddress" style="color:red">
-                                                   Address Is Required
-                                               </span>
-											<input type="text" v-model="Address" class="form-control" :class="ClassAddress">
+                                    <div class="col-12">
+										<div class="form-group create-account">
+											<input id="cbox" type="checkbox" v-model="Account">
+											<label>Confirm the Details?</label>
 										</div>
 									</div>
 								</div>
@@ -102,7 +67,7 @@
                             <div :class="HClass">
                                <div class="alert alert-success">
                                    <strong>
-                                       Account Successfully Created,Please choose your Pickup Station In your County
+                                       Account Successfully Updated,Please choose your Pickup Station
                                    </strong>
                                </div>
                                    <form action="">
@@ -204,24 +169,8 @@
     export default{
         data(){
             return{
-            FirstName:'',
-            ErrorFirst:'',
-            ClassFirst:'',
-            LastName:'',
-            ErrorLast:'',
-            ClassLast:'',
-            ClassEmail:'',
-            ClassPhone:'',
             ClassCounty:'',
             ClassTown:'',
-            ClassAddress:'',
-            ClassPass:'',
-            ClassPassc:'',
-            email:'',
-            PhoneNumber:'',
-            Address:'',
-            password:'',
-            password_confirmation:'',
             Account:false,
             Class:'checkout-form',
             HClass:'d-none',
@@ -297,12 +246,29 @@
                     })
                 }
             },
+            getDetails(){
+                axios.get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW').then((response)=>{
+                    //check the response
+                    if(response.data.status=='success'){
+                        //then call the order function
+                        this.MakeOrder()
+                    }
+                })
+            },
+            MakeOrder(){
+                axios.post('/HTVW00xzDT5AAAW',{
+                    _token:this.token
+                }).then((response)=>{
+                    //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
+                    console.log(response.data)
+                })
+            },
             PayWithMpesa(){
                 // alert(this.FirstName)
                 axios.get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/'+this.MpesaNumber).then((response)=>{
                     //if i pay, then let the data be posted into the database
                     //then check if its working
-                    setTimeout(this.Register(), 60000)
+                    setTimeout(this.getDetails(), 60000)
 
                 })
             },
@@ -313,28 +279,6 @@
                 return this.CartTotal;
             },
             Register(){
-                if(this.FirstName.length==0){
-                    this.ErrorFirst='First Name is Required'
-                    this.ClassFirst='is-invalid'
-                    return;
-                }
-                if(this.LastName.length==0){
-                    this.ErrorLast='Last Name is Required'
-                    this.ClassLast='is-invalid'
-                    return;
-                }
-                if(this.email.length==0){
-                    this.ClassEmail='is-invalid'
-                    return;
-                }
-                 if(this.PhoneNumber.length==0){
-                    this.ClassPhone='is-invalid'
-                    return;
-                }
-                 if(this.Address.length==0){
-                    this.ClassAddress='is-invalid'
-                    return;
-                }
                 if(this.County.length==0){
                     this.ClassCounty='is-invalid'
                     return;
@@ -343,21 +287,16 @@
                     this.ClassTown='is-invalid'
                     return;
                 }
-            axios.post('/api/rngL1uWwlBDtTrrOQf8uVqqjes17nEW',{
+            axios.post('/5228JaeyweZCBBZREG',{
                 _token:this.token,
-                FirstName:this.FirstName,
-                LastName:this.LastName,
-                email:this.email,
-                PhoneNumber:this.PhoneNumber,
                 County:this.County,
                 Town:this.Town,
-                Address:this.Address,
-                password:this.password,
-                password_confirmation: this.password_confirmation
             }).then((response)=>{
-                    // this.Class='d-none'
-                    // this.HClass='container-fluid',
-                   console.log(response.data)
+                   if(response.data.status=='success'){
+                        this.Class='d-none'
+                        this.HClass='container-fluid',
+                        this.Hidden='container-fluid'
+                   }
             })
             },
             getLocations(){
@@ -369,6 +308,13 @@
             },
         },
         watch:{
+            Account:function(){
+             if(this.Account==true){
+                //  alert(this.County+' and '+this.Town)
+                //post the county and town to update the user's  details
+                this.Register()
+             }
+            },
             Mpesa(){
                if(this.Mpesa){
                     this.MpesaClass='card'

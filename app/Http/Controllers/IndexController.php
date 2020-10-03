@@ -73,31 +73,17 @@ if(is_null($ip)){
 
     public function createUser(Request $request){
         $this->validate($request,[
-            'FirstName'=>['required', 'string', 'max:255'],
-            'LastName'=>['required', 'string', 'max:255'],
-            'email'=>['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'=>['required', 'string', 'min:8', 'confirmed'],
-            'Address' => 'required',
-            'PhoneNumber' => 'required',
             'Town' => 'required',
             'County' => 'required',
         ]);
         // return $request->email;
-        $user=User::create([
-            'First_Name' => $request->FirstName,
-            'Last_Name' => $request->LastName,
-            'email' =>$request->email,
-            'Level' => 'eZHq6QZzYAlsw5uewAi1Spn0ieOZxI5oh8M7mdd14',
-            'Address' => $request->Address,
-            'PhoneNumber' => $request->PhoneNumber,
-            'Town' => $request->Town,
-            'County' => $request->County,
-            'Status' => 0,
-            'password' => Hash::make($request->password),
-        ]);
-        session(['First_Name'=>$request->FirstName]);
-        session(['Last_Name'=>$request->LastName]);
-        session(['Email'=>$request->email]);
+        $user=User::where('email','=',Auth::user()->email)->get()->first();
+        // return $user;
+        $user->County=$request->County;
+        $user->Town=$request->Town;
+        $user->save();
+        $data=['status'=>'success','message'=>'User Data Successfully Updated'];
+        return $data;
         if ($user) {
             //update user cart, wishlist,
             $cart=Cart::where([
@@ -136,7 +122,7 @@ if(is_null($ip)){
          $request->session()->forget('Username');
          session(['Username'=>$request->email]);
         if($user){
-            $data=['success'=>'user successfully registered','firstName'=>Session::get('First_Name')];
+            $data=['success'=>'user successfully registered'];
             return $data;
         }else{
             $data=['error'=>'user could not be registered'];

@@ -7,7 +7,7 @@ use App\User;
 use Auth;
 use Str;
 use Storage;
-use App\{CartsController,Cart,Product,Pickup,PaymentRequests,MpesaTransactions};
+use App\{CartsController,Cart,Product,Pickup,PaymentRequests,MpesaTransactions,Order};
 use Session;
 class PaymentsController extends Controller
 {
@@ -164,13 +164,13 @@ class PaymentsController extends Controller
     {
         //
     }
-    protected function getFileData(Request $request){
+    protected function getFileData(){
         $file=Storage::get('final.txt');
         $data=json_decode($file,true);
-        return $request->all();
+        // return $request->all();
         $OrderId= Str::random(10);
         session(['OrderNumber'=>$OrderId]);
-        // return "fuck"
+        // return Auth::user()->Last_Name;
     //    return $data['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value'];
         $Amount=$data['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value'];
         $MpesaReceiptNumber=$data['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value'];
@@ -182,12 +182,12 @@ class PaymentsController extends Controller
         $mechant_id=$data['Body']['stkCallback']['MerchantRequestID'];
         $Status='';
         if($ResultCode==0){
-           $Status='Status';
+           $Status='Success';
         }else{
            $Status='Error';
         }
         MpesaTransactions::create([
-            'TransactionType' => 'STK PUSH Transaction',
+            'TransactionType' => 'Mpesa',
             'TransID' =>$MpesaReceiptNumber,
             'TransTime' => $TransactionDate,
             'TransAmount' => $Amount,
@@ -199,16 +199,19 @@ class PaymentsController extends Controller
             'OrgAccountBalance' => $Balance,
             'MechantId' => $mechant_id,
             'MSISDN' => $PhoneNumber,
-            'FirstName' =>Session::get('First_Name'),
-            'Email' =>Session::get('Email'),
-            'LastName' => Session::get('Last_Name'),
+            'FirstName' =>Auth::user()->First_Name,
+            'Email' =>Auth::user()->email,
+            'LastName' =>Auth::user()->Last_Name,
             'Status'=>$Status
            ]);
-           return "success, Payment Received for the Order ".Session::get('OrderNumber');
+           //set the session number for order completion
+           session(['Number'=>$PhoneNumber]);
+        //    return Session::get('Number');
+           $data=['status'=>'success','message'=>'Payment Received for the Order #'.Session::get('OrderNumber')];
+           return $data;
     }
     protected function getFile(){
-        $file=Storage::get('final.txt');
-        return $file;
+        return Auth::user();
     }
     public function getCreditCard(Request $request){
         $cardNumber=$request->card-$request->key;
