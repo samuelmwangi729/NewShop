@@ -2880,8 +2880,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     PayWithMpesa: function PayWithMpesa() {
       // // alert(this.FirstName)
-      axios.get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/' + this.MpesaNumber).then(function (response) {//if i pay, then let the data be posted into the database
+      axios.get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/' + this.MpesaNumber).then(function (response) {
+        //if i pay, then let the data be posted into the database
         //then check if its working
+        console.log(response.data);
       });
       setTimeout(function () {
         var _this2 = this;

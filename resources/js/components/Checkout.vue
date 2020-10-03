@@ -251,6 +251,7 @@
                 axios.get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/'+this.MpesaNumber).then((response)=>{
                     //if i pay, then let the data be posted into the database
                     //then check if its working
+                    console.log(response.data)
                 })
                  setTimeout(function(){
                    axios.get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW').then((response)=>{

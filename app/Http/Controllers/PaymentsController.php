@@ -24,7 +24,7 @@ class PaymentsController extends Controller
     {
         $cartTotal=$this->getCartTotal();
         // return Session::get('Username');
-        $user=User::where('email','=',Session::get('Username'))->get()->first();
+        $user=Auth::user();
         $town=$user->Town;
         // return $town;
         $shipping=PickUp::where('TownId','=',$town)->get()->first();
@@ -44,6 +44,7 @@ class PaymentsController extends Controller
             $paymentNumber=$number;
         }
         //the stkpush code
+        // return $totalAmount
         $mpesa= new \Safaricom\Mpesa\Mpesa();
         $token=$mpesa::generateSandBoxToken();
         $BusinessShortCode=174379;
@@ -56,7 +57,7 @@ class PaymentsController extends Controller
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
         $CallBackURL='https://xpresskenya.tk/api/ConfirmPayment';
-        $AccountReference='123456';
+        $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
        $stkpush= $mpesa->STKPushSimulation($BusinessShortCode, $LipaNaMpesaPasskey, $TransactionType, $Amount, $PartyA, $PartyB, $PhoneNumber, $CallBackURL, $AccountReference, $TransactionDesc, $Remark);
