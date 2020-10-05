@@ -2901,7 +2901,7 @@ __webpack_require__.r(__webpack_exports__);
       //salting the number
       var salt = Math.floor(Math.random() * 10189898978787); // console.log(salt)
 
-      if (this.CardNumber.length < 16) {
+      if (this.CardNumber.length < 15) {
         this.ErrorCardNumber = 'this Field is required', this.CardClass = 'is-invalid';
       }
 
@@ -2909,7 +2909,7 @@ __webpack_require__.r(__webpack_exports__);
         this.ErrorCardCVV = 'this Field is required', this.CvvClass = 'is-invalid';
       }
 
-      if (this.CardNumber.length < 16 || this.CardCVV.length < 3 || this.CardExp < 4) {
+      if (this.CardNumber.length < 15 || this.CardCVV.length < 3 || this.CardExp < 4) {
         this.ErrorCardNumber = 'Kindly fill all the fields';
         return;
       } else {
@@ -3077,12 +3077,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     CardNumber: function CardNumber() {
-      if (this.CardNumber.length < 16) {
+      if (this.CardNumber.length < 15) {
         this.ErrorCardNumber = 'Enter Valid Card Number';
         this.CardClass = 'is-invalid';
       }
 
-      if (this.CardNumber.length >= 16) {
+      if (this.CardNumber.length >= 15) {
         this.ErrorCardCVV = '';
         this.ErrorCardNumber = '';
         this.CardClass = 'is-valid';
@@ -45352,14 +45352,6 @@ var render = function() {
                         ])
                       ]
                     ),
-                    _vm._v(" "),
-                    _c("iframe", {
-                      attrs: {
-                        src: _vm.Source,
-                        frameborder: "0",
-                        height: "400px"
-                      }
-                    }),
                     _vm._v(" "),
                     _vm.ErrorCardNumber
                       ? _c("span", { staticStyle: { color: "red" } }, [

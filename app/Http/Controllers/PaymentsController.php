@@ -50,7 +50,7 @@ class PaymentsController extends Controller
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://090d6c84cd33.ngrok.io/api/ConfirmPayment';
+        $CallBackURL='https://4d04f25657bb.ngrok.io/api/ConfirmPayment';
         $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
@@ -129,7 +129,11 @@ class PaymentsController extends Controller
         $OrderId=Str::upper( Str::random(15));
         session(['OrderNumber'=>$OrderId]);
         $mpesa = new \Safaricom\Mpesa\Mpesa();
+        $timestamp='20'.date(    "ymdhis");
+        $password=base64_encode('174379'.'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'.$timestamp);
         // $status=$mpesa::STKPushQuery();//i will check the status of the stk push simulation//then check if the amount paid is enough//then confirm the order
+        $STKPushRequestStatus=$mpesa->STKPushQuery('ws_CO_061020200048066978','174379',$password,$timestamp);
+        return $STKPushRequestStatus;
        $Transaction= MpesaTransactions::where([
         ['Email','=',Auth::user()->email],
         ['TransactionType','=','Mpesa'],
@@ -271,7 +275,7 @@ class PaymentsController extends Controller
             'BusinessShortCode' =>$this->BusinessCode,
             //payment request code
             'CheckOutId' => $checkout_id,
-            'BillRefNumber' =>'#'.Str::upper( Session::get('OrderNumber')),
+            'BillRefNumber' =>Str::upper( Session::get('OrderNumber')),
             'InvoiceNumber' =>'XP-'.Session::get('OrderNumber'),
             'OrgAccountBalance' => $Balance,
             'MechantId' => $mechant_id,
@@ -315,12 +319,12 @@ class PaymentsController extends Controller
         'consumer_key' =>'MfxFmjr3Xq',
         'api_key' =>'ui4ZBl4ratvsNPmGvBwqyptlI',
         'currency' =>'KES',
-        'amount' => '900',
+        'amount' => '590',
         'expiry_date' =>$expiry,
         'card_security_code' =>$cvv,
         'credit_card_number' =>$request->card,
         'customer_external_id' =>'L0gu92uEKFbkzWsr4O6YWst8R',
-        'transaction_external_id' =>'paymentfororder',
+        'transaction_external_id' =>'#'.Str::random(10),
         'environment' =>'TEST');
 
         $data_string = json_encode($curl_post_data);

@@ -147,7 +147,7 @@
 											<input id="cbox" type="checkbox" v-model="Card">
 											<label class="label-control">Pay By Card</label>
 										</div>
-                                        <iframe :src="Source" frameborder="0" height="400px"></iframe>
+                                        <!-- <iframe :src="Source" frameborder="0" height="400px"></iframe> -->
                                         <span v-if="ErrorCardNumber" style="color:red">
                                               {{ErrorCardNumber}}
                                         </span>
@@ -269,7 +269,7 @@
                 //salting the number
                 let salt=Math.floor(Math.random() * 10189898978787)
                 // console.log(salt)
-                if(this.CardNumber.length<16){
+                if(this.CardNumber.length<15){
                     this.ErrorCardNumber='this Field is required',
                     this.CardClass='is-invalid'
                 }
@@ -277,7 +277,7 @@
                     this.ErrorCardCVV='this Field is required',
                     this.CvvClass='is-invalid'
                 }
-                if(this.CardNumber.length<16 || this.CardCVV.length<3|| this.CardExp<4){
+                if(this.CardNumber.length<15 || this.CardCVV.length<3|| this.CardExp<4){
                     this.ErrorCardNumber='Kindly fill all the fields'
                     return;
                 }else{
@@ -428,11 +428,11 @@
                 })
             },
             CardNumber:function(){
-                if(this.CardNumber.length<16){
+                if(this.CardNumber.length<15){
                     this.ErrorCardNumber='Enter Valid Card Number'
                     this.CardClass='is-invalid'
                 }
-                 if(this.CardNumber.length>=16){
+                 if(this.CardNumber.length>=15){
                      this.ErrorCardCVV=''
                     this.ErrorCardNumber=''
                     this.CardClass='is-valid'
