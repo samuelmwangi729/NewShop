@@ -246,9 +246,8 @@
                                 text:response.data.message+' '+response.data.Action,
                                 icon:'error'
                             })
-                        }
-                        if(response.data.Status=='success'){
-                             window.open('/HTVW00xzDT5AAAW','_parent');
+                        }else{
+                            window.open('/HTVW00xzDT5AAAW','_parent');
                         }
                     })
                 }

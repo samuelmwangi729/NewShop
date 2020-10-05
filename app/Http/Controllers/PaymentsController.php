@@ -126,6 +126,8 @@ class PaymentsController extends Controller
         //
     }
     public function QueryTransaction(Request $request,$Transaction){
+        $OrderId=Str::upper( Str::random(15));
+        session(['OrderNumber'=>$OrderId]);
         $mpesa = new \Safaricom\Mpesa\Mpesa();
         // $status=$mpesa::STKPushQuery();//i will check the status of the stk push simulation//then check if the amount paid is enough//then confirm the order
        $Transaction= MpesaTransactions::where([
@@ -204,7 +206,7 @@ class PaymentsController extends Controller
         //
     }
     protected function getFileData(){
-        $OrderId= Str::upper(Str::random(10));
+        $OrderId='#'.Str::upper(Str::random(15));
         session(['OrderNumber'=>$OrderId]);
         $file=Storage::get('final.txt');
         $data=json_decode($file,true);
@@ -269,7 +271,7 @@ class PaymentsController extends Controller
             'BusinessShortCode' =>$this->BusinessCode,
             //payment request code
             'CheckOutId' => $checkout_id,
-            'BillRefNumber' => Session::get('OrderNumber'),
+            'BillRefNumber' =>'#'.Str::upper( Session::get('OrderNumber')),
             'InvoiceNumber' =>'XP-'.Session::get('OrderNumber'),
             'OrgAccountBalance' => $Balance,
             'MechantId' => $mechant_id,
@@ -284,6 +286,13 @@ class PaymentsController extends Controller
         //    return Session::get('Number');
            $data=['status'=>'success','message'=>'Payment Received for the Order #'.Session::get('OrderNumber')];
            return $data;
+    }
+    protected function getBilling(){
+        $Transaction=MpesaTransactions::where([
+            ['BillRefNumber','=',Session::get('OrderNumber')],
+            ['Email','=',Auth::user()->email]
+        ])->get()->last();
+        return $Transaction;
     }
     protected function getFile(){
         return Auth::user();

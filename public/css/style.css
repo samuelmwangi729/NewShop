@@ -629,6 +629,13 @@ Version:1.0
 .header.shop .top-contact {
 	margin-top:0px;
 }
+.printBtn{
+    @media print {
+        #menu {
+            display:none;
+        }
+    }
+}
 /* Header Middle */
 .header.shop .search-bar-top {
 	text-align: center;

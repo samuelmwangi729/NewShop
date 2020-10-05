@@ -27,6 +27,23 @@ class OrdersController extends Controller
     {
         //
     }
+    protected function getOrderNumber(){
+        return Session::get('OrderNumber');
+    }
+    protected function getSingle(){
+        $order=Order::where([
+            ['OrderNumber','=',Session::get('OrderNumber')],
+            ['Client','=',Auth::user()->email],
+            ['Status','=','0']
+        ])->get()->last();
+        $carts=Cart::where([
+            ['User','=',Auth::user()->email],
+            ['OrderNumber','=',Session::get('OrderNumber')],
+            ['Status','=','5']
+        ])->get();
+        $data=['order'=>$order,'items'=>$carts];
+        return $data;
+    }
 
     /**
      * Store a newly created resource in storage.

@@ -46,7 +46,7 @@
         <script src="{{ asset('user/plugins/pace/pace.min.js') }}"></script>
     </head>
     <body>
-        <div id="container" class="effect mainnav-lg navbar-fixed mainnav-fixed">
+        <div id="container" class="effect mainnav-lg navbar-fixed mainnav-fixed no-print">
             <!--NAVBAR-->
             <!--===================================================-->
             <header id="navbar">
@@ -519,14 +519,8 @@
         <script src="{{ asset('user/plugins/masked-input/bootstrap-inputmask.min.js') }}"></script>
         <!--Bootstrap Validator [ OPTIONAL ]-->
         <script src="{{ asset('user/plugins/bootstrap-validator/bootstrapValidator.min.js') }}"></script>
-        <!--jvectormap [ OPTIONAL ]-->
-        <script src="{{ asset('user/plugins/jvectormap/jquery-jvectormap.min.js') }}"></script>
-        <script src="{{ asset('user/plugins/jvectormap/jquery-jvectormap-us-aea-en.js') }}"></script>
-        <script src="{{ asset('user/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-        <!--Fullscreen jQuery [ OPTIONAL ]-->
         <script src="{{ asset('user/plugins/screenfull/screenfull.js') }}"></script>
-        <!--Form Wizard [ SAMPLE ]-->
-        <script src="{{ asset('user/js/demo/e-commerce.js') }}"></script>
+
         <!--Form Wizard [ SAMPLE ]-->
         <script src="{{ asset('user/js/demo/wizard.js') }}"></script>
         <!--Demo script [ DEMONSTRATION ]-->

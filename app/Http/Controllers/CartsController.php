@@ -169,6 +169,20 @@ class CartsController extends Controller
         }
         return $products;
     }
+    protected function getCartOrder(){
+        $username=Session::get('Username');
+        $products=[];
+        $cart=Cart::where([
+            ['User','=',$username],
+            ['Status','=','5']
+        ])->get();
+        for($i=0;$i<count($cart);$i++){
+            //get the product and add it to an array
+            $product=Product::where('SKU','=',$cart[$i]->ProductSKU)->get();
+            array_push($products,[$product,$cart[$i]->Qty]);
+        }
+        return $products;
+    }
     protected function getWishlist(){
         $username=Session::get('Username');
         $products=[];

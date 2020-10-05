@@ -8,10 +8,10 @@
             <div class="invoice-inner">
                 <div class="row">
                     <div class="col-xs-6">
-                        <h3>Invoice</h3>
+                        <h3>Invoice Number {{Billing.InvoiceNumber}}</h3>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <h3>Order # 12345</h3>
+                        <h3>Order {{OrderId}}</h3>
                     </div>
                 </div>
                 <hr/>
@@ -19,31 +19,31 @@
                     <div class="col-xs-6">
                         <address>
                             <strong>Billed To:</strong><br />
-                            John Smith<br />
-                            1234 Main<br />
-                            Apt. 4B<br />
-                            Springfield, ST 54321
+                            {{Billing.FirstName }}  {{Billing.LastName }}<br />
+                             {{Shipping.County}} County,<br />
+                            {{Shipping.Town}} Town<br />
+                            {{Shipping.email}}
                         </address>
                     </div>
                     <div class="col-xs-6 text-right">
                         <address>
                             <strong>Shipped To:</strong><br />
-                            Jane Smith<br />
-                            1234 Main<br />
-                            Apt. 4B<br />
-                            Springfield, ST 54321
+                            {{Shipping.First_Name}} {{Shipping.Last_Name}}<br />
+                            {{Shipping.County}} County,<br />
+                            {{Shipping.Town}} Town<br />
+                            {{Shipping.email}}
                         </address>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
                         <strong>Payment Method:</strong>
-                        <br /> Visa ending **** 4242
-                        <br /> jsmith@email.com
+                        <br /> {{ Billing.TransactionType }} Number  <i>+{{Billing.MSISDN}}</i>
+                        <br /> {{ Billing.Email }}
                     </div>
                     <div class="col-xs-6 text-right">
                         <strong>Order Date:</strong>
-                        <br /> March 7, 2014
+                        <br />{{Orders.order.DatePlaced}}
                         <br />
                     </div>
                 </div>
@@ -65,41 +65,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>BS-200</td>
-                                                <td class="text-center">$10.99</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-right">$10.99</td>
-                                            </tr>
-                                            <tr>
-                                                <td>BS-400</td>
-                                                <td class="text-center">$20.00</td>
-                                                <td class="text-center">3</td>
-                                                <td class="text-right">$60.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>BS-1000</td>
-                                                <td class="text-center">$600.00</td>
-                                                <td class="text-center">1</td>
-                                                <td class="text-right">$600.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="thick-line"></td>
-                                                <td class="thick-line"></td>
-                                                <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                                <td class="thick-line text-right">$670.99</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="no-line"></td>
-                                                <td class="no-line"></td>
-                                                <td class="no-line text-center"><strong>Shipping</strong></td>
-                                                <td class="no-line text-right">$15</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="no-line"></td>
-                                                <td class="no-line"></td>
-                                                <td class="no-line text-center"><strong>Total</strong></td>
-                                                <td class="no-line text-right">$685.99</td>
+                                            <tr v-for="item in FinalOrder" :key="item.id">
+                                                <td>{{item[0][0].ProductName}}</td>
+                                                <td class="text-center">Ksh: {{item[0][0].FinalPrice}}</td>
+                                                <td class="text-center">{{item[1]}}</td>
+                                                <td class="text-right">Ksh:{{item[0][0].FinalPrice * item[1] }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -108,8 +78,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-center no-print">
-                  <a class="btn btn-primary btn-lg" onClick="jQuery('#page-content').print()">
+                <div class="text-center printBtn">
+                  <a class="btn btn-primary btn-lg" @click="print()">
                     <i class="fa fa-print"></i> Print
                   </a>
                 </div>
@@ -122,3 +92,55 @@
 
     </div>
 </template>
+<script>
+export default {
+    data(){
+        return{
+            OrderId:'',
+            Billing:[],
+            Shipping:[],
+            Orders:[],
+            FinalOrder:[]
+        }
+    },
+    methods:{
+        getOrderNumber:function(){
+            axios.get('/PDEKhgO2JDUrL8Zd23OOPKEvmyQCl2m').then((response)=>{
+                this.OrderId=response.data
+            })
+        },
+        getBilling(){
+            axios.get('/ws5xKxFILK7JiA4JlgenYZ6/dRqvsdymJLsAnNm16jS4gz5iIm').then((response)=>{
+                this.Billing=response.data
+            })
+        },
+        getShipping(){
+            axios.get('/ws5xKxFILK7JiA4JlgenYZ6').then((response)=>{
+                this.Shipping=response.data
+            })
+        },
+        getOrder(){
+            axios.get('/6juQg3f1Jltvp7pMz/aCoJVagCy').then((response)=>{
+                this.Orders=response.data
+            })
+        },
+        getName(sku){
+            let name=''
+            axios.get('/k1HT1eDwpU/').then((response)=>{
+               this.FinalOrder=response.data
+               console.log(response.data)
+            })
+        },
+        print(){
+            window.print()
+        }
+    },
+    created(){
+        this.getOrderNumber()
+        this.getBilling()
+        this.getShipping()
+        this.getOrder()
+        this.getName()
+    }
+}
+</script>

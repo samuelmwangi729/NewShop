@@ -132,4 +132,7 @@ if(is_null($ip)){
     protected function Contact(){
         return view('Shop.Contact');
     }
+    protected function getUser(){
+        return Auth::user();
+    }
 }

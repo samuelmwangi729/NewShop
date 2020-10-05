@@ -290,4 +290,8 @@ class ProductsController extends Controller
         $product=Session::get('Product');
         return $product;
     }
+    static function getName($slug){
+        $product=Product::where('SKU','=',$slug)->get()->first();
+        return $product->ProductName;
+    }
 }

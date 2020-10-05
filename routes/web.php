@@ -110,6 +110,9 @@ Route::get('/Sk9zv/4LZ/k1HT1eDwpUe5LG95e',[
 Route::get('/k1HT1eDwpUe5LG95e',[
     'uses'=>'CartsController@getCart'
 ]);
+Route::get('/k1HT1eDwpU',[
+    'uses'=>'CartsController@getCartOrder'
+]);
 Route::delete('/delWishlist/{sku}',[
     'uses'=>'WishlistController@destroy'
 ]);
@@ -148,6 +151,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('EfGTGYkBDAqW/lbpg/ajYPPyb2',[
         'uses'=>'IndexController@GenRand'
+    ]);
+    Route::get('/PDEKhgO2JDUrL8Zd23OOPKEvmyQCl2m',[
+        'uses'=>'OrdersController@getOrderNumber'
+    ]);
+    Route::get('ws5xKxFILK7JiA4JlgenYZ6/dRqvsdymJLsAnNm16jS4gz5iIm',[
+        'uses'=>'PaymentsController@getBilling'
+    ]);
+    Route::get('/ws5xKxFILK7JiA4JlgenYZ6',[
+        'uses'=>'IndexController@getUser'
+    ]);
+    Route::get('/6juQg3f1Jltvp7pMz/aCoJVagCy',[
+        'uses'=>'OrdersController@getSingle'
+    ]);
+    Route::get('/productname/{sku}',[
+        'uses'=>'ProductsController@getName'
     ]);
     Route::resource('HTVW00xzDT5AAAW','OrdersController');
     Route::get('/checkout',[
