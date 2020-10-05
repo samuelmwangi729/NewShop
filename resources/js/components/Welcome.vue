@@ -540,7 +540,7 @@
     },
             AddCart(sku){
                 axios.get('/mHCAGNXtutk/S2wTcoUWu8cP').then((response)=>{
-                    // console.log(response.data)
+
                 })
                axios.post('/cart',{
                    _token:this.token,
@@ -671,6 +671,7 @@
             this.LoadCategories();
             this.getCartTotal()
             this.countWish()
+            this.token=$('meta[name="csrf-token"]').attr('content')
         }
     }
 </script>

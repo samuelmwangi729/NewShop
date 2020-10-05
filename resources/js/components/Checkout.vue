@@ -97,7 +97,7 @@
 							</div>
 							<!--/ End Order Widget -->
 							<!-- Order Widget -->
-							<div class="single-widget">
+							<div class="single-widget container">
 								<h2>Payments</h2>
 								<div :class="Hidden">
                                     <div class="form-group create-account" style="margin-top:40px">
@@ -111,6 +111,9 @@
                                                  Mpesa Number
                                              </label>
 											 <input class="form-control" type="number" v-model="MpesaNumber" placeholder="Number To Pay With Eg. 07xxxxxxxx" :class="Mclass">
+                                             <div :class="Processing" class="uploading" style="position:relative; width:100%;style:none;padding-top:20px" id="uploading">
+                                                <span style="paddig-top:-20px;color:red;font-weight:bold"> Processing Payment</span>
+                                            </div>
                                              <!-- We will  initiate payment process for you -->
                                              <div class="row">
                                                  <div class="col-xs-4 col-sm-4 offset-sm-4">
@@ -118,7 +121,28 @@
                                                  </div>
                                              </div>
                                             </form>
+                                            <span style="color:red;text-decoration:underline"> Already Paid?</span>
+                                            <form action="" class="form">
+                                                    <label  class="label-control">
+                                                    <i class="fa fa-file"></i>
+                                                    Mpesa Transaction
+                                                </label>
+                                                <input class="form-control" type="text" v-model="Transaction" placeholder="Transaction Id" :class="ClassTransaction">
+                                                <span style="color:red">
+                                                    {{ ErrorTransaction }}
+                                                </span>
+                                                <div :class="TransactionClass" class="uploading" style="position:relative; width:100%;style:none;padding-top:20px" id="uploading">
+                                                    <span style="paddig-top:-20px;color:red;font-weight:bold"> Searching</span>
+                                                </div>
+                                                <!-- We will  initiate payment process for you -->
+                                                <div class="row">
+                                                    <div class="col-xs-4 col-sm-4 offset-sm-4">
+                                                        <button style="background-color:green;height:50px;font-size:12px;width:100px;margin-top:10px;color:white;font-weight:bold !important" @click.prevent="QueryMpesa()">Check Transaction</button>
+                                                    </div>
+                                                </div>
+                                            </form>
 										</div>
+
                                         <div class="form-group create-account" style="margin-top:40px">
 											<input id="cbox" type="checkbox" v-model="Card">
 											<label class="label-control">Pay By Card</label>
@@ -199,10 +223,36 @@
             Source:'',
             checkoutToken:'',
             total:900,
-            Hidden:'d-none'
+            Hidden:'',
+            Processing:'d-none',
+            TransactionClass:'d-none',
+            Transaction:'',
+            ErrorTransaction:'',
+            ClassTransaction:'',
         }
         },
         methods:{
+            QueryMpesa(){
+                if(this.Transaction.length==0){
+                    this.ErrorTransaction='This field is required',
+                    this.ClassTransaction='is-invalid'
+                    return;
+                }else{
+                    axios.get('/4m6TspRgOZ39fdERTge3Nyv6apuoCcdITCDBnoaK/'+this.Transaction).then((response)=>{
+                        console.log(response.data)
+                        if(response.data.Status=='error'){
+                            swal({
+                                title:'Error',
+                                text:response.data.message+' '+response.data.Action,
+                                icon:'error'
+                            })
+                        }
+                        if(response.data.Status=='success'){
+                             window.open('/HTVW00xzDT5AAAW','_parent');
+                        }
+                    })
+                }
+            },
             IframeSrc(){
                 //get the checkout token
                 let Transaction_id=Math.floor(Math.random() * 10189898978787)
@@ -248,6 +298,7 @@
             },
             PayWithMpesa(){
                 // // alert(this.FirstName)
+                this.Processing='text-center'
                 axios.get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/'+this.MpesaNumber).then((response)=>{
                     //if i pay, then let the data be posted into the database
                     //then check if its working
@@ -272,6 +323,7 @@
                             text:'Transaction Cancelled by the User. Please Try Again',
                             icon:'error'
                         })
+                        this.Processing='d-none'
                         return;
                     }
                      if(response.data.status=='less'){
@@ -281,10 +333,11 @@
                             text:'Insufficient Balance in your Mpesa Account. Kindly Top Up and Try Again',
                             icon:'error'
                         })
+                        this.Processing='d-none'
                         return;
                     }
                 })
-                }, 5000)
+                },30000)
             },
             getCartTotal(){
                 axios.get('/k1HT1eDwpUe5LG95ey7').then((response)=>{

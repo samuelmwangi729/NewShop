@@ -49,10 +49,12 @@ class CartsController extends Controller
             ['Status','=',0]
         ])->get()->first();
         $quantity=$request->Qty;
+        // return $prod;
         if(is_null($prod)){
             Cart::create([
                 'ProductSKU'=>$request->SKU,
                 'Qty'=>$quantity,
+                'OrderNumber'=>'Null',
                 'User'=>$username,
             ]);
             return ['success'=>'Product Successfully Added to Cart'];

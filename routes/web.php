@@ -153,6 +153,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/checkout',[
         'uses'=>'CartsController@CheckOut'
     ]);
+    Route::get('/4m6TspRgOZ39fdERTge3Nyv6apuoCcdITCDBnoaK/{Transaction}',[
+        'uses'=>'PaymentsController@QueryTransaction'
+    ]);
     Route::get('/bVcR9UWw2xfTOhIGbKZbqlZ8CnTfXGViJ9rD8AxP6wOS',[
         'uses'=>'PickupsController@getAll'
     ]);

@@ -46,7 +46,7 @@
 							<tr v-for="item in CartProducts" :key="item.id">
 								<td class="image" data-title="No"><img :src="item[0][0].ProductBanner" alt="#" style="width:100px;height:70px !important"></td>
 								<td class="product-des" data-title="Description">
-									<p class="product-name"><a href="#">{{item[0][0].ProductName}}</a></p>
+									<p class="product-name"><a :href="'/Product/'+item[0][0].Slug">{{item[0][0].ProductName}}</a></p>
 								</td>
 								<td class="price" data-title="Price"><span> Ksh: {{ item[0][0].FinalPrice }} </span></td>
 								<td class="qty" data-title="Qty"><!-- Input Order -->

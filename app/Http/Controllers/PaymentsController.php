@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use Str;
 use Storage;
+use App\Http\Controllers\OrdersController;
 use App\{CartsController,Cart,Product,Pickup,PaymentRequests,MpesaTransactions,Order,Cancelled};
 use Session;
 class PaymentsController extends Controller
@@ -22,14 +23,7 @@ class PaymentsController extends Controller
     }
     public function PayWithMpesa($number)
     {
-        $cartTotal=$this->getCartTotal();
-        // return Session::get('Username');
-        $user=Auth::user();
-        $town=$user->Town;
-        // return $town;
-        $shipping=PickUp::where('TownId','=',$town)->get()->first();
-        // return $shipping->Shipping;
-        $totalAmount=$cartTotal+$shipping->Shipping;
+        $totalAmount=$this->getTotalAmount();
         // $number=$number;
         $first_character=substr($number,0,1);
         //if the first character is sero, replace it with 254
@@ -45,32 +39,32 @@ class PaymentsController extends Controller
         }
         //the stkpush code
     //     // return $totalAmount
-    //     $mpesa= new \Safaricom\Mpesa\Mpesa();
-    //     $token=$mpesa::generateSandBoxToken();
-    //     $BusinessShortCode=174379;
-    //     $LipaNaMpesaPasskey='bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
-    //     $TransactionType='CustomerPayBillOnline';
-    //     $Amount=$totalAmount;
-    //     // $Amount=1;
-    //     //phone number and partyA are the same
-    //      $PartyA=$paymentNumber;
-    //     $PartyB=$this->BusinessCode;
-    //     $PhoneNumber=$paymentNumber;
-    //     $CallBackURL='https://0b676c87bd86.ngrok.io/api/ConfirmPayment';
-    //     $AccountReference=$paymentNumber;
-    //     $TransactionDesc='Being Payment for Comodity Ordered';
-    //     $Remark='Being Payment for Order Id  Comodity Ordered';
-    //    $stkpush= $mpesa->STKPushSimulation($BusinessShortCode, $LipaNaMpesaPasskey, $TransactionType, $Amount, $PartyA, $PartyB, $PhoneNumber, $CallBackURL, $AccountReference, $TransactionDesc, $Remark);
-    //    $data=json_decode($stkpush,true);
-    //    PaymentRequests::create([
-    //     'MerchantRequestID'=>$data['MerchantRequestID'],
-    //     'CheckoutRequestID'=>$data['CheckoutRequestID'],
-    //     'ResponseCode'=>$data['ResponseCode'],
-    //     'ResponseDescription'=>$data['ResponseDescription'],
-    //     'CustomerMessage'=>$data['CustomerMessage'],
-    //     'user'=>Session::get('Username'),
-    //     'Phone'=>$paymentNumber,
-    //    ]);
+        $mpesa= new \Safaricom\Mpesa\Mpesa();
+        $token=$mpesa::generateSandBoxToken();
+        $BusinessShortCode=174379;
+        $LipaNaMpesaPasskey='bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
+        $TransactionType='CustomerPayBillOnline';
+        $Amount=$totalAmount;
+        // $Amount=1;
+        //phone number and partyA are the same
+         $PartyA=$paymentNumber;
+        $PartyB=$this->BusinessCode;
+        $PhoneNumber=$paymentNumber;
+        $CallBackURL='https://090d6c84cd33.ngrok.io/api/ConfirmPayment';
+        $AccountReference=$paymentNumber;
+        $TransactionDesc='Being Payment for Comodity Ordered';
+        $Remark='Being Payment for Order Id  Comodity Ordered';
+       $stkpush= $mpesa->STKPushSimulation($BusinessShortCode, $LipaNaMpesaPasskey, $TransactionType, $Amount, $PartyA, $PartyB, $PhoneNumber, $CallBackURL, $AccountReference, $TransactionDesc, $Remark);
+       $data=json_decode($stkpush,true);
+       PaymentRequests::create([
+        'MerchantRequestID'=>$data['MerchantRequestID'],
+        'CheckoutRequestID'=>$data['CheckoutRequestID'],
+        'ResponseCode'=>$data['ResponseCode'],
+        'ResponseDescription'=>$data['ResponseDescription'],
+        'CustomerMessage'=>$data['CustomerMessage'],
+        'user'=>Session::get('Username'),
+        'Phone'=>$paymentNumber,
+       ]);
         session(['PhoneNumber'=>$paymentNumber]);
         $data=['status'=>'success','message'=>'Transaction Successfully Initiated'];
         return $data;
@@ -131,6 +125,49 @@ class PaymentsController extends Controller
     {
         //
     }
+    public function QueryTransaction(Request $request,$Transaction){
+        $mpesa = new \Safaricom\Mpesa\Mpesa();
+        // $status=$mpesa::STKPushQuery();//i will check the status of the stk push simulation//then check if the amount paid is enough//then confirm the order
+       $Transaction= MpesaTransactions::where([
+        ['Email','=',Auth::user()->email],
+        ['TransactionType','=','Mpesa'],
+        ['Used','=','0'],
+    ])->get()->first();
+    if(is_null($Transaction)){
+        //then the transaction is Not Found
+        //if its not found locally, then we will have to query online to check the status
+        //check mpesa stk queryMpesa
+        //if still null,search mpesa transaction query with my LNM business number,
+        //if still null, the amount is not  paid
+        $data=['Status'=>'error','message'=>'No Such  Transaction Available!','Action'=>'Contact Us For Help'];
+        return $data;
+    }
+    $toBePaid=$this->getTotalAmount();
+    // return $this->getTotalAmount();
+    if($toBePaid==$Transaction->TransAmount){
+        //amount paid is Okay
+        $data=['Status'=>'success','message'=>'Payment Successfully Completed!','Action'=>''];
+        $order=new OrdersController();
+        return $order->store($request);
+    }else{
+        //the amount paid is less
+        $deviation=$toBePaid-$Transaction->TransAmount;
+        $data=['Status'=>'error','message'=>'Amount Paid Is Not Enough!','Action'=>'Kindly Pay Extra Ksh '.$deviation.' And then Contact Us'];
+        return $data;
+    }
+        return $Transaction->TransAmount;
+    }
+    public function getTotalAmount(){
+        $cartTotal=$this->getCartTotal();
+        // return Session::get('Username');
+        $user=Auth::user();
+        $town=$user->Town;
+        // return $town;
+        $shipping=PickUp::where('TownId','=',$town)->get()->first();
+        // return $shipping->Shipping;
+        $totalAmount=$cartTotal+$shipping->Shipping;
+        return $totalAmount;
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -167,11 +204,12 @@ class PaymentsController extends Controller
         //
     }
     protected function getFileData(){
-        $OrderId= Str::random(10);
+        $OrderId= Str::upper(Str::random(10));
         session(['OrderNumber'=>$OrderId]);
         $file=Storage::get('final.txt');
         $data=json_decode($file,true);
-        return $data['Body']['stkCallback']['ResultCode'];
+        // return $file;
+        // return json_encode($file)['Body'];
         if($data['Body']['stkCallback']['ResultCode']=='1032'){
             //you should go back with the error message
             //save the cancelled request into the database

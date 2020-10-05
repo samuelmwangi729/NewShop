@@ -52,6 +52,7 @@ Vue.component("checkout-component", require("./components/Checkout.vue").default
 Vue.component("wishlist-component", require("./components/Wishlist.vue").default);
 Vue.component("blog-component", require("./components/Blog.vue").default);
 Vue.component("pickup-component", require("./components/Pickup.vue").default);
+Vue.component("invoice-component", require("./components/Invoice.vue").default);
 Vue.component(
     "collection-component",
     require("./components/Collection.vue").default

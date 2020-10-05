@@ -40,7 +40,7 @@
                             </h5>
                             <div class="row" style="margin-left:100px;margin-top:20px">
                                 <div class="col-xs-4">
-                                   <button style="width:50px;height:20px;font-size:15px;margin-right:30px;background-color:red;color:white" @click="Sub()">
+                                   <button style="width:50px;height:20px;font-size:15px;margin-right:1px;background-color:red;color:white" @click="Sub()">
                                      <i class="fa fa-minus-circle"></i>
                                    </button>
                                 </div>
@@ -48,12 +48,12 @@
                                   {{ MinCart }} Piece(s)
                                 </div>
                                 <div class="col-xs-4">
-                                    <button  style="width:50px;height:20px;font-size:15px;margin-left:30px;background-color:blue;color:white" @click="Add()">
+                                    <button  style="width:50px;height:20px;font-size:15px;margin-left:1px;background-color:blue;color:white" @click="Add()">
                                         <i class="fa fa-plus-circle"></i>
                                     </button>
                                 </div>
                             </div>
-                            <button class="mt-3 mb-2 btn-block btn-primary"><h3>Add to Cart</h3></button>
+                            <button class="mt-3 mb-2 btn-block btn-primary" @click="AddCart(Product.SKU)"><h3>Add to Cart</h3></button>
                     </div>
                 </div>
             </div>
@@ -92,6 +92,40 @@
             }
         },
         methods:{
+                getCartTotal(){
+        axios.get('/k1HT1eDwpUe5LG95ey7').then((response)=>{
+            this.CartTotal=response.data
+        })
+
+    },
+            AddCart(sku){
+                // alert(this.MinCart)
+                axios.get('/mHCAGNXtutk/S2wTcoUWu8cP').then((response)=>{
+
+                })
+               axios.post('/cart',{
+                   _token:this.token,
+                   Qty:this.MinCart,
+                   SKU:sku
+               }).then((response)=>{
+                   if(response.data.success){
+                        swal({
+                        title: 'Success',
+                        text: response.data.success,
+                        icon: "success",
+                        })
+                    this.countCart()
+                    this.getCart()
+                   }else{
+                       swal({
+                        title: 'Error',
+                        text: response.data.error,
+                        icon: "error",
+                        })
+                   }
+               })
+               this.getCartTotal()
+            },
             Add(){
                 this.MinCart=this.MinCart+1;
             },

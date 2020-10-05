@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Session;
 use Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PaymentsController;
 use App\{MpesaTransactions,Order,Cart};
 class OrdersController extends Controller
 {
@@ -39,7 +40,9 @@ class OrdersController extends Controller
         // return Session::get('Number');
         $number=Session::get('Number');
         //then confirm receipt of Payment
-        $payment=MpesaTransactions::where('MSISDN','=',$number)->get()->first();
+        // $payment=MpesaTransactions::where('MSISDN','=',$number)->get()->first();
+        $payment=MpesaTransactions::where('MSISDN','=','254713529784')->get()->last();
+        // return $payment;
         if(is_null($payment)){
             //then no payment as been received
             $data=['status'=>'error','message'=>'No payment received, Kindly Contact Us if any query'];
@@ -47,6 +50,15 @@ class OrdersController extends Controller
         }else{
             //payment received and we continue to place the order
             if($payment->Status=='Success'){
+                //update the payment status to used=1;
+                //first confirm if the amount paid is enough
+                $toBePaid=new PaymentsController();
+                $toBePaidAmount=$toBePaid->getTotalAmount($request);
+                if($toBePaidAmount<$payment->TransAmount){
+                    $deviation=$toBePaidAmount-$payment->TransAmount;
+                    $data=['Status'=>'error','message'=>'Amount Paid Is Not Enough!','Action'=>'Kindly Pay Extra Ksh '.$deviation.' And then Contact Us'];
+                    return $data;
+                }
                 $orderNumber='#'.Session::get('OrderNumber');
                 $client=Auth::user()->email;
                 $DatePlaced=date('Y-m-d');
@@ -70,6 +82,8 @@ class OrdersController extends Controller
                   $cart[$i]->save();
               }
               $data=['status'=>'success','message'=>'order successfully placed'];
+              $payment->Used=1;
+              $payment->save();
                 return $data;
             }
         }
