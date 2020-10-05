@@ -135,4 +135,7 @@ if(is_null($ip)){
     protected function getUser(){
         return Auth::user();
     }
+    protected function promotion(){
+        return view('Shop.promotion');
+    }
 }

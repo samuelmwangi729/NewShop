@@ -17,6 +17,9 @@ Route::get('/',['uses'=>'IndexController@Welcome']);
 Route::get('/fThtjpKy1XPtGuWbqwuOY9Rc5CQHle/{id}',[
   'uses'=>'SubCategoriesController@findSingle'
 ]);
+Route::get('/Promotion',[
+    'uses'=>'IndexController@promotion'
+]);
 Route::get('/crcO1bX8i5GjqPWsr5vlN2w8WIgrg12',[
     'uses'=>'BlogsController@index'
 ]);

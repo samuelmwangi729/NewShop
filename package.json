@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "sweetalert": "^2.1.2",
-        "v-form": "^2.3.5"
+        "v-form": "^2.3.5",
+        "winwheel": "^1.0.1"
     }
 }
