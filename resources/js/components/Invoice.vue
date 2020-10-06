@@ -1,23 +1,23 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:100px !important">
         <!--Page content-->
 <!--===================================================-->
-<div id="page-content">
+<div id="container" class="container">
     <div class="invoice-wrapper">
         <section class="invoice-container">
             <div class="invoice-inner">
                 <div class="row">
-                    <div class="col-xs-6">
-                        <h3>Invoice Number {{Billing.InvoiceNumber}}</h3>
+                      <div class="col-xs-6">
+
                     </div>
-                    <div class="col-xs-6 text-right">
-                        <h3>Order {{OrderId}}</h3>
+                    <div class="text-right col-xs-6">
+                        <h5>Order #{{OrderId}}</h5>
                     </div>
                 </div>
                 <hr/>
                 <div class="row">
                     <div class="col-xs-6">
-                        <address>
+                        <address style="font-family:'courier';font-weight:bold;font-size:10px">
                             <strong>Billed To:</strong><br />
                             {{Billing.FirstName }}  {{Billing.LastName }}<br />
                              {{Shipping.County}} County,<br />
@@ -25,8 +25,8 @@
                             {{Shipping.email}}
                         </address>
                     </div>
-                    <div class="col-xs-6 text-right">
-                        <address>
+                    <div class="text-right col-xs-6">
+                        <address style="font-family:'courier';font-weight:bold;font-size:10px">
                             <strong>Shipped To:</strong><br />
                             {{Shipping.First_Name}} {{Shipping.Last_Name}}<br />
                             {{Shipping.County}} County,<br />
@@ -36,12 +36,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-6" style="font-family:'courier';font-weight:bold;font-size:10px">
                         <strong>Payment Method:</strong>
                         <br /> {{ Billing.TransactionType }} Number  <i>+{{Billing.MSISDN}}</i>
                         <br /> {{ Billing.Email }}
                     </div>
-                    <div class="col-xs-6 text-right">
+                    <div class="text-right col-xs-6" style="font-family:'courier';font-weight:bold;font-size:10px">
                         <strong>Order Date:</strong>
                         <br />{{Orders.order.DatePlaced}}
                         <br />
@@ -55,9 +55,9 @@
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table class="table table-condensed">
+                                    <table class="table table-condensed table-bordered">
                                         <thead>
-                                            <tr>
+                                            <tr style="font-family:'courier-new';font-weight:bold;font-size:10px">
                                                 <td><strong>Item</strong></td>
                                                 <td class="text-center"><strong>Price</strong></td>
                                                 <td class="text-center"><strong>Quantity</strong></td>
@@ -65,7 +65,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="item in FinalOrder" :key="item.id">
+                                            <tr v-for="item in FinalOrder" :key="item.id" style="font-family:'courier-new';font-weight:normal;font-size:15px">
                                                 <td>{{item[0][0].ProductName}}</td>
                                                 <td class="text-center">Ksh: {{item[0][0].FinalPrice}}</td>
                                                 <td class="text-center">{{item[1]}}</td>
@@ -79,9 +79,7 @@
                     </div>
                 </div>
                 <div class="text-center printBtn">
-                  <a class="btn btn-primary btn-lg" @click="print()">
-                    <i class="fa fa-print"></i> Print
-                  </a>
+                 <button class="btn btn-success noprint" @click="print()">Print</button>
                 </div>
             </div>
         </section>
@@ -132,7 +130,7 @@ export default {
             })
         },
         print(){
-            window.print()
+           window.print()
         }
     },
     created(){

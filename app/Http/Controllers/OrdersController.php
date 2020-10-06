@@ -31,14 +31,18 @@ class OrdersController extends Controller
         return Session::get('OrderNumber');
     }
     protected function getSingle(){
+        // return Session::get('OrderNumer');
         $order=Order::where([
-            ['OrderNumber','=',Session::get('OrderNumber')],
             ['Client','=',Auth::user()->email],
             ['Status','=','0']
         ])->get()->last();
+        // return $order;
+        if(is_null($order)){
+            die();
+        }
         $carts=Cart::where([
             ['User','=',Auth::user()->email],
-            ['OrderNumber','=',Session::get('OrderNumber')],
+            ['OrderNumber','=',$order->OrderNumber],
             ['Status','=','5']
         ])->get();
         $data=['order'=>$order,'items'=>$carts];
@@ -94,7 +98,7 @@ class OrdersController extends Controller
                   //5, the order has been placed
                   //6, the order has been dispatched
                   //7, order received
-                  $cart[$i]->OrderNumber='#'.Session::get('OrderNumber');
+                  $cart[$i]->OrderNumber=$orderNumber;
                   $cart[$i]->Status=5;
                   $cart[$i]->save();
               }

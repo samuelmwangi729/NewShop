@@ -1,4 +1,4 @@
-<nav id="mainnav-container">
+<nav id="mainnav-container" class="noprint">
     <div id="mainnav">
         <!--Menu-->
         <!--================================-->

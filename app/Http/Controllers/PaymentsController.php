@@ -37,6 +37,7 @@ class PaymentsController extends Controller
             //else the number is Okay, ie starts with 254
             $paymentNumber=$number;
         }
+        session(['PhoneNumber'=>$paymentNumber]);
         //the stkpush code
     //     // return $totalAmount
         $mpesa= new \Safaricom\Mpesa\Mpesa();
@@ -128,15 +129,17 @@ class PaymentsController extends Controller
     public function QueryTransaction(Request $request,$Transaction){
         $OrderId=Str::upper( Str::random(15));
         session(['OrderNumber'=>$OrderId]);
-        $mpesa = new \Safaricom\Mpesa\Mpesa();
-        $timestamp='20'.date(    "ymdhis");
-        $password=base64_encode('174379'.'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'.$timestamp);
-        // $status=$mpesa::STKPushQuery();//i will check the status of the stk push simulation//then check if the amount paid is enough//then confirm the order
-        $STKPushRequestStatus=$mpesa->STKPushQuery('ws_CO_061020200048066978','174379',$password,$timestamp);
-        return $STKPushRequestStatus;
+        return Session::get('OrderNumber');
+        // $mpesa = new \Safaricom\Mpesa\Mpesa();
+        // $timestamp='20'.date(    "ymdhis");
+        // $password=base64_encode('174379'.'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'.$timestamp);
+        // // $status=$mpesa::STKPushQuery();//i will check the status of the stk push simulation//then check if the amount paid is enough//then confirm the order
+        // $STKPushRequestStatus=$mpesa->STKPushQuery('ws_CO_061020200048066978','174379',$password,$timestamp);
+        // return $STKPushRequestStatus;
        $Transaction= MpesaTransactions::where([
         ['Email','=',Auth::user()->email],
         ['TransactionType','=','Mpesa'],
+        ['TransID','=',$Transaction],
         ['Used','=','0'],
     ])->get()->first();
     if(is_null($Transaction)){
@@ -150,7 +153,7 @@ class PaymentsController extends Controller
     }
     $toBePaid=$this->getTotalAmount();
     // return $this->getTotalAmount();
-    if($toBePaid==$Transaction->TransAmount){
+    if($toBePaid<=$Transaction->TransAmount){
         //amount paid is Okay
         $data=['Status'=>'success','message'=>'Payment Successfully Completed!','Action'=>''];
         $order=new OrdersController();
@@ -229,7 +232,7 @@ class PaymentsController extends Controller
                 'Email'=>Auth::user()->email,
                 'LastName'=>Auth::user()->Last_Name,
             ]);
-            $data=['status'=>'error','message'=>'Payment for the Order #'.Session::get('OrderNumber').' Cancelled By the User'];
+            $data=['status'=>'error','message'=>'Payment for the Order '.Session::get('OrderNumber').' Cancelled By the User'];
             return $data;
         }
         if($data['Body']['stkCallback']['ResultCode']=='1'){
@@ -246,7 +249,7 @@ class PaymentsController extends Controller
                 'LastName'=>Auth::user()->Last_Name,
                 'Status'=>'Insufficient Balance'
             ]);
-            $data=['status'=>'less','message'=>'Payment for the Order #'.Session::get('OrderNumber').' Could not be completed. Insufficient Balance'];
+            $data=['status'=>'less','message'=>'Payment for the Order '.Session::get('OrderNumber').' Could not be completed. Insufficient Balance'];
             return $data;
         }
         // return $request->all();
@@ -285,15 +288,26 @@ class PaymentsController extends Controller
             'LastName' =>Auth::user()->Last_Name,
             'Status'=>$Status
            ]);
+           //this is the phone number in the transaction
            //set the session number for order completion
            session(['Number'=>$PhoneNumber]);
-        //    return Session::get('Number');
-           $data=['status'=>'success','message'=>'Payment Received for the Order #'.Session::get('OrderNumber')];
-           return $data;
+           //then we get the phone number that has initiated payment
+           $payingNumber=Session::get('PhoneNumber');
+           $transactionNumber= Session::get('Number');
+           //if the 2 numbers are not the same, then kill the transaction
+           if($payingNumber !=$transactionNumber){
+               //return error and kill the process
+               $data=['status'=>'error','message'=>'Unknown Error Occurred. Order '.Session::get('OrderNumber').' Not Placed'];
+               return $data;
+           }else{
+            $data=['status'=>'success','message'=>'Payment Received for the Order '.Session::get('OrderNumber')];
+            return $data;
+           }
+        //    return;
+
     }
     protected function getBilling(){
         $Transaction=MpesaTransactions::where([
-            ['BillRefNumber','=',Session::get('OrderNumber')],
             ['Email','=',Auth::user()->email]
         ])->get()->last();
         return $Transaction;

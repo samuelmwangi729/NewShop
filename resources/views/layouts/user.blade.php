@@ -44,9 +44,16 @@
         <!--Page Load Progress Bar [ OPTIONAL ]-->
         <link href="{{ asset('user/plugins/pace/pace.min.css') }}" rel="stylesheet">
         <script src="{{ asset('user/plugins/pace/pace.min.js') }}"></script>
+        <style>
+            @media print {
+               .noprint {
+                  visibility: hidden;
+               }
+            }
+            </style>
     </head>
     <body>
-        <div id="container" class="effect mainnav-lg navbar-fixed mainnav-fixed no-print">
+        <div id="container" class="effect mainnav-lg navbar-fixed mainnav-fixed">
             <!--NAVBAR-->
             <!--===================================================-->
             <header id="navbar">
@@ -65,7 +72,7 @@
                     <!--End brand logo & name-->
                     <!--Navbar Dropdown-->
                     <!--================================-->
-                    <div class="navbar-content clearfix">
+                    <div class="clearfix navbar-content noprint">
                         <ul class="nav navbar-top-links pull-left">
                             <!--Navigation toogle button-->
                             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -285,7 +292,7 @@
                             <!--User dropdown-->
                             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                             <li id="dropdown-user" class="dropdown">
-                                <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                                <a href="#" data-toggle="dropdown" class="text-right dropdown-toggle">
                                     <span class="pull-right"> <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture"> </span>
                                     <div class="username hidden-xs">John Doe</div>
                                 </a>
@@ -418,7 +425,7 @@
                     </div>
                     <!--Page Title-->
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                    <div class="pageheader">
+                    <div class="pageheader noprint">
                         <h3><i class="fa fa-shopping-cart"></i> Shopping Cart </h3>
                         <div class="breadcrumb-wrapper">
                             <span class="label">You are here:</span>

@@ -97,12 +97,13 @@
 							</div>
 							<!--/ End Order Widget -->
 							<!-- Order Widget -->
-							<div class="single-widget container">
+							<div class="container single-widget">
 								<h2>Payments</h2>
 								<div :class="Hidden">
                                     <div class="form-group create-account" style="margin-top:40px">
 											<input id="cbox" type="checkbox" v-model="Mpesa">
 											<label class="label-control">Pay Via Mpesa</label>
+
 										</div>
                                          <div class="hidden form-group create-account" :class="MpesaClass" style="margin-top:40px;border:none !important">
                                             <form action="" class="form">
@@ -110,6 +111,12 @@
                                                  <i class="fa fa-phone-square"></i>
                                                  Mpesa Number
                                              </label>
+                                              <small style="color:purple">
+                                                <br>You will get a Pin Prompt in the Number you Enter Here
+                                            </small>
+                                            <span v-if="Mclass" style="color:red">
+                                               <br> This Field is Required
+                                            </span>
 											 <input class="form-control" type="number" v-model="MpesaNumber" placeholder="Number To Pay With Eg. 07xxxxxxxx" :class="Mclass">
                                              <div :class="Processing" class="uploading" style="position:relative; width:100%;style:none;padding-top:20px" id="uploading">
                                                 <span style="paddig-top:-20px;color:red;font-weight:bold"> Processing Payment</span>
@@ -117,7 +124,7 @@
                                              <!-- We will  initiate payment process for you -->
                                              <div class="row">
                                                  <div class="col-xs-4 col-sm-4 offset-sm-4">
-                                                     <button style="background-color:green;height:50px;font-size:12px;width:100px;margin-top:10px;color:white;font-weight:bold !important" @click.prevent="PayWithMpesa()" :class="Mbutton">Pay With Mpesa</button>
+                                                     <button style="background-color:green;height:50px;font-size:12px;width:100px;margin-top:10px;color:white;font-weight:bold !important"  class="" id="pbm" @click.prevent="PayWithMpesa()" :class="Mbutton">Pay With Mpesa</button>
                                                  </div>
                                              </div>
                                             </form>
@@ -131,13 +138,13 @@
                                                 <span style="color:red">
                                                     {{ ErrorTransaction }}
                                                 </span>
-                                                <div :class="TransactionClass" class="uploading" style="position:relative; width:100%;style:none;padding-top:20px" id="uploading">
+                                                <div :class="TransactionClass" class="uploading" style="position:relative; width:100%;style:none;padding-top:20px" id="searching">
                                                     <span style="paddig-top:-20px;color:red;font-weight:bold"> Searching</span>
                                                 </div>
                                                 <!-- We will  initiate payment process for you -->
                                                 <div class="row">
                                                     <div class="col-xs-4 col-sm-4 offset-sm-4">
-                                                        <button style="background-color:green;height:50px;font-size:12px;width:100px;margin-top:10px;color:white;font-weight:bold !important" @click.prevent="QueryMpesa()">Check Transaction</button>
+                                                        <button style="background-color:green;height:50px;font-size:12px;width:100px;margin-top:10px;color:white;font-weight:bold !important"  class="hidden" id="qmt" @click.prevent="QueryMpesa()">Check Transaction</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -238,9 +245,13 @@
                     this.ClassTransaction='is-invalid'
                     return;
                 }else{
+                     this.TransactionClass='text-center'
+                    $("#searching").removeClass('d-none')
                     axios.get('/4m6TspRgOZ39fdERTge3Nyv6apuoCcdITCDBnoaK/'+this.Transaction).then((response)=>{
                         console.log(response.data)
                         if(response.data.Status=='error'){
+                             this.TransactionClass='d-none'
+                            $("#searching").addClass('d-none')
                             swal({
                                 title:'Error',
                                 text:response.data.message+' '+response.data.Action,
@@ -297,7 +308,12 @@
             },
             PayWithMpesa(){
                 // // alert(this.FirstName)
-                this.Processing='text-center'
+                if(this.MpesaNumber<=9){
+                    this.Mclass='is-invalid'
+                    return;
+                }
+                 this.Processing='text-center'
+                $("#uploading").removeClass('d-none')
                 axios.get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/'+this.MpesaNumber).then((response)=>{
                     //if i pay, then let the data be posted into the database
                     //then check if its working
@@ -312,14 +328,16 @@
                             _token:this.token
                         }).then((response)=>{
                             //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
-                            window.open('/HTVW00xzDT5AAAW','_parent');
+                            // window.open('/HTVW00xzDT5AAAW','_parent');
                         })
                     }
                     if(response.data.status=='error'){
                         //show sweetalert, cancelled by the user
+                         this.Processing='d-none'
+                         $("#uploading").addClass('d-none')
                         swal({
                             title:'Error',
-                            text:'Transaction Cancelled by the User. Please Try Again',
+                            text:'Unknown Error Occurred. Kindly Contact Us for Help',
                             icon:'error'
                         })
                         this.Processing='d-none'
@@ -336,7 +354,7 @@
                         return;
                     }
                 })
-                },30000)
+                },45000)
             },
             getCartTotal(){
                 axios.get('/k1HT1eDwpUe5LG95ey7').then((response)=>{
@@ -392,9 +410,21 @@
             MpesaNumber:function(){
                 if(this.MpesaNumber.length<10){
                     this.Mclass='is-invalid'
+                    return;
                 }
                 if(this.MpesaNumber.length==10){
                     this.Mclass='is-valid'
+                     $("#qmt").addClass('d-none')
+                      $("#pbm").removeClass('d-none')
+                }
+            },
+            Transaction:function(){
+                this.Mclass='',
+                this.MpesaNumber=''
+                $("#uploading").addClass('d-none')
+                if(this.Transaction.length>2){
+                     $("#qmt").removeClass('d-none')
+                     $("#pbm").addClass('d-none')
                 }
             },
             County:function(){
