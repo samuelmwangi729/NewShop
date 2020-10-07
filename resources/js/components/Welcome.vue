@@ -171,39 +171,39 @@
                     </a>
                     <ul class="mega-menu">
                       <li class="single-menu">
-                        <a href="#" class="title-link">Shop Kids</a>
+                        <a href="#" class="title-link">Electronics</a>
                         <div class="image">
                           <img src="https://via.placeholder.com/225x155" alt="#" />
                         </div>
                         <div class="inner-link">
-                          <a href="#">Kids Toys</a>
-                          <a href="#">Kids Travel Car</a>
-                          <a href="#">Kids Color Shape</a>
-                          <a href="#">Kids Tent</a>
+                          <a href="#">Television</a>
+                          <a href="#">Accessories & Supplies</a>
+                          <a href="#">Camera</a>
+                          <a href="#">Audio</a>
                         </div>
                       </li>
                       <li class="single-menu">
-                        <a href="#" class="title-link">Shop Mens</a>
+                        <a href="#" class="title-link">Computing</a>
                         <div class="image">
                           <img src="https://via.placeholder.com/225x155" alt="#" />
                         </div>
                         <div class="inner-link">
-                          <a href="#">Watch</a>
-                          <a href="#">T-shirt</a>
-                          <a href="#">Hoodies</a>
-                          <a href="#">Formal Pant</a>
+                          <a href="#">Laptops</a>
+                          <a href="#">Desktops</a>
+                          <a href="#">Accessories & Supplies</a>
+                          <a href="#">IOT & Components</a>
                         </div>
                       </li>
                       <li class="single-menu">
-                        <a href="#" class="title-link">Shop Womens</a>
+                        <a href="#" class="title-link">Fashion</a>
                         <div class="image">
                           <img src="https://via.placeholder.com/225x155" alt="#" />
                         </div>
                         <div class="inner-link">
-                          <a href="#">Ladies Shirt</a>
-                          <a href="#">Ladies Frog</a>
-                          <a href="#">Ladies Sun Glass</a>
-                          <a href="#">Ladies Watch</a>
+                          <a href="#">Beauty</a>
+                          <a href="#">Ladies</a>
+                          <a href="#">Men</a>
+                          <a href="#">Baby</a>
                         </div>
                       </li>
                     </ul>
@@ -213,13 +213,13 @@
                     :key="category.id"
                     @mouseover="getSubs(category.id)"
                   >
-                    <a href="#" style="font-weight:bold;font-size:12px;line-height:3px !important">
+                    <a href="#" style="font-weight:bold;font-family:'courier new';font-size:12px;line-height:1px !important">
                       {{category.Category}}
                       <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a>
                     <ul class="sub-category">
                       <li v-for="sub in SubCategories" :key="sub.id">
-                        <a href="#">{{sub.SubCategory}}</a>
+                        <a href="#" style="font-weight:bold;font-family:'courier new';font-size:12px;line-height:1px !important">{{sub.SubCategory}}</a>
                       </li>
                     </ul>
                   </li>

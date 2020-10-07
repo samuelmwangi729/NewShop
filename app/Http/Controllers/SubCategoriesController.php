@@ -77,11 +77,10 @@ class SubCategoriesController extends Controller
     }
     public function findSingle($id)
     {
-        $subCategory=SubCategory::find($id);
-        if($subCategory){
-            $data=['subcategory'=>$subCategory];
-            return $data;
-        }
+        $subCategory=SubCategory::where([
+            ['category_id','=',$id],
+        ])->get();
+        return $subCategory;
     }
 
     /**

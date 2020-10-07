@@ -47885,9 +47885,10 @@ var render = function() {
                             "a",
                             {
                               staticStyle: {
+                                "font-family": "'courier'",
                                 "font-weight": "bold",
                                 "font-size": "12px",
-                                "line-height": "3px !important"
+                                "line-height": "1px !important"
                               },
                               attrs: { href: "#" }
                             },
@@ -53943,8 +53944,9 @@ var render = function() {
                                 {
                                   staticStyle: {
                                     "font-weight": "bold",
+                                    "font-family": "'courier new'",
                                     "font-size": "12px",
-                                    "line-height": "3px !important"
+                                    "line-height": "1px !important"
                                   },
                                   attrs: { href: "#" }
                                 },
@@ -53966,9 +53968,19 @@ var render = function() {
                                 { staticClass: "sub-category" },
                                 _vm._l(_vm.SubCategories, function(sub) {
                                   return _c("li", { key: sub.id }, [
-                                    _c("a", { attrs: { href: "#" } }, [
-                                      _vm._v(_vm._s(sub.SubCategory))
-                                    ])
+                                    _c(
+                                      "a",
+                                      {
+                                        staticStyle: {
+                                          "font-weight": "bold",
+                                          "font-family": "'courier new'",
+                                          "font-size": "12px",
+                                          "line-height": "1px !important"
+                                        },
+                                        attrs: { href: "#" }
+                                      },
+                                      [_vm._v(_vm._s(sub.SubCategory))]
+                                    )
                                   ])
                                 }),
                                 0
@@ -54609,7 +54621,7 @@ var staticRenderFns = [
       _c("ul", { staticClass: "mega-menu" }, [
         _c("li", { staticClass: "single-menu" }, [
           _c("a", { staticClass: "title-link", attrs: { href: "#" } }, [
-            _vm._v("Shop Kids")
+            _vm._v("Electronics")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "image" }, [
@@ -54619,19 +54631,21 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "inner-link" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Kids Toys")]),
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Television")]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Kids Travel Car")]),
+            _c("a", { attrs: { href: "#" } }, [
+              _vm._v("Accessories & Supplies")
+            ]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Kids Color Shape")]),
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Camera")]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Kids Tent")])
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Audio")])
           ])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "single-menu" }, [
           _c("a", { staticClass: "title-link", attrs: { href: "#" } }, [
-            _vm._v("Shop Mens")
+            _vm._v("Computing")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "image" }, [
@@ -54641,19 +54655,21 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "inner-link" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Watch")]),
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Laptops")]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("T-shirt")]),
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Desktops")]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Hoodies")]),
+            _c("a", { attrs: { href: "#" } }, [
+              _vm._v("Accessories & Supplies")
+            ]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Formal Pant")])
+            _c("a", { attrs: { href: "#" } }, [_vm._v("IOT & Components")])
           ])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "single-menu" }, [
           _c("a", { staticClass: "title-link", attrs: { href: "#" } }, [
-            _vm._v("Shop Womens")
+            _vm._v("Fashion")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "image" }, [
@@ -54663,13 +54679,13 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "inner-link" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Ladies Shirt")]),
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Beauty")]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Ladies Frog")]),
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Ladies")]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Ladies Sun Glass")]),
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Men")]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Ladies Watch")])
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Baby")])
           ])
         ])
       ])

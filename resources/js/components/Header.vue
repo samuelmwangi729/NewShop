@@ -213,7 +213,7 @@
                     :key="category.id"
                     @mouseover="getSubs(category.id)"
                   >
-                    <a href="#" style="font-weight:bold;font-size:12px;line-height:3px !important">
+                    <a href="#" style="font-family:'courier';font-weight:bold;font-size:12px;line-height:1px !important">
                       {{category.Category}}
                       <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a>
