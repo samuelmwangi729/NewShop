@@ -37,19 +37,19 @@
 						</thead>
 						<tbody>
                             <tr v-if="CartTotal==0">
-                                <td colspan="6">
+                                <td colspan="6" data-title="Error">
                                     <div class="alert alert-danger">
                                         Your Cart is Empty
                                     </div>
                                 </td>
                             </tr>
 							<tr v-for="item in CartProducts" :key="item.id">
-								<td class="image" data-title="No"><img :src="item[0][0].ProductBanner" alt="#" style="width:100px;height:70px !important"></td>
-								<td class="product-des" data-title="Description">
+								<td class="image" data-title="Picture"><img :src="item[0][0].ProductBanner" alt="#" style="width:100px;height:70px !important"></td>
+								<td class="product-des" data-title="Product Name">
 									<p class="product-name"><a :href="'/Product/'+item[0][0].Slug">{{item[0][0].ProductName}}</a></p>
 								</td>
 								<td class="price" data-title="Price"><span> Ksh: {{ item[0][0].FinalPrice }} </span></td>
-								<td class="qty" data-title="Qty"><!-- Input Order -->
+								<td class="qty" data-title="Item(s)"><!-- Input Order -->
 									<div class="text-center input-group">
                                         <span>{{item[1]}}</span>
 									</div>

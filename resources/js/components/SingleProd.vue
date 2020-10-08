@@ -87,7 +87,8 @@
             return{
                 Product:[],
                 Banner:'',
-                MinCart:1
+                MinCart:1,
+                CartCount:''
 
             }
         },
@@ -114,8 +115,6 @@
                         text: response.data.success,
                         icon: "success",
                         })
-                    this.countCart()
-                    this.getCart()
                    }else{
                        swal({
                         title: 'Error',
@@ -124,7 +123,8 @@
                         })
                    }
                })
-               this.getCartTotal()
+                this.countCart()
+                this.getCartTotal()
             },
             Add(){
                 this.MinCart=this.MinCart+1;
@@ -140,7 +140,12 @@
             },
             ShowPicture(id){
                 this.Banner=id
-            }
+            },
+            countCart(){
+                axios.get('/k1HT1eDwpUe5LG9').then((response)=>{
+                    this.CartCount=response.data
+                })
+        },
         },
         created(){
             this.getProduct()

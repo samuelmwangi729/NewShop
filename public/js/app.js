@@ -6337,7 +6337,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       Product: [],
       Banner: '',
-      MinCart: 1
+      MinCart: 1,
+      CartCount: ''
     };
   },
   methods: {
@@ -6349,8 +6350,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     AddCart: function AddCart(sku) {
-      var _this2 = this;
-
       // alert(this.MinCart)
       axios.get('/mHCAGNXtutk/S2wTcoUWu8cP').then(function (response) {});
       axios.post('/cart', {
@@ -6364,10 +6363,6 @@ __webpack_require__.r(__webpack_exports__);
             text: response.data.success,
             icon: "success"
           });
-
-          _this2.countCart();
-
-          _this2.getCart();
         } else {
           swal({
             title: 'Error',
@@ -6376,6 +6371,7 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
+      this.countCart();
       this.getCartTotal();
     },
     Add: function Add() {
@@ -6385,15 +6381,22 @@ __webpack_require__.r(__webpack_exports__);
       this.MinCart = this.MinCart - 1;
     },
     getProduct: function getProduct() {
-      var _this3 = this;
+      var _this2 = this;
 
       axios.get('/grnQOcLDrT6b387qeR0hz79K').then(function (response) {
-        _this3.Product = response.data;
-        _this3.Banner = _this3.Product.ProductBanner;
+        _this2.Product = response.data;
+        _this2.Banner = _this2.Product.ProductBanner;
       });
     },
     ShowPicture: function ShowPicture(id) {
       this.Banner = id;
+    },
+    countCart: function countCart() {
+      var _this3 = this;
+
+      axios.get('/k1HT1eDwpUe5LG9').then(function (response) {
+        _this3.CartCount = response.data;
+      });
     }
   },
   created: function created() {
@@ -44246,7 +44249,7 @@ var render = function() {
                           "td",
                           {
                             staticClass: "image",
-                            attrs: { "data-title": "No" }
+                            attrs: { "data-title": "Picture" }
                           },
                           [
                             _c("img", {
@@ -44263,7 +44266,7 @@ var render = function() {
                           "td",
                           {
                             staticClass: "product-des",
-                            attrs: { "data-title": "Description" }
+                            attrs: { "data-title": "Product Name" }
                           },
                           [
                             _c("p", { staticClass: "product-name" }, [
@@ -44297,7 +44300,7 @@ var render = function() {
                           "td",
                           {
                             staticClass: "qty",
-                            attrs: { "data-title": "Qty" }
+                            attrs: { "data-title": "Item(s)" }
                           },
                           [
                             _c(
@@ -44464,7 +44467,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { attrs: { colspan: "6" } }, [
+    return _c("td", { attrs: { colspan: "6", "data-title": "Error" } }, [
       _c("div", { staticClass: "alert alert-danger" }, [
         _vm._v(
           "\n                                        Your Cart is Empty\n                                    "
@@ -67377,7 +67380,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
+//     // forceTLS: true
+//     wsHost:window.location.hostname,
+//     wsPort:6001
 // });
 
 /***/ }),
