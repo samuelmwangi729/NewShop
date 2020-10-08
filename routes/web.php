@@ -32,6 +32,12 @@ Route::get('/5228JaeyweZCBBZPb2VcdgCZAMGp/{county}',[
 Route::get('/48j4lEBGhrZML2Yiovwz2/{name}',[
     'uses'=>'ProductsController@SingleCategory'
 ]);
+Route::get('/terms-and-conditions',[
+    'uses'=>'IndexController@Terms'
+]);
+Route::get('/privacy-and-policy',[
+    'uses'=>'IndexController@Privacy'
+]);
 Route::post('/5228JaeyweZCBBZREG',[
     'uses'=>'IndexController@createUser'
 ]);
@@ -155,6 +161,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('EfGTGYkBDAqW/lbpg/ajYPPyb2',[
         'uses'=>'IndexController@GenRand'
     ]);
+    Route::resource('terms','TermsController');
+    Route::resource('privacy','PrivacyController');
     Route::get('/PDEKhgO2JDUrL8Zd23OOPKEvmyQCl2m',[
         'uses'=>'OrdersController@getOrderNumber'
     ]);

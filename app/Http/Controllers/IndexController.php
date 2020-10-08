@@ -5,7 +5,7 @@ use Auth;
 use Str;
 use Hash;
 use Session;
-use App\{Visitors,User,Cart,Wishlist};
+use App\{Visitors,User,Cart,Wishlist,Term,Privacy};
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -137,5 +137,13 @@ if(is_null($ip)){
     }
     protected function promotion(){
         return view('Shop.promotion');
+    }
+    protected function Terms(){
+        $terms=Term::all();
+        return view('Shop.Terms')->with('Terms',$terms);
+    }
+    protected function Privacy(){
+        $Policy=Privacy::all();
+        return view('Shop.Privacy')->with('Policy',$Policy);
     }
 }
