@@ -8,7 +8,7 @@
         </h1>
        <div class="row mt-3">
         <span class="Text-center">
-            {!! $Policy[1]->Policy !!}
+            {!! $Policy[0]->Policy !!}
         </span>
        </div>
     </div>

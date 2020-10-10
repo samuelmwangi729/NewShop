@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid" style="margin-top:100px !important">
+    <div class="container-fluid" style="margin-top:20px !important">
         <!--Page content-->
 <!--===================================================-->
 <div id="container" class="container">
@@ -7,14 +7,25 @@
         <section class="invoice-container">
             <div class="invoice-inner">
                 <div class="row">
+                    <div class="col-sm-4 offset-sm-4">
+                         <address style="font-family:'courier';font-weight:bold;font-size:10px;color:red">
+                             XPRESS kENYA LIMITED<br>
+                             TEL: +254704922042
+                             EMAIL:info@xpress-kenya.com<br>
+                             &block;&block;&block; support@xpress-kenya.com<br>
+                             KRA: A008896456U
+                        </address>
+                    </div>
+                </div>
+                  ========================================================================================================================================
+                <div class="row">
                       <div class="col-xs-6">
-
                     </div>
                     <div class="text-right col-xs-6">
                         <h5>Order #{{OrderId}}</h5>
                     </div>
                 </div>
-                <hr/>
+                  ========================================================================================================================================
                 <div class="row">
                     <div class="col-xs-6">
                         <address style="font-family:'courier';font-weight:bold;font-size:10px">
@@ -71,8 +82,64 @@
                                                 <td class="text-center">{{item[1]}}</td>
                                                 <td class="text-right">Ksh:{{item[0][0].FinalPrice * item[1] }}</td>
                                             </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    Items
+                                                </td>
+                                                <td>
+                                                    ==========<br>
+                                                    <span class="text-center" style="font-family:courier;color:red !important">
+                                                      {{CartItems}} Item(s)
+                                                    </span>
+                                                    <br>
+                                                    ==========<br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    Total
+                                                </td>
+                                                <td>
+                                                    ==========<br>
+                                                    <span class="text-center" style="font-family:courier;color:red !important">
+                                                      Ksh: {{CartTotal}}
+                                                    </span>
+                                                    <br>
+                                                    ==========<br>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
+                                    <table class="table table-condensed">
+                                        <tr>
+                                            <th class="text-center" style="font-family:courier !important">=========<br>CODE<br>=========</th>
+                                            <th class="text-center" style="font-family:courier !important">=========<br>RATE<br>=========</th>
+                                            <th class="text-center" style="font-family:courier !important">===============<br>VATABLE AMOUNT<br>===============</th>
+                                            <th class="text-center" style="font-family:courier !important">===========<br>VAT AMOUNT<br>===========</th>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td>
+                                                XPVAT
+                                            </td>
+                                            <td>
+                                                14%
+                                            </td>
+                                            <td>
+                                               kSH: {{ CartTotal }}
+                                            </td>
+                                            <td>
+                                                 kSH: {{ CartTotal * 14/100 }}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table class="table">
+                                        <tr class="text-center" style="font-family:'courier'">
+                                            PRICES INCLUSIVE OF VAT WHERE APPLICABLE
+                                        </tr>
+                                    </table>
+                                    <div class="text-right" style="font-size:10px">
+                                        THANK YOU FOR SHOPPING WITH US
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -98,10 +165,22 @@ export default {
             Billing:[],
             Shipping:[],
             Orders:[],
-            FinalOrder:[]
+            FinalOrder:[],
+            CartItems:0,
+            CartTotal:0
         }
     },
     methods:{
+        getCartTotals(){
+            axios.get('/k1HT1eDwpUe5LG95ey7').then((response)=>{
+                this.CartTotal=response.data
+            })
+        },
+        countCarts(){
+            axios.get('/k1HT1eDwpUe5LG9').then((response)=>{
+                this.CartItems=response.data
+            })
+        },
         getOrderNumber:function(){
             axios.get('/PDEKhgO2JDUrL8Zd23OOPKEvmyQCl2m').then((response)=>{
                 this.OrderId=response.data
@@ -134,6 +213,8 @@ export default {
         }
     },
     created(){
+        this.getCartTotals()
+        this.countCarts()
         this.getOrderNumber()
         this.getBilling()
         this.getShipping()

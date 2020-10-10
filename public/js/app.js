@@ -4566,6 +4566,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4573,44 +4640,60 @@ __webpack_require__.r(__webpack_exports__);
       Billing: [],
       Shipping: [],
       Orders: [],
-      FinalOrder: []
+      FinalOrder: [],
+      CartItems: 0,
+      CartTotal: 0
     };
   },
   methods: {
-    getOrderNumber: function getOrderNumber() {
+    getCartTotals: function getCartTotals() {
       var _this = this;
 
+      axios.get('/k1HT1eDwpUe5LG95ey7').then(function (response) {
+        _this.CartTotal = response.data;
+      });
+    },
+    countCarts: function countCarts() {
+      var _this2 = this;
+
+      axios.get('/k1HT1eDwpUe5LG9').then(function (response) {
+        _this2.CartItems = response.data;
+      });
+    },
+    getOrderNumber: function getOrderNumber() {
+      var _this3 = this;
+
       axios.get('/PDEKhgO2JDUrL8Zd23OOPKEvmyQCl2m').then(function (response) {
-        _this.OrderId = response.data;
+        _this3.OrderId = response.data;
       });
     },
     getBilling: function getBilling() {
-      var _this2 = this;
+      var _this4 = this;
 
       axios.get('/ws5xKxFILK7JiA4JlgenYZ6/dRqvsdymJLsAnNm16jS4gz5iIm').then(function (response) {
-        _this2.Billing = response.data;
+        _this4.Billing = response.data;
       });
     },
     getShipping: function getShipping() {
-      var _this3 = this;
+      var _this5 = this;
 
       axios.get('/ws5xKxFILK7JiA4JlgenYZ6').then(function (response) {
-        _this3.Shipping = response.data;
+        _this5.Shipping = response.data;
       });
     },
     getOrder: function getOrder() {
-      var _this4 = this;
+      var _this6 = this;
 
       axios.get('/6juQg3f1Jltvp7pMz/aCoJVagCy').then(function (response) {
-        _this4.Orders = response.data;
+        _this6.Orders = response.data;
       });
     },
     getName: function getName(sku) {
-      var _this5 = this;
+      var _this7 = this;
 
       var name = '';
       axios.get('/k1HT1eDwpU/').then(function (response) {
-        _this5.FinalOrder = response.data;
+        _this7.FinalOrder = response.data;
         console.log(response.data);
       });
     },
@@ -4619,6 +4702,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    this.getCartTotals();
+    this.countCarts();
     this.getOrderNumber();
     this.getBilling();
     this.getShipping();
@@ -49496,13 +49581,17 @@ var render = function() {
     "div",
     {
       staticClass: "container-fluid",
-      staticStyle: { "margin-top": "100px !important" }
+      staticStyle: { "margin-top": "20px !important" }
     },
     [
       _c("div", { staticClass: "container", attrs: { id: "container" } }, [
         _c("div", { staticClass: "invoice-wrapper" }, [
           _c("section", { staticClass: "invoice-container" }, [
             _c("div", { staticClass: "invoice-inner" }, [
+              _vm._m(0),
+              _vm._v(
+                "\n                  ========================================================================================================================================\n                "
+              ),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-xs-6" }),
                 _vm._v(" "),
@@ -49510,9 +49599,9 @@ var render = function() {
                   _c("h5", [_vm._v("Order #" + _vm._s(_vm.OrderId))])
                 ])
               ]),
-              _vm._v(" "),
-              _c("hr"),
-              _vm._v(" "),
+              _vm._v(
+                "\n                  ========================================================================================================================================\n                "
+              ),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-xs-6" }, [
                   _c(
@@ -49650,7 +49739,7 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-md-12 pad-top" }, [
                   _c("div", { staticClass: "panel panel-default" }, [
-                    _vm._m(0),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c("div", { staticClass: "panel-body" }, [
                       _c("div", { staticClass: "table-responsive" }, [
@@ -49660,48 +49749,178 @@ var render = function() {
                             staticClass: "table table-condensed table-bordered"
                           },
                           [
-                            _vm._m(1),
+                            _vm._m(2),
                             _vm._v(" "),
                             _c(
                               "tbody",
-                              _vm._l(_vm.FinalOrder, function(item) {
-                                return _c(
-                                  "tr",
-                                  {
-                                    key: item.id,
-                                    staticStyle: {
-                                      "font-family": "'courier-new'",
-                                      "font-weight": "normal",
-                                      "font-size": "15px"
-                                    }
-                                  },
-                                  [
-                                    _c("td", [
-                                      _vm._v(_vm._s(item[0][0].ProductName))
-                                    ]),
+                              [
+                                _vm._l(_vm.FinalOrder, function(item) {
+                                  return _c(
+                                    "tr",
+                                    {
+                                      key: item.id,
+                                      staticStyle: {
+                                        "font-family": "'courier-new'",
+                                        "font-weight": "normal",
+                                        "font-size": "15px"
+                                      }
+                                    },
+                                    [
+                                      _c("td", [
+                                        _vm._v(_vm._s(item[0][0].ProductName))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _vm._v(
+                                          "Ksh: " +
+                                            _vm._s(item[0][0].FinalPrice)
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-center" }, [
+                                        _vm._v(_vm._s(item[1]))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { staticClass: "text-right" }, [
+                                        _vm._v(
+                                          "Ksh:" +
+                                            _vm._s(
+                                              item[0][0].FinalPrice * item[1]
+                                            )
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                }),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("td", { attrs: { colspan: "3" } }, [
+                                    _vm._v(
+                                      "\n                                                    Items\n                                                "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n                                                    =========="
+                                    ),
+                                    _c("br"),
                                     _vm._v(" "),
-                                    _c("td", { staticClass: "text-center" }, [
-                                      _vm._v(
-                                        "Ksh: " + _vm._s(item[0][0].FinalPrice)
-                                      )
-                                    ]),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "text-center",
+                                        staticStyle: {
+                                          "font-family": "courier",
+                                          color: "red !important"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                      " +
+                                            _vm._s(_vm.CartItems) +
+                                            " Item(s)\n                                                    "
+                                        )
+                                      ]
+                                    ),
                                     _vm._v(" "),
-                                    _c("td", { staticClass: "text-center" }, [
-                                      _vm._v(_vm._s(item[1]))
-                                    ]),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                                                    =========="
+                                    ),
+                                    _c("br")
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("td", { attrs: { colspan: "3" } }, [
+                                    _vm._v(
+                                      "\n                                                    Total\n                                                "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n                                                    =========="
+                                    ),
+                                    _c("br"),
                                     _vm._v(" "),
-                                    _c("td", { staticClass: "text-right" }, [
-                                      _vm._v(
-                                        "Ksh:" +
-                                          _vm._s(
-                                            item[0][0].FinalPrice * item[1]
-                                          )
-                                      )
-                                    ])
-                                  ]
-                                )
-                              }),
-                              0
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "text-center",
+                                        staticStyle: {
+                                          "font-family": "courier",
+                                          color: "red !important"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                      Ksh: " +
+                                            _vm._s(_vm.CartTotal) +
+                                            "\n                                                    "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                                                    =========="
+                                    ),
+                                    _c("br")
+                                  ])
+                                ])
+                              ],
+                              2
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("table", { staticClass: "table table-condensed" }, [
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _c("tr", { staticClass: "text-center" }, [
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                XPVAT\n                                            "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                14%\n                                            "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                               kSH: " +
+                                  _vm._s(_vm.CartTotal) +
+                                  "\n                                            "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                 kSH: " +
+                                  _vm._s((_vm.CartTotal * 14) / 100) +
+                                  "\n                                            "
+                              )
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "text-right",
+                            staticStyle: { "font-size": "10px" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        THANK YOU FOR SHOPPING WITH US\n                                    "
                             )
                           ]
                         )
@@ -49733,6 +49952,41 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4 offset-sm-4" }, [
+        _c(
+          "address",
+          {
+            staticStyle: {
+              "font-family": "'courier'",
+              "font-weight": "bold",
+              "font-size": "10px",
+              color: "red"
+            }
+          },
+          [
+            _vm._v("\n                             XPRESS kENYA LIMITED"),
+            _c("br"),
+            _vm._v(
+              "\n                             TEL: +254704922042\n                             EMAIL:info@xpress-kenya.com"
+            ),
+            _c("br"),
+            _vm._v(
+              "\n                             ███ support@xpress-kenya.com"
+            ),
+            _c("br"),
+            _vm._v(
+              "\n                             KRA: A008896456U\n                        "
+            )
+          ]
+        )
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -49769,6 +50023,91 @@ var staticRenderFns = [
           _c("td", { staticClass: "text-right" }, [
             _c("strong", [_vm._v("Totals")])
           ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "th",
+        {
+          staticClass: "text-center",
+          staticStyle: { "font-family": "courier !important" }
+        },
+        [
+          _vm._v("========="),
+          _c("br"),
+          _vm._v("CODE"),
+          _c("br"),
+          _vm._v("=========")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "th",
+        {
+          staticClass: "text-center",
+          staticStyle: { "font-family": "courier !important" }
+        },
+        [
+          _vm._v("========="),
+          _c("br"),
+          _vm._v("RATE"),
+          _c("br"),
+          _vm._v("=========")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "th",
+        {
+          staticClass: "text-center",
+          staticStyle: { "font-family": "courier !important" }
+        },
+        [
+          _vm._v("==============="),
+          _c("br"),
+          _vm._v("VATABLE AMOUNT"),
+          _c("br"),
+          _vm._v("===============")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "th",
+        {
+          staticClass: "text-center",
+          staticStyle: { "font-family": "courier !important" }
+        },
+        [
+          _vm._v("==========="),
+          _c("br"),
+          _vm._v("VAT AMOUNT"),
+          _c("br"),
+          _vm._v("===========")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", { staticClass: "table" }, [
+      _c(
+        "tr",
+        {
+          staticClass: "text-center",
+          staticStyle: { "font-family": "'courier'" }
+        },
+        [
+          _vm._v(
+            "\n                                            PRICES INCLUSIVE OF VAT WHERE APPLICABLE\n                                        "
+          )
         ]
       )
     ])

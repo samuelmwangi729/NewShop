@@ -125,7 +125,10 @@
 							<div class="logo">
 								<a href="index.html"><img src="{{ asset('images/logo2.png') }}" alt="#"></a>
 							</div>
-							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+							<p class="text">
+                                We are the leading  retail-customer market place estalished in 2019 with an aim of being the leading platform to deliver locally available goods to our Mwananchi at a pocket friendly prices implementing online and offline practices.
+                                We are dedicated to providing the best services to anyone interested to work with us.
+                            </p>
 							<p class="call">Got Question? Call us 24/7<span><a href="tel:+254704922042">+254704922042</a></span></p>
 						</div>
 						<!-- End Single Widget -->
