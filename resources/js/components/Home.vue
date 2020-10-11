@@ -167,7 +167,7 @@
                 <div class="panel">
                     <div class="panel-body text-center">
                         <h4>
-                         <i class="fa fa-print"></i> Reports| <i class="fa fa-print"></i>
+                         <i class="fa fa-print"></i> Reports| <a href="#">Print reports</a>
                         </h4>
                     </div>
                 </div>

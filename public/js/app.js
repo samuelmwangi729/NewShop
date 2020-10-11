@@ -49246,7 +49246,7 @@ var staticRenderFns = [
           _c("h4", [
             _c("i", { staticClass: "fa fa-print" }),
             _vm._v(" Reports| "),
-            _c("i", { staticClass: "fa fa-print" })
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Print reports")])
           ])
         ])
       ])
