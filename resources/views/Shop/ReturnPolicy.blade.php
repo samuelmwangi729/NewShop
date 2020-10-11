@@ -4,11 +4,11 @@
     <head-component></head-component>
     <div class="container">
         <h1 class="text-center" style="text-decoration:underline">
-            Terms and Conditions
+            Returns and Policy
         </h1>
        <div class="mt-3 row">
         <span class="Text-center">
-            {!! $Terms[0]->Terms !!}
+            {!! $Returns[0]->Return !!}
         </span>
        </div>
     </div>

@@ -153,8 +153,8 @@
 							<h4>Customer Service</h4>
 							<ul>
 								<li><a href="#">Payment Methods</a></li>
-								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
+								<li><a href="/Returns-Policy">Money-back</a></li>
+								<li><a href="/Returns-Policy">Returns Policy</a></li>
 								<li><a href="#">Shipping</a></li>
 								<li><a href="/privacy-and-policy">Privacy Policy</a></li>
 							</ul>

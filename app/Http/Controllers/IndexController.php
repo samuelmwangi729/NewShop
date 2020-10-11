@@ -5,7 +5,7 @@ use Auth;
 use Str;
 use Hash;
 use Session;
-use App\{Visitors,User,Cart,Wishlist,Term,Privacy};
+use App\{Visitors,User,Cart,Wishlist,Term,Privacy,Returns,Order};
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -64,6 +64,7 @@ if(is_null($ip)){
     Visitors::create([
         'VisitorId'=>$visitorId,
         'VisitorIp'=>$ip_address,
+        'DateVisited'=>date('Y-m-d'),
         'VisitorEmail'=>'Null'
     ]);
     session(['VisitorId'=>$visitorId]);
@@ -145,5 +146,21 @@ if(is_null($ip)){
     protected function Privacy(){
         $Policy=Privacy::all();
         return view('Shop.Privacy')->with('Policy',$Policy);
+    }
+    protected function RPolicy(){
+        $returns=Returns::all();
+        return view('Shop.ReturnPolicy')->with('Returns',$returns);
+    }
+    protected function loadVisitors(){
+        return Visitors::count();
+    }
+    protected function loadUsers(){
+        return User::count();
+    }
+    protected function loadTodaysVisitors(){
+        return count(Visitors::where('DateVisited','=',date('Y-m-d'))->get());
+    }
+    protected function getOrders(){
+        return Order::count();
     }
 }

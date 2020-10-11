@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Visitors extends Model
+class Returns extends Model
 {
     protected $fillable=[
-        'VisitorId','VisitorIp','DateVisited','VisitorEmail'
+        'Return'
     ];
 }

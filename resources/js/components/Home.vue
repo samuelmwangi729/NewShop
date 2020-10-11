@@ -1,153 +1,189 @@
 <template>
     <div>
          <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="panel">
                     <div class="panel-body text-center">
-                        <ul class="list-inline nm">
-                            <li class="left-easypiechart-data"> <span class="sell-percent">60%</span> <span>Direct Sell</span> </li>
-                            <li>
-                                <!--Easy Pie Chart-->
-                                <!--===================================================-->
-                                <div id="demo-pie-2" class="pie-title-center" data-percent="58"> <span class="pie-value text-thin"></span> </div>
-                                <!--===================================================-->
-                                <!-- End Easy Pie Chart -->
-                            </li>
-                            <li class="right-easypiechart-data"> <span class="sell-percent">40%</span> <span>Channel Sell</span> </li>
-                        </ul>
+                        <h4>
+                          <i class="fa fa-user-secret"></i>  Visitors|{{ Visitors }}
+                        </h4>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+             <div class="col-md-3">
                 <div class="panel">
                     <div class="panel-body text-center">
-                        <ul class="list-inline nm">
-                            <li class="left-easypiechart-data"> <span class="sell-percent">60%</span> <span>Direct Sell</span> </li>
-                            <li>
-                                <!--Easy Pie Chart-->
-                                <!--===================================================-->
-                                <div id="demo-pie-3" class="pie-title-center" data-percent="35"> <span class="pie-value text-thin"></span> </div>
-                                <!--===================================================-->
-                                <!-- End Easy Pie Chart -->
-                            </li>
-                            <li class="right-easypiechart-data"> <span class="sell-percent">40%</span> <span>Channel Sell</span> </li>
-                        </ul>
+                        <h4>
+                           <i class="fa fa-group"></i> Users|{{ Users }}
+                        </h4>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+             <div class="col-md-3">
                 <div class="panel">
                     <div class="panel-body text-center">
-                        <ul class="list-inline nm">
-                            <li class="left-easypiechart-data"> <span class="sell-percent">60%</span> <span>Direct Sell</span> </li>
-                            <li>
-                                <!--Easy Pie Chart-->
-                                <!--===================================================-->
-                                <div id="demo-pie-4" class="pie-title-center" data-percent="45"> <span class="pie-value text-thin"></span> </div>
-                                <!--===================================================-->
-                                <!-- End Easy Pie Chart -->
-                            </li>
-                            <li class="right-easypiechart-data"> <span class="sell-percent">40%</span> <span>Channel Sell</span> </li>
-                        </ul>
+                        <h4>
+                            <i class="fa fa-calendar"></i> Todays Visitors|{{ TodaysVisitors }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                            <i class="fa fa-file-pdf-o"></i> All Orders|{{ Orders }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                           <i class="fa fa-university"></i> Shops|{{ Shops }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                           <i class="fa fa-money"></i> Payments|Ksh {{ Payments }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                           <i class="fa fa-mobile-phone"></i>Paid By Mpesa |Ksh {{ PaidMpesa }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                           <i class="fa fa-credit-card"></i> Paid By Card|Ksh {{ PaidCard }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                          <i class="fa fa-dropbox"></i> Products|{{ Products }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                          <i class="fa fa-backward"></i> Returned Products| {{ ReturnedGoods }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                          <i class="fa fa-check-circle"></i> Processed Orders|{{ ProcessedOrders }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                          <i class="fa fa-user"></i> Approved Sellers| {{ Sellers }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                         <i class="fa fa-user-times"></i> Sellers Under Review| {{ SellersReviewed }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                         <i class="fa fa-list"></i> Brands| {{ Brands }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                         <i class="fa fa-list"></i> Categories|{{ Categories }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                         <i class="fa fa-globe fa-spin"></i> Locations| {{ Locations }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                         <i class="fa fa-truck"></i> PickUp Location| {{ PickupLocations }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                         <i class="fa fa-list"></i> Collections| {{ Collections }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                         <i class="fa fa-print"></i> Reports| <i class="fa fa-print"></i>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        <h4>
+                         <i class="fa fa-users"></i> Staff| {{ Staff }}
+                        </h4>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"> Order Statistics </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-md-6">
-                            <!-- World Map -->
-                            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                            <div id="usa-map-markers" style="height: 200px"></div>
-                            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel">
-                                <div class="panel-body text-center">
-                                    <p>THIS MONTH TOTAL ORDER ($)</p>
-                                    <div class="h4 text-primary"> $6,84,545 </div>
-                                </div>
-                                <div class="panel-footer">
-                                    <ul class="nav nav-section nav-justified">
-                                        <li>
-                                            <div class="section">
-                                                <div class="h4 text-azure text-bold"> 12560 </div>
-                                                <p> Montana </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="section">
-                                                <div class="h4 text-mint text-bold"> 5461 </div>
-                                                <p> Texas </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="section">
-                                                <div class="h4 text-pink text-bold"> 2541 </div>
-                                                <p> New York </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Progress bars Start -->
-                        <div class="col-sm-6 pad-5">
-                            <div class="clearfix"> <span class="pull-left">New York</span> <small class="pull-right">72%</small> </div>
-                            <div class="progress progress-striped progress-sm">
-                                <div class="progress-bar progress-bar-info" style="width: 55%;"></div>
-                            </div>
-                        </div>
-                        <!-- Progress bars End -->
-                        <!-- Progress bars Start -->
-                        <div class="col-sm-6 pad-5">
-                            <div class="clearfix"> <span class="pull-left"> Montana </span> <small class="pull-right">68%</small> </div>
-                            <div class="progress progress-striped progress-sm">
-                                <div class="progress-bar progress-bar-info" style="width: 68%;"></div>
-                            </div>
-                        </div>
-                        <!-- Progress bars End -->
-                        <!-- Progress bars Start -->
-                        <div class="col-sm-6 pad-5">
-                            <div class="clearfix"> <span class="pull-left"> Texas </span> <small class="pull-right">58%</small> </div>
-                            <div class="progress progress-striped progress-sm">
-                                <div class="progress-bar progress-bar-info" style="width: 58%;"></div>
-                            </div>
-                        </div>
-                        <!-- Progress bars End -->
-                        <!-- Progress bars Start -->
-                        <div class="col-sm-6 pad-5">
-                            <div class="clearfix"> <span class="pull-left"> Nevada </span> <small class="pull-right">75%</small> </div>
-                            <div class="progress progress-striped progress-sm">
-                                <div class="progress-bar progress-bar-info" style="width: 75%;"></div>
-                            </div>
-                        </div>
-                        <!-- Progress bars End -->
-                        <!-- Progress bars Start -->
-                        <div class="col-sm-6 pad-5">
-                            <div class="clearfix"> <span class="pull-left"> New Jersey </span> <small class="pull-right">45%</small> </div>
-                            <div class="progress progress-striped progress-sm">
-                                <div class="progress-bar progress-bar-info" style="width: 45%;"></div>
-                            </div>
-                        </div>
-                        <!-- Progress bars End -->
-                        <!-- Progress bars Start -->
-                        <div class="col-sm-6 pad-5">
-                            <div class="clearfix"> <span class="pull-left"> California </span> <small class="pull-right">30%</small> </div>
-                            <div class="progress progress-striped progress-sm">
-                                <div class="progress-bar progress-bar-info" style="width: 30%;"></div>
-                            </div>
-                        </div>
-                        <!-- Progress bars End -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
+            <div class="container-fluid">
                 <div class="panel">
                     <div class="panel-heading">
                         <h3 class="panel-title"> Order List </h3>
@@ -361,141 +397,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+              <div class="col-sm-6">
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Top Countries</h3>
-                    </div>
-                    <!-- Striped Table -->
-                    <!-- =================================================== -->
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Code</th>
-                                        <th>Country</th>
-                                        <th>Unique User</th>
-                                        <th>Pageviews</th>
-                                        <th>Changes</th>
-                                        <th>New Vs. Return</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>AAC</td>
-                                        <td>USA</td>
-                                        <td>10256</td>
-                                        <td>45623</td>
-                                        <td>45.12%</td>
-                                        <td>
-                                            <div class="progress progress-striped progress-md">
-                                                <div style="width: 65%" class="progress-bar progress-bar-success">
-                                                    <span class="sr-only">65% Complete (success)</span>
-                                                </div>
-                                                <div style="width: 35%" class="progress-bar progress-bar-info">
-                                                    <span class="sr-only">35% Complete (warning)</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>AAD</td>
-                                        <td>India</td>
-                                        <td>15246</td>
-                                        <td>36542</td>
-                                        <td>32.52%</td>
-                                        <td>
-                                            <div class="progress progress-striped progress-md">
-                                                <div style="width: 35%" class="progress-bar progress-bar-success">
-                                                    <span class="sr-only">35% Complete (success)</span>
-                                                </div>
-                                                <div style="width: 65%" class="progress-bar progress-bar-info">
-                                                    <span class="sr-only">65% Complete (warning)</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>AAX</td>
-                                        <td>USA</td>
-                                        <td>25410</td>
-                                        <td>48596</td>
-                                        <td>20.25%</td>
-                                        <td>
-                                            <div class="progress progress-striped progress-md">
-                                                <div style="width: 35%" class="progress-bar progress-bar-success">
-                                                    <span class="sr-only">35% Complete (success)</span>
-                                                </div>
-                                                <div style="width: 65%" class="progress-bar progress-bar-info">
-                                                    <span class="sr-only">65% Complete (warning)</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>ABC</td>
-                                        <td>China</td>
-                                        <td>35120</td>
-                                        <td>52412</td>
-                                        <td>12.02%</td>
-                                        <td>
-                                            <div class="progress progress-striped progress-md">
-                                                <div style="width: 55%" class="progress-bar progress-bar-success">
-                                                    <span class="sr-only">55% Complete (success)</span>
-                                                </div>
-                                                <div style="width: 45%" class="progress-bar progress-bar-info">
-                                                    <span class="sr-only">45% Complete (warning)</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>ABP</td>
-                                        <td>Australia</td>
-                                        <td>40125</td>
-                                        <td>65042</td>
-                                        <td>48.25%</td>
-                                        <td>
-                                            <div class="progress progress-striped progress-md">
-                                                <div style="width: 25%" class="progress-bar progress-bar-success">
-                                                    <span class="sr-only">25% Complete (success)</span>
-                                                </div>
-                                                <div style="width: 75%" class="progress-bar progress-bar-info">
-                                                    <span class="sr-only">75% Complete (warning)</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>BAP</td>
-                                        <td>USA</td>
-                                        <td>65700</td>
-                                        <td>95780</td>
-                                        <td>32.52%</td>
-                                        <td>
-                                            <div class="progress progress-striped progress-md">
-                                                <div style="width: 15%" class="progress-bar progress-bar-success">
-                                                    <span class="sr-only">15% Complete (success)</span>
-                                                </div>
-                                                <div style="width: 85%" class="progress-bar progress-bar-info">
-                                                    <span class="sr-only">85% Complete (warning)</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- =================================================== -->
-                    <!-- End Striped Table -->
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Last 5 Transaction</h3>
+                        <h3 class="panel-title">Last 5 Card Payments</h3>
                     </div>
                     <!-- Bordered Table -->
                     <!-- =================================================== -->
@@ -563,6 +468,89 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <button class="btn btn-success fa fa-eye" style="font-size:12px !important">
+                                View All
+                            </button>
+                        </div>
+                    </div>
+                    <!-- =================================================== -->
+                    <!-- End Bordered Table -->
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Last 5 Transaction(Mpesa)</h3>
+                    </div>
+                    <!-- Bordered Table -->
+                    <!-- =================================================== -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Payee Names</th>
+                                        <th>Amount</th>
+                                        <th>Description</th>
+                                        <th>Date/Time</th>
+                                        <th>Fees</th>
+                                        <th>Manager</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Albert Desouza</td>
+                                        <td>$320,800</td>
+                                        <td>Dont forget about fee</td>
+                                        <td>20.01.2014 16:24</td>
+                                        <td>$64.58</td>
+                                        <td>John Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Teresa L. Doe</td>
+                                        <td>$320,800</td>
+                                        <td>Delivery...	</td>
+                                        <td>20.01.2014 12:24</td>
+                                        <td>$45.58</td>
+                                        <td>John Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Veronica Gusikowski</td>
+                                        <td>$320,800</td>
+                                        <td>Will pay by cash</td>
+                                        <td>20.01.2014 05:24</td>
+                                        <td>$65.25</td>
+                                        <td>John Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bruce Rogahn</td>
+                                        <td>$320,800</td>
+                                        <td>Call Me..</td>
+                                        <td>20.01.2014 08:24</td>
+                                        <td>$35.26</td>
+                                        <td>John Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Carolina Hickle</td>
+                                        <td>$320,800</td>
+                                        <td>Empty</td>
+                                        <td>20.01.2014 12:24</td>
+                                        <td>$25.21</td>
+                                        <td>John Doe</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Semantha</td>
+                                        <td>$320,800</td>
+                                        <td>Still Pending</td>
+                                        <td>20.01.2014 19:24</td>
+                                        <td>$16.52</td>
+                                        <td>John Doe</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="btn btn-success fa fa-eye" style="font-size:12px !important">
+                                View All
+                            </button>
                         </div>
                     </div>
                     <!-- =================================================== -->
@@ -572,3 +560,62 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+    data(){
+        return{
+            Visitors:0,
+            Users:0,
+            TodaysVisitors:0,
+            Orders:0,
+            Shops:0,
+            Payments:0,
+            PaidCard:0,
+            PaidMpesa:0,
+            Products:0,
+            ReturnedGoods:0,
+            ProcessedOrders:0,
+            Sellers:0,
+            SellersReviewed:0,
+            Brands:0,
+            Categories:0,
+            Locations:0,
+            PickupLocations:0,
+            Collections:0,
+            Staff:0,
+        }
+    },
+    methods:{
+        loadData(){
+            //load visitors
+            this.loadVisitors()
+            this.loadUsers()
+            this.todayVisitors()
+            this.loadOrders()
+        },
+        loadVisitors(){
+            axios.get('/api/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD/3hc9U9svsC').then((response)=>{
+                this.Visitors=response.data
+            })
+        },
+        loadUsers(){
+            axios.get('/api/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD').then((response)=>{
+                this.Users=response.data
+            })
+        },
+        todayVisitors(){
+            axios.get('/api/today/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD/3hc9U9svsC').then((response)=>{
+                this.TodaysVisitors=response.data
+            })
+        },
+        loadOrders(){
+            axios.get('/api/hBfEhicVBZ6OT900f93OxXZMcvJ51nYeqQ2RHIgK8Vl7qVg9XUu').then((response)=>{
+                this.Orders=response.data
+            })
+        }
+    },
+    created(){
+        this.loadData()
+    }
+}
+</script>

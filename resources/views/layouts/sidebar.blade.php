@@ -1,4 +1,4 @@
-<nav id="mainnav-container" class="noprint">
+<nav id="mainnav-container" class="noprint" style="overflow-y: scroll !important">
     <div id="mainnav">
         <!--Menu-->
         <!--================================-->
@@ -154,7 +154,7 @@
                             <ul class="collapse">
                                 <li><a href="{{ route('terms.index') }}"><i class="fa fa-caret-right"></i> Terms & Conditions </a></li>
                                 <li><a href="{{ route('privacy.index') }}"><i class="fa fa-caret-right"></i> Privacy & Policy </a></li>
-                                <li><a href="pages-directory.html"><i class="fa fa-caret-right"></i> Directory </a></li>
+                                <li><a href="{{ route('returns.index') }}"><i class="fa fa-caret-right"></i> Return Policy </a></li>
                                 <li><a href="pages-profile.html"><i class="fa fa-caret-right"></i> User Profile </a></li>
                                 <li><a href="pages-invoice.html"><i class="fa fa-caret-right"></i> Invoice </a></li>
                                 <li><a href="pages-login.html"><i class="fa fa-caret-right"></i> Login </a></li>

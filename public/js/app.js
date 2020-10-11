@@ -4465,6 +4465,645 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      Visitors: 0,
+      Users: 0,
+      TodaysVisitors: 0,
+      Orders: 0,
+      Shops: 0,
+      Payments: 0,
+      PaidCard: 0,
+      PaidMpesa: 0,
+      Products: 0,
+      ReturnedGoods: 0,
+      ProcessedOrders: 0,
+      Sellers: 0,
+      SellersReviewed: 0,
+      Brands: 0,
+      Categories: 0,
+      Locations: 0,
+      PickupLocations: 0,
+      Collections: 0,
+      Staff: 0
+    };
+  },
+  methods: {
+    loadData: function loadData() {
+      //load visitors
+      this.loadVisitors();
+      this.loadUsers();
+      this.todayVisitors();
+      this.loadOrders();
+    },
+    loadVisitors: function loadVisitors() {
+      var _this = this;
+
+      axios.get('/api/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD/3hc9U9svsC').then(function (response) {
+        _this.Visitors = response.data;
+      });
+    },
+    loadUsers: function loadUsers() {
+      var _this2 = this;
+
+      axios.get('/api/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD').then(function (response) {
+        _this2.Users = response.data;
+      });
+    },
+    todayVisitors: function todayVisitors() {
+      var _this3 = this;
+
+      axios.get('/api/today/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD/3hc9U9svsC').then(function (response) {
+        _this3.TodaysVisitors = response.data;
+      });
+    },
+    loadOrders: function loadOrders() {
+      var _this4 = this;
+
+      axios.get('/api/hBfEhicVBZ6OT900f93OxXZMcvJ51nYeqQ2RHIgK8Vl7qVg9XUu').then(function (response) {
+        _this4.Orders = response.data;
+      });
+    }
+  },
+  created: function created() {
+    this.loadData();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Invoice.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Invoice.vue?vue&type=script&lang=js& ***!
@@ -48321,1234 +48960,1045 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-user-secret" }),
+              _vm._v(
+                "  Visitors|" + _vm._s(_vm.Visitors) + "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-group" }),
+              _vm._v(" Users|" + _vm._s(_vm.Users) + "\n                    ")
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-calendar" }),
+              _vm._v(
+                " Todays Visitors|" +
+                  _vm._s(_vm.TodaysVisitors) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-file-pdf-o" }),
+              _vm._v(
+                " All Orders|" + _vm._s(_vm.Orders) + "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-university" }),
+              _vm._v(" Shops|" + _vm._s(_vm.Shops) + "\n                    ")
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-money" }),
+              _vm._v(
+                " Payments|Ksh " +
+                  _vm._s(_vm.Payments) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-mobile-phone" }),
+              _vm._v(
+                "Paid By Mpesa |Ksh " +
+                  _vm._s(_vm.PaidMpesa) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-credit-card" }),
+              _vm._v(
+                " Paid By Card|Ksh " +
+                  _vm._s(_vm.PaidCard) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-dropbox" }),
+              _vm._v(
+                " Products|" + _vm._s(_vm.Products) + "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-backward" }),
+              _vm._v(
+                " Returned Products| " +
+                  _vm._s(_vm.ReturnedGoods) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-check-circle" }),
+              _vm._v(
+                " Processed Orders|" +
+                  _vm._s(_vm.ProcessedOrders) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-user" }),
+              _vm._v(
+                " Approved Sellers| " +
+                  _vm._s(_vm.Sellers) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-user-times" }),
+              _vm._v(
+                " Sellers Under Review| " +
+                  _vm._s(_vm.SellersReviewed) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-list" }),
+              _vm._v(
+                " Brands| " + _vm._s(_vm.Brands) + "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-list" }),
+              _vm._v(
+                " Categories|" +
+                  _vm._s(_vm.Categories) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-globe fa-spin" }),
+              _vm._v(
+                " Locations| " +
+                  _vm._s(_vm.Locations) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-truck" }),
+              _vm._v(
+                " PickUp Location| " +
+                  _vm._s(_vm.PickupLocations) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-list" }),
+              _vm._v(
+                " Collections| " +
+                  _vm._s(_vm.Collections) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-body text-center" }, [
+            _c("h4", [
+              _c("i", { staticClass: "fa fa-users" }),
+              _vm._v(" Staff| " + _vm._s(_vm.Staff) + "\n                    ")
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "panel" }, [
-            _c("div", { staticClass: "panel-body text-center" }, [
-              _c("ul", { staticClass: "list-inline nm" }, [
-                _c("li", { staticClass: "left-easypiechart-data" }, [
-                  _c("span", { staticClass: "sell-percent" }, [_vm._v("60%")]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Direct Sell")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "pie-title-center",
-                      attrs: { id: "demo-pie-2", "data-percent": "58" }
-                    },
-                    [_c("span", { staticClass: "pie-value text-thin" })]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "right-easypiechart-data" }, [
-                  _c("span", { staticClass: "sell-percent" }, [_vm._v("40%")]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Channel Sell")])
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "panel" }, [
-            _c("div", { staticClass: "panel-body text-center" }, [
-              _c("ul", { staticClass: "list-inline nm" }, [
-                _c("li", { staticClass: "left-easypiechart-data" }, [
-                  _c("span", { staticClass: "sell-percent" }, [_vm._v("60%")]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Direct Sell")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "pie-title-center",
-                      attrs: { id: "demo-pie-3", "data-percent": "35" }
-                    },
-                    [_c("span", { staticClass: "pie-value text-thin" })]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "right-easypiechart-data" }, [
-                  _c("span", { staticClass: "sell-percent" }, [_vm._v("40%")]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Channel Sell")])
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "panel" }, [
-            _c("div", { staticClass: "panel-body text-center" }, [
-              _c("ul", { staticClass: "list-inline nm" }, [
-                _c("li", { staticClass: "left-easypiechart-data" }, [
-                  _c("span", { staticClass: "sell-percent" }, [_vm._v("60%")]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Direct Sell")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "pie-title-center",
-                      attrs: { id: "demo-pie-4", "data-percent": "45" }
-                    },
-                    [_c("span", { staticClass: "pie-value text-thin" })]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "right-easypiechart-data" }, [
-                  _c("span", { staticClass: "sell-percent" }, [_vm._v("40%")]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Channel Sell")])
-                ])
-              ])
-            ])
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "panel" }, [
+        _c("div", { staticClass: "panel-body text-center" }, [
+          _c("h4", [
+            _c("i", { staticClass: "fa fa-print" }),
+            _vm._v(" Reports| "),
+            _c("i", { staticClass: "fa fa-print" })
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("div", { staticClass: "panel" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _c("h3", { staticClass: "panel-title" }, [
-                _vm._v(" Order Statistics ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", {
-                  staticStyle: { height: "200px" },
-                  attrs: { id: "usa-map-markers" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "panel" }, [
-                  _c("div", { staticClass: "panel-body text-center" }, [
-                    _c("p", [_vm._v("THIS MONTH TOTAL ORDER ($)")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "h4 text-primary" }, [
-                      _vm._v(" $6,84,545 ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "panel-footer" }, [
-                    _c("ul", { staticClass: "nav nav-section nav-justified" }, [
-                      _c("li", [
-                        _c("div", { staticClass: "section" }, [
-                          _c(
-                            "div",
-                            { staticClass: "h4 text-azure text-bold" },
-                            [_vm._v(" 12560 ")]
-                          ),
-                          _vm._v(" "),
-                          _c("p", [_vm._v(" Montana ")])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("div", { staticClass: "section" }, [
-                          _c("div", { staticClass: "h4 text-mint text-bold" }, [
-                            _vm._v(" 5461 ")
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [_vm._v(" Texas ")])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("li", [
-                        _c("div", { staticClass: "section" }, [
-                          _c("div", { staticClass: "h4 text-pink text-bold" }, [
-                            _vm._v(" 2541 ")
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [_vm._v(" New York ")])
-                        ])
-                      ])
-                    ])
-                  ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-heading" }, [
+            _c("h3", { staticClass: "panel-title" }, [_vm._v(" Order List ")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _c("div", { staticClass: "tab-base mar-no" }, [
+              _c("ul", { staticClass: "nav nav-tabs" }, [
+                _c("li", { staticClass: "active" }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: { "data-toggle": "tab", href: "#demo-lft-tab-1" }
+                    },
+                    [_vm._v(" New User ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { "data-toggle": "tab", href: "#demo-lft-tab-2" }
+                    },
+                    [_vm._v("New Clients")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { "data-toggle": "tab", href: "#demo-lft-tab-3" }
+                    },
+                    [_vm._v("Invoices")]
+                  )
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 pad-5" }, [
-                _c("div", { staticClass: "clearfix" }, [
-                  _c("span", { staticClass: "pull-left" }, [
-                    _vm._v("New York")
-                  ]),
-                  _vm._v(" "),
-                  _c("small", { staticClass: "pull-right" }, [_vm._v("72%")])
-                ]),
-                _vm._v(" "),
+              _c("div", { staticClass: "tab-content" }, [
                 _c(
                   "div",
-                  { staticClass: "progress progress-striped progress-sm" },
+                  {
+                    staticClass: "tab-pane fade active in",
+                    attrs: { id: "demo-lft-tab-1" }
+                  },
                   [
-                    _c("div", {
-                      staticClass: "progress-bar progress-bar-info",
-                      staticStyle: { width: "55%" }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 pad-5" }, [
-                _c("div", { staticClass: "clearfix" }, [
-                  _c("span", { staticClass: "pull-left" }, [
-                    _vm._v(" Montana ")
-                  ]),
-                  _vm._v(" "),
-                  _c("small", { staticClass: "pull-right" }, [_vm._v("68%")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "progress progress-striped progress-sm" },
-                  [
-                    _c("div", {
-                      staticClass: "progress-bar progress-bar-info",
-                      staticStyle: { width: "68%" }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 pad-5" }, [
-                _c("div", { staticClass: "clearfix" }, [
-                  _c("span", { staticClass: "pull-left" }, [_vm._v(" Texas ")]),
-                  _vm._v(" "),
-                  _c("small", { staticClass: "pull-right" }, [_vm._v("58%")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "progress progress-striped progress-sm" },
-                  [
-                    _c("div", {
-                      staticClass: "progress-bar progress-bar-info",
-                      staticStyle: { width: "58%" }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 pad-5" }, [
-                _c("div", { staticClass: "clearfix" }, [
-                  _c("span", { staticClass: "pull-left" }, [
-                    _vm._v(" Nevada ")
-                  ]),
-                  _vm._v(" "),
-                  _c("small", { staticClass: "pull-right" }, [_vm._v("75%")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "progress progress-striped progress-sm" },
-                  [
-                    _c("div", {
-                      staticClass: "progress-bar progress-bar-info",
-                      staticStyle: { width: "75%" }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 pad-5" }, [
-                _c("div", { staticClass: "clearfix" }, [
-                  _c("span", { staticClass: "pull-left" }, [
-                    _vm._v(" New Jersey ")
-                  ]),
-                  _vm._v(" "),
-                  _c("small", { staticClass: "pull-right" }, [_vm._v("45%")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "progress progress-striped progress-sm" },
-                  [
-                    _c("div", {
-                      staticClass: "progress-bar progress-bar-info",
-                      staticStyle: { width: "45%" }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 pad-5" }, [
-                _c("div", { staticClass: "clearfix" }, [
-                  _c("span", { staticClass: "pull-left" }, [
-                    _vm._v(" California ")
-                  ]),
-                  _vm._v(" "),
-                  _c("small", { staticClass: "pull-right" }, [_vm._v("30%")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "progress progress-striped progress-sm" },
-                  [
-                    _c("div", {
-                      staticClass: "progress-bar progress-bar-info",
-                      staticStyle: { width: "30%" }
-                    })
-                  ]
-                )
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("div", { staticClass: "panel" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _c("h3", { staticClass: "panel-title" }, [_vm._v(" Order List ")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _c("div", { staticClass: "tab-base mar-no" }, [
-                _c("ul", { staticClass: "nav nav-tabs" }, [
-                  _c("li", { staticClass: "active" }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: { "data-toggle": "tab", href: "#demo-lft-tab-1" }
-                      },
-                      [_vm._v(" New User ")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: { "data-toggle": "tab", href: "#demo-lft-tab-2" }
-                      },
-                      [_vm._v("New Clients")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: { "data-toggle": "tab", href: "#demo-lft-tab-3" }
-                      },
-                      [_vm._v("Invoices")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "tab-content" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "tab-pane fade active in",
-                      attrs: { id: "demo-lft-tab-1" }
-                    },
-                    [
-                      _c("div", { staticClass: "table-responsive" }, [
-                        _c(
-                          "table",
-                          { staticClass: "table table-hover table-vcenter" },
-                          [
-                            _c("thead", [
-                              _c("tr", [
-                                _c("th", [_vm._v("#")]),
-                                _vm._v(" "),
-                                _c("th", [_vm._v("Name")]),
-                                _vm._v(" "),
-                                _c("th", [_vm._v("Position")]),
-                                _vm._v(" "),
-                                _c("th", [_vm._v("Office")]),
-                                _vm._v(" "),
-                                _c("th", [_vm._v("start date")]),
-                                _vm._v(" "),
-                                _c("th", [_vm._v("Salary")])
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("tbody", [
-                              _c("tr", [
-                                _c("td", [_vm._v("1")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Albert Desouza")]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c(
-                                    "span",
-                                    { staticClass: "label label-purple" },
-                                    [_vm._v("System Architect")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Edinburgh")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("2011/04/25")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("$320,800")])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _c("td", [_vm._v("2")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Teresa L. Doe")]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c(
-                                    "span",
-                                    { staticClass: "label label-primary" },
-                                    [_vm._v("Pre-Sales Support")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Edinburgh")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("2011/04/25")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("$320,800")])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _c("td", [_vm._v("3")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Veronica Gusikowski")]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c(
-                                    "span",
-                                    { staticClass: "label label-danger" },
-                                    [_vm._v("Civil Engineer")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Edinburgh")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("2011/04/25")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("$320,800")])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _c("td", [_vm._v("4")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Bruce Rogahn")]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c(
-                                    "span",
-                                    { staticClass: "label label-success" },
-                                    [_vm._v("CEO")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Edinburgh")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("2011/04/25")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("$320,800")])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _c("td", [_vm._v("5")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Carolina Hickle")]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c(
-                                    "span",
-                                    { staticClass: "label label-info" },
-                                    [_vm._v("Junior accountant")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Edinburgh")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("2011/04/25")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("$320,800")])
-                              ]),
-                              _vm._v(" "),
-                              _c("tr", [
-                                _c("td", [_vm._v("6")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("Semantha")]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c(
-                                    "span",
-                                    { staticClass: "label label-warning" },
-                                    [_vm._v("System Architect")]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("London")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("2012/04/25")]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v("$320,800")])
-                              ])
-                            ])
-                          ]
-                        )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "tab-pane fade",
-                      attrs: { id: "demo-lft-tab-2" }
-                    },
-                    [
+                    _c("div", { staticClass: "table-responsive" }, [
                       _c(
                         "table",
                         { staticClass: "table table-hover table-vcenter" },
                         [
                           _c("thead", [
                             _c("tr", [
-                              _c("th", [_vm._v("Customer Name")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Total Orders")]),
-                              _vm._v(" "),
-                              _c("th", { staticClass: "text-center" }, [
-                                _vm._v("Total Amount")
-                              ]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Delivery date")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Status")])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tbody", [
-                            _c("tr", [
-                              _c("td", [_vm._v("David Wilson")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(" 10 ")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v("$2000")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("2012/04/25")]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "label label-table label-info"
-                                  },
-                                  [_vm._v("On Process")]
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Amanda Nilson")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(" 20 ")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v("$4500")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("2012/04/25")]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "label label-table label-danger"
-                                  },
-                                  [_vm._v("pending")]
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Jhon Doe")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(" 30 ")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v("$5600")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("2012/04/25")]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "label label-table label-success"
-                                  },
-                                  [_vm._v("Shipped")]
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Bill Chang")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(" 45 ")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v("$7500")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("2012/04/25")]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "label label-table label-danger"
-                                  },
-                                  [_vm._v("Pending")]
-                                )
-                              ])
-                            ])
-                          ])
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "tab-pane fade",
-                      attrs: { id: "demo-lft-tab-3" }
-                    },
-                    [
-                      _c(
-                        "table",
-                        { staticClass: "table table-hover table-vcenter" },
-                        [
-                          _c("thead", [
-                            _c("tr", [
-                              _c("th", [_vm._v("Invoice")]),
+                              _c("th", [_vm._v("#")]),
                               _vm._v(" "),
                               _c("th", [_vm._v("Name")]),
                               _vm._v(" "),
-                              _c("th", { staticClass: "text-center" }, [
-                                _vm._v("Value")
-                              ]),
+                              _c("th", [_vm._v("Position")]),
                               _vm._v(" "),
-                              _c("th", [_vm._v("Delivery date")]),
+                              _c("th", [_vm._v("Office")]),
                               _vm._v(" "),
-                              _c("th", [_vm._v("Status")])
+                              _c("th", [_vm._v("start date")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Salary")])
                             ])
                           ]),
                           _vm._v(" "),
                           _c("tbody", [
                             _c("tr", [
-                              _c("td", [_vm._v("Order #53451")]),
+                              _c("td", [_vm._v("1")]),
                               _vm._v(" "),
-                              _c("td", [
-                                _c("span", { staticClass: "text-semibold" }, [
-                                  _vm._v("Desktop")
-                                ]),
-                                _vm._v(" "),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("small", { staticClass: "text-muted" }, [
-                                  _vm._v("Last 7 days : 4,234k")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v("$250")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("2012/04/25")]),
+                              _c("td", [_vm._v("Albert Desouza")]),
                               _vm._v(" "),
                               _c("td", [
                                 _c(
-                                  "div",
-                                  {
-                                    staticClass: "label label-table label-info"
-                                  },
-                                  [_vm._v("On Process")]
+                                  "span",
+                                  { staticClass: "label label-purple" },
+                                  [_vm._v("System Architect")]
                                 )
-                              ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("Edinburgh")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("2011/04/25")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("$320,800")])
                             ]),
                             _vm._v(" "),
                             _c("tr", [
-                              _c("td", [_vm._v("Order #53451")]),
+                              _c("td", [_vm._v("2")]),
                               _vm._v(" "),
-                              _c("td", [
-                                _c("span", { staticClass: "text-semibold" }, [
-                                  _vm._v("Laptop")
-                                ]),
-                                _vm._v(" "),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("small", { staticClass: "text-muted" }, [
-                                  _vm._v("Last 7 days : 3,876k")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v("$350")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("2012/04/25")]),
+                              _c("td", [_vm._v("Teresa L. Doe")]),
                               _vm._v(" "),
                               _c("td", [
                                 _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "label label-table label-danger"
-                                  },
-                                  [_vm._v("Cancelled")]
+                                  "span",
+                                  { staticClass: "label label-primary" },
+                                  [_vm._v("Pre-Sales Support")]
                                 )
-                              ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("Edinburgh")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("2011/04/25")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("$320,800")])
                             ]),
                             _vm._v(" "),
                             _c("tr", [
-                              _c("td", [_vm._v("Order #53451")]),
+                              _c("td", [_vm._v("3")]),
                               _vm._v(" "),
-                              _c("td", [
-                                _c("span", { staticClass: "text-semibold" }, [
-                                  _vm._v("Tablet")
-                                ]),
-                                _vm._v(" "),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("small", { staticClass: "text-muted" }, [
-                                  _vm._v("Last 7 days : 45,678k")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v("$325")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("2012/04/25")]),
+                              _c("td", [_vm._v("Veronica Gusikowski")]),
                               _vm._v(" "),
                               _c("td", [
                                 _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "label label-table label-success"
-                                  },
-                                  [_vm._v("Shipped")]
+                                  "span",
+                                  { staticClass: "label label-danger" },
+                                  [_vm._v("Civil Engineer")]
                                 )
-                              ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("Edinburgh")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("2011/04/25")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("$320,800")])
                             ]),
                             _vm._v(" "),
                             _c("tr", [
-                              _c("td", [_vm._v("Order #53451")]),
+                              _c("td", [_vm._v("4")]),
                               _vm._v(" "),
-                              _c("td", [
-                                _c("span", { staticClass: "text-semibold" }, [
-                                  _vm._v("Smartphone")
-                                ]),
-                                _vm._v(" "),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("small", { staticClass: "text-muted" }, [
-                                  _vm._v("Last 7 days : 34,553k")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-center" }, [
-                                _vm._v("$250")
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("2012/04/25")]),
+                              _c("td", [_vm._v("Bruce Rogahn")]),
                               _vm._v(" "),
                               _c("td", [
                                 _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "label label-table label-warning"
-                                  },
-                                  [_vm._v("Pending")]
+                                  "span",
+                                  { staticClass: "label label-success" },
+                                  [_vm._v("CEO")]
                                 )
-                              ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("Edinburgh")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("2011/04/25")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("$320,800")])
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("td", [_vm._v("5")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("Carolina Hickle")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "span",
+                                  { staticClass: "label label-info" },
+                                  [_vm._v("Junior accountant")]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("Edinburgh")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("2011/04/25")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("$320,800")])
+                            ]),
+                            _vm._v(" "),
+                            _c("tr", [
+                              _c("td", [_vm._v("6")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("Semantha")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "span",
+                                  { staticClass: "label label-warning" },
+                                  [_vm._v("System Architect")]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("London")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("2012/04/25")]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v("$320,800")])
                             ])
                           ])
                         ]
                       )
-                    ]
-                  )
-                ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane fade",
+                    attrs: { id: "demo-lft-tab-2" }
+                  },
+                  [
+                    _c(
+                      "table",
+                      { staticClass: "table table-hover table-vcenter" },
+                      [
+                        _c("thead", [
+                          _c("tr", [
+                            _c("th", [_vm._v("Customer Name")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Total Orders")]),
+                            _vm._v(" "),
+                            _c("th", { staticClass: "text-center" }, [
+                              _vm._v("Total Amount")
+                            ]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Delivery date")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Status")])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", [
+                            _c("td", [_vm._v("David Wilson")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(" 10 ")]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v("$2000")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/04/25")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                { staticClass: "label label-table label-info" },
+                                [_vm._v("On Process")]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Amanda Nilson")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(" 20 ")]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v("$4500")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/04/25")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "label label-table label-danger"
+                                },
+                                [_vm._v("pending")]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Jhon Doe")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(" 30 ")]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v("$5600")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/04/25")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "label label-table label-success"
+                                },
+                                [_vm._v("Shipped")]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Bill Chang")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(" 45 ")]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v("$7500")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/04/25")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "label label-table label-danger"
+                                },
+                                [_vm._v("Pending")]
+                              )
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-pane fade",
+                    attrs: { id: "demo-lft-tab-3" }
+                  },
+                  [
+                    _c(
+                      "table",
+                      { staticClass: "table table-hover table-vcenter" },
+                      [
+                        _c("thead", [
+                          _c("tr", [
+                            _c("th", [_vm._v("Invoice")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Name")]),
+                            _vm._v(" "),
+                            _c("th", { staticClass: "text-center" }, [
+                              _vm._v("Value")
+                            ]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Delivery date")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Status")])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", [
+                            _c("td", [_vm._v("Order #53451")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", { staticClass: "text-semibold" }, [
+                                _vm._v("Desktop")
+                              ]),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("small", { staticClass: "text-muted" }, [
+                                _vm._v("Last 7 days : 4,234k")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v("$250")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/04/25")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                { staticClass: "label label-table label-info" },
+                                [_vm._v("On Process")]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Order #53451")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", { staticClass: "text-semibold" }, [
+                                _vm._v("Laptop")
+                              ]),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("small", { staticClass: "text-muted" }, [
+                                _vm._v("Last 7 days : 3,876k")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v("$350")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/04/25")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "label label-table label-danger"
+                                },
+                                [_vm._v("Cancelled")]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Order #53451")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", { staticClass: "text-semibold" }, [
+                                _vm._v("Tablet")
+                              ]),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("small", { staticClass: "text-muted" }, [
+                                _vm._v("Last 7 days : 45,678k")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v("$325")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/04/25")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "label label-table label-success"
+                                },
+                                [_vm._v("Shipped")]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Order #53451")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("span", { staticClass: "text-semibold" }, [
+                                _vm._v("Smartphone")
+                              ]),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("small", { staticClass: "text-muted" }, [
+                                _vm._v("Last 7 days : 34,553k")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v("$250")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v("2012/04/25")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "label label-table label-warning"
+                                },
+                                [_vm._v("Pending")]
+                              )
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                )
               ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-6" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-heading" }, [
+            _c("h3", { staticClass: "panel-title" }, [
+              _vm._v("Last 5 Card Payments")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-bordered" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Payee Names")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Amount")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Description")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Date/Time")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Fees")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Manager")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Albert Desouza")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Dont forget about fee")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 16:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$64.58")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Teresa L. Doe")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Delivery...\t")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 12:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$45.58")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Veronica Gusikowski")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Will pay by cash")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 05:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$65.25")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Bruce Rogahn")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Call Me..")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 08:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$35.26")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Carolina Hickle")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Empty")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 12:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$25.21")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Semantha")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Still Pending")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 19:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$16.52")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success fa fa-eye",
+                  staticStyle: { "font-size": "12px !important" }
+                },
+                [
+                  _vm._v(
+                    "\n                            View All\n                        "
+                  )
+                ]
+              )
             ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-6" }, [
-          _c("div", { staticClass: "panel" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _c("h3", { staticClass: "panel-title" }, [
-                _vm._v("Top Countries")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _c("div", { staticClass: "table-responsive" }, [
-                _c("table", { staticClass: "table table-striped" }, [
-                  _c("thead", [
-                    _c("tr", [
-                      _c("th", [_vm._v("Code")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Country")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Unique User")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Pageviews")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Changes")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("New Vs. Return")])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", [_vm._v("AAC")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("USA")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("10256")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("45623")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("45.12%")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "progress progress-striped progress-md"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "progress-bar progress-bar-success",
-                                staticStyle: { width: "65%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("65% Complete (success)")
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "progress-bar progress-bar-info",
-                                staticStyle: { width: "35%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("35% Complete (warning)")
-                                ])
-                              ]
-                            )
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("AAD")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("India")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("15246")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("36542")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("32.52%")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "progress progress-striped progress-md"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "progress-bar progress-bar-success",
-                                staticStyle: { width: "35%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("35% Complete (success)")
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "progress-bar progress-bar-info",
-                                staticStyle: { width: "65%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("65% Complete (warning)")
-                                ])
-                              ]
-                            )
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("AAX")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("USA")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("25410")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("48596")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("20.25%")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "progress progress-striped progress-md"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "progress-bar progress-bar-success",
-                                staticStyle: { width: "35%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("35% Complete (success)")
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "progress-bar progress-bar-info",
-                                staticStyle: { width: "65%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("65% Complete (warning)")
-                                ])
-                              ]
-                            )
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("ABC")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("China")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("35120")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("52412")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("12.02%")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "progress progress-striped progress-md"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "progress-bar progress-bar-success",
-                                staticStyle: { width: "55%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("55% Complete (success)")
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "progress-bar progress-bar-info",
-                                staticStyle: { width: "45%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("45% Complete (warning)")
-                                ])
-                              ]
-                            )
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("ABP")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Australia")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("40125")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("65042")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("48.25%")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "progress progress-striped progress-md"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "progress-bar progress-bar-success",
-                                staticStyle: { width: "25%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("25% Complete (success)")
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "progress-bar progress-bar-info",
-                                staticStyle: { width: "75%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("75% Complete (warning)")
-                                ])
-                              ]
-                            )
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("BAP")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("USA")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("65700")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("95780")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("32.52%")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "progress progress-striped progress-md"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "progress-bar progress-bar-success",
-                                staticStyle: { width: "15%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("15% Complete (success)")
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "progress-bar progress-bar-info",
-                                staticStyle: { width: "85%" }
-                              },
-                              [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("85% Complete (warning)")
-                                ])
-                              ]
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ])
-                ])
-              ])
+      _c("div", { staticClass: "col-sm-6" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "panel-heading" }, [
+            _c("h3", { staticClass: "panel-title" }, [
+              _vm._v("Last 5 Transaction(Mpesa)")
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-6" }, [
-          _c("div", { staticClass: "panel" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _c("h3", { staticClass: "panel-title" }, [
-                _vm._v("Last 5 Transaction")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _c("div", { staticClass: "table-responsive" }, [
-                _c("table", { staticClass: "table table-bordered" }, [
-                  _c("thead", [
-                    _c("tr", [
-                      _c("th", [_vm._v("Payee Names")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Amount")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Description")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Date/Time")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Fees")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Manager")])
-                    ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-bordered" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Payee Names")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Amount")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Description")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Date/Time")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Fees")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Manager")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Albert Desouza")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Dont forget about fee")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 16:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$64.58")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
                   ]),
                   _vm._v(" "),
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", [_vm._v("Albert Desouza")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$320,800")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Dont forget about fee")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("20.01.2014 16:24")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$64.58")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("John Doe")])
-                    ]),
+                  _c("tr", [
+                    _c("td", [_vm._v("Teresa L. Doe")]),
                     _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Teresa L. Doe")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$320,800")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Delivery...\t")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("20.01.2014 12:24")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$45.58")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("John Doe")])
-                    ]),
+                    _c("td", [_vm._v("$320,800")]),
                     _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Veronica Gusikowski")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$320,800")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Will pay by cash")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("20.01.2014 05:24")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$65.25")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("John Doe")])
-                    ]),
+                    _c("td", [_vm._v("Delivery...\t")]),
                     _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Bruce Rogahn")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$320,800")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Call Me..")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("20.01.2014 08:24")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$35.26")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("John Doe")])
-                    ]),
+                    _c("td", [_vm._v("20.01.2014 12:24")]),
                     _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Carolina Hickle")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$320,800")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Empty")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("20.01.2014 12:24")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$25.21")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("John Doe")])
-                    ]),
+                    _c("td", [_vm._v("$45.58")]),
                     _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Semantha")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$320,800")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("Still Pending")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("20.01.2014 19:24")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("$16.52")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("John Doe")])
-                    ])
+                    _c("td", [_vm._v("John Doe")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Veronica Gusikowski")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Will pay by cash")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 05:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$65.25")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Bruce Rogahn")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Call Me..")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 08:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$35.26")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Carolina Hickle")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Empty")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 12:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$25.21")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Semantha")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$320,800")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Still Pending")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("20.01.2014 19:24")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("$16.52")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")])
                   ])
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success fa fa-eye",
+                  staticStyle: { "font-size": "12px !important" }
+                },
+                [
+                  _vm._v(
+                    "\n                            View All\n                        "
+                  )
+                ]
+              )
             ])
           ])
         ])
@@ -52206,9 +52656,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", [
       _vm._v("By creating an Account, you agree to our "),
-      _c("a", { staticStyle: { color: "blue" }, attrs: { href: "/terms" } }, [
-        _vm._v("Terms & Conditions")
-      ])
+      _c(
+        "a",
+        {
+          staticStyle: { color: "blue" },
+          attrs: { href: "/terms-and-conditions" }
+        },
+        [_vm._v("Terms & Conditions")]
+      )
     ])
   },
   function() {
@@ -68548,15 +69003,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=f2b6376c& */ "./resources/js/components/Home.vue?vue&type=template&id=f2b6376c&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home.vue?vue&type=script&lang=js& */ "./resources/js/components/Home.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -68570,6 +69027,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/Home.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Home.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/Home.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

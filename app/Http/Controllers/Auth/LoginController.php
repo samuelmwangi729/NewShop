@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\IndexController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -35,6 +36,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $visit=new IndexController();
+        $visit->Welcome();
+        //nobody will login if they are not registered as visitors
         $this->middleware('guest')->except('logout');
     }
 }

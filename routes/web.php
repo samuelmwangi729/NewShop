@@ -152,6 +152,9 @@ Route::get('/nhepSC0ODs/{id}',[
 Route::get('/5228JaeyweZCBBZPb2Vc/{id}',[
     'uses'=>'PickupsController@show'
 ]);
+Route::get('/Returns-Policy',[
+    'uses'=>'IndexController@RPolicy'
+]);
 Route::get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/{number}',[
     'uses'=>'PaymentsController@PayWithMpesa'
 ]);
@@ -178,6 +181,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/productname/{sku}',[
         'uses'=>'ProductsController@getName'
     ]);
+    Route::resource('returns','ReturnsController');
     Route::resource('HTVW00xzDT5AAAW','OrdersController');
     Route::get('/checkout',[
         'uses'=>'CartsController@CheckOut'

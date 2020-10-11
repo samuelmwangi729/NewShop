@@ -57,3 +57,16 @@ Route::get('/rngL1uWwlBDtTrrOQf8uVqqjes17nEW',[
 Route::get('/rngL1uWwlBDtTrrOQ',[
     'uses'=>'PaymentsController@getFile'
 ]);
+Route::get('/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD/3hc9U9svsC',[
+    'uses'=>'IndexController@loadVisitors'
+]);
+Route::get('/today/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD/3hc9U9svsC',[
+    'uses'=>'IndexController@loadVisitors'
+]);
+
+Route::get('/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD',[
+    'uses'=>'IndexController@loadUsers'
+]);
+Route::get('hBfEhicVBZ6OT900f93OxXZMcvJ51nYeqQ2RHIgK8Vl7qVg9XUu',[
+    'uses'=>'IndexController@getOrders'
+]);

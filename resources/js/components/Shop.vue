@@ -153,7 +153,7 @@
                             </div>
                         </div>
                     </div>
-                     <input type="checkbox" required>  &nbsp;<span>By creating an Account, you agree to our <a href="/terms" style="color:blue">Terms &amp; Conditions</a> </span>
+                     <input type="checkbox" required>  &nbsp;<span>By creating an Account, you agree to our <a href="/terms-and-conditions" style="color:blue">Terms &amp; Conditions</a> </span>
                 </fieldset>
                 <div class="row">
                     <div class="col-sm-4 offset-sm-4">
