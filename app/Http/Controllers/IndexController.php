@@ -41,7 +41,7 @@ class IndexController extends Controller
         $random=Str::random(10);
         return $random;
     }
-    protected function Welcome(){
+    public function Welcome(){
         //whether ip is from share internet
 if (!empty($_SERVER['HTTP_CLIENT_IP']))
 {
