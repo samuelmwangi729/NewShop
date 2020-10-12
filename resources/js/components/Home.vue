@@ -3,182 +3,282 @@
          <div class="row">
             <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                           <i class="fa fa-user-secret"></i>  Visitors|{{ Visitors }}
                         </h4>
                     </div>
+                    <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                            <i class="fa fa-group"></i> Users|{{ Users }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                             <i class="fa fa-calendar"></i> Todays Visitors|{{ TodaysVisitors }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                             <i class="fa fa-file-pdf-o"></i> All Orders|{{ Orders }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                            <i class="fa fa-university"></i> Shops|{{ Shops }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                            <i class="fa fa-money"></i> Payments|Ksh {{ Payments }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                            <i class="fa fa-mobile-phone"></i>Paid By Mpesa |Ksh {{ PaidMpesa }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                            <i class="fa fa-credit-card"></i> Paid By Card|Ksh {{ PaidCard }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                           <i class="fa fa-dropbox"></i> Products|{{ Products }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                           <i class="fa fa-backward"></i> Returned Products| {{ ReturnedGoods }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                           <i class="fa fa-check-circle"></i> Processed Orders|{{ ProcessedOrders }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                           <i class="fa fa-user"></i> Approved Sellers| {{ Sellers }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
              <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
-                         <i class="fa fa-user-times"></i> Sellers Under Review| {{ SellersReviewed }}
+                         <i class="fa fa-user-times"></i> Sellers Under Review| {{ Shops-Sellers }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                          <i class="fa fa-list"></i> Brands| {{ Brands }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                          <i class="fa fa-list"></i> Categories|{{ Categories }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                          <i class="fa fa-globe fa-spin"></i> Locations| {{ Locations }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                          <i class="fa fa-truck"></i> PickUp Location| {{ PickupLocations }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                          <i class="fa fa-list"></i> Collections| {{ Collections }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                          <i class="fa fa-print"></i> Reports| <a href="#">Print reports</a>
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="panel">
-                    <div class="panel-body text-center">
+                    <div class="text-center panel-body">
                         <h4>
                          <i class="fa fa-users"></i> Staff| {{ Staff }}
                         </h4>
                     </div>
+                     <a href="http://">
+                    <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
+                        More Information
+                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -594,6 +694,8 @@ export default {
             this.loadOrders()
             this.loadShops()
             this.loadPayments()
+            this.loadProducts()
+            this.loadProcessed()
         },
         loadVisitors(){
             axios.get('/api/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD/3hc9U9svsC').then((response)=>{
@@ -623,7 +725,23 @@ export default {
         loadPayments(){
             axios.get('/api/qmNsBnNwBQvAEZxt3rkVfEUIuiZCFwC').then((response)=>{
                 this.Payments=response.data
+                this.PaidMpesa=response.data
             })
+        },
+        loadProducts(){
+            axios.get('/api/5lTHV/ziaKnDgzsnEjjjqZyU23wfKt6').then((response)=>{
+                this.Products=response.data
+            })
+        },
+        loadProcessed(){
+            axios.get('/api/24Rm6ZmZk1xfms55/cuxtp6').then((response)=>{
+                this.ProcessedOrders=response.data
+            })
+        },
+        loadApprovedShop(){
+            axios.get('/api/P3EGEKNwW4eKtjI8qu3kZTS7bxGw1fPTVl0UUZsTuOb5hZJ9K').then((response=>{
+                this.Sellers=response.data
+            }))
         }
     },
     created(){

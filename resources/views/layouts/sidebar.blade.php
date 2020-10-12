@@ -167,6 +167,12 @@
                         </li>
                         <li class="list-divider"></li>
                         <li>
+                            <a href="#">
+                            <i class="fa fa-sign-out"></i>
+                            <span class="menu-title">Logout</span>
+                            </a>
+                        </li>
+                        <li>
                             Logout
                         </li>
                     </ul>

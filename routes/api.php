@@ -76,3 +76,15 @@ Route::get('/iJxXMuVdqLeUV2fwXQ3t5wL/cyQacb56nNOs6',[
 Route::get('/qmNsBnNwBQvAEZxt3rkVfEUIuiZCFwC',[
     'uses'=>'IndexController@getPayments'
 ]);
+Route::get('/5lTHV/ziaKnDgzsnEjjjqZyU23wfKt6',[
+    'uses'=>'IndexController@getProducts'
+]);
+Route::get('/24Rm6ZKNFPWXHOcQmZk1xfms55/cuxtp6',[
+    'uses'=>'IndexController@getunProcessed'
+]);
+Route::get('/24Rm6ZmZk1xfms55/cuxtp6',[
+    'uses'=>'IndexController@getProcessed'
+]);
+Route::get('/P3EGEKNwW4eKtjI8qu3kZTS7bxGw1fPTVl0UUZsTuOb5hZJ9K',[
+    'uses'=>'IndexController@ApprovedShops'
+]);

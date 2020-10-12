@@ -5,7 +5,7 @@ use Auth;
 use Str;
 use Hash;
 use Session;
-use App\{Visitors,User,Cart,Wishlist,Term,Privacy,Returns,Order,Shop,MpesaTransactions};
+use App\{Visitors,User,Cart,Wishlist,Term,Privacy,Returns,Order,Shop,MpesaTransactions,Product};
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -168,6 +168,27 @@ if(is_null($ip)){
     }
     protected function getPayments(){
         //payments
-        return MpesaTransactions::count();
+        $sum=0;
+        $mpesa=MpesaTransactions::all();
+        for ($i=0; $i <MpesaTransactions::count() ; $i++) {
+            //do a count here
+            $sum=$sum+$mpesa[$i]->TransAmount;
+        }
+        return $sum;
+    }
+    protected function getProducts(){
+        return Product::count();
+    }
+    protected function getProcessed(){
+        $orders=Order::where('Status','=',1)->get();
+        return count($orders);
+    }
+    protected function getunProcessed(){
+        $orders=Order::where('Status','=',0)->get();
+        return count($orders);
+    }
+    protected function ApprovedShops(){
+        $shops=Shop::where('ShopStatus','=',1)->get();
+        return count($shops);
     }
 }

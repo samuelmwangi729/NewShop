@@ -4773,7 +4773,11 @@ h4 .fa{
     float:left;
     font-size:30px !important
 }
-.fa{
+.panel a:hover{
+   /* color:black; */
+   font-size:20px;
+}
+.fa, .glyphicon{
     color:#ff9800;
     float:left;
     font-size:20px !important

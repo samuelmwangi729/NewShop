@@ -254,41 +254,12 @@
                             <!--End Profile toogle button-->
                             <!--Language selector-->
                             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                            <li class="dropdown">
-                                <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown"> <span class="lang-selected"> <img class="lang-flag" src="img/flags/united-kingdom.png" alt="English"> <span class="lang-id">EN</span> <span class="lang-name">English</span> </span>
-                                </a>
-                                <!--Language selector menu-->
-                                <ul class="head-list dropdown-menu with-arrow">
-                                    <li>
-                                        <!--English-->
-                                        <a href="#" class="active"> <img class="lang-flag" src="img/flags/united-kingdom.png" alt="English"> <span class="lang-id">EN</span> <span class="lang-name">English</span> </a>
-                                    </li>
-                                    <li>
-                                        <!--France-->
-                                        <a href="#"> <img class="lang-flag" src="img/flags/france.png" alt="France"> <span class="lang-id">FR</span> <span class="lang-name">Fran&ccedil;ais</span> </a>
-                                    </li>
-                                    <li>
-                                        <!--Germany-->
-                                        <a href="#"> <img class="lang-flag" src="img/flags/germany.png" alt="Germany"> <span class="lang-id">DE</span> <span class="lang-name">Deutsch</span> </a>
-                                    </li>
-                                    <li>
-                                        <!--Italy-->
-                                        <a href="#"> <img class="lang-flag" src="img/flags/italy.png" alt="Italy"> <span class="lang-id">IT</span> <span class="lang-name">Italiano</span> </a>
-                                    </li>
-                                    <li>
-                                        <!--Spain-->
-                                        <a href="#"> <img class="lang-flag" src="img/flags/spain.png" alt="Spain"> <span class="lang-id">ES</span> <span class="lang-name">Espa&ntilde;ol</span> </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                             <!--End language selector-->
                             <!--User dropdown-->
                             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                             <li id="dropdown-user" class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="text-right dropdown-toggle">
-                                    <span class="pull-right"> <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture"> </span>
-                                    <div class="username hidden-xs">John Doe</div>
+                                    <div class="username hidden-xs">{{ Auth::user()->First_Name }} {{ Auth::user()->Last_Name }}</div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right with-arrow">
                                     <!-- User dropdown menu -->
@@ -419,16 +390,6 @@
                     </div>
                     <!--Page Title-->
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-                    <div class="pageheader noprint">
-                        <h3><i class="fa fa-shopping-cart"></i> Shopping Cart </h3>
-                        <div class="breadcrumb-wrapper">
-                            <span class="label">You are here:</span>
-                            <ol class="breadcrumb">
-                                <li> <a href="#"> Home </a> </li>
-                                <li class="active"> Blank Page </li>
-                            </ol>
-                        </div>
-                    </div>
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <!--End page title-->
                     <!--Page content-->
