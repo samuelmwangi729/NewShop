@@ -5067,6 +5067,8 @@ __webpack_require__.r(__webpack_exports__);
       this.loadUsers();
       this.todayVisitors();
       this.loadOrders();
+      this.loadShops();
+      this.loadPayments();
     },
     loadVisitors: function loadVisitors() {
       var _this = this;
@@ -5094,6 +5096,20 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/hBfEhicVBZ6OT900f93OxXZMcvJ51nYeqQ2RHIgK8Vl7qVg9XUu').then(function (response) {
         _this4.Orders = response.data;
+      });
+    },
+    loadShops: function loadShops() {
+      var _this5 = this;
+
+      axios.get('/api/iJxXMuVdqLeUV2fwXQ3t5wL/cyQacb56nNOs6').then(function (response) {
+        _this5.Shops = response.data;
+      });
+    },
+    loadPayments: function loadPayments() {
+      var _this6 = this;
+
+      axios.get('/api/qmNsBnNwBQvAEZxt3rkVfEUIuiZCFwC').then(function (response) {
+        _this6.Payments = response.data;
       });
     }
   },

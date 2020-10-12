@@ -592,6 +592,8 @@ export default {
             this.loadUsers()
             this.todayVisitors()
             this.loadOrders()
+            this.loadShops()
+            this.loadPayments()
         },
         loadVisitors(){
             axios.get('/api/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD/3hc9U9svsC').then((response)=>{
@@ -611,6 +613,16 @@ export default {
         loadOrders(){
             axios.get('/api/hBfEhicVBZ6OT900f93OxXZMcvJ51nYeqQ2RHIgK8Vl7qVg9XUu').then((response)=>{
                 this.Orders=response.data
+            })
+        },
+        loadShops(){
+            axios.get('/api/iJxXMuVdqLeUV2fwXQ3t5wL/cyQacb56nNOs6').then((response)=>{
+                this.Shops=response.data
+            })
+        },
+        loadPayments(){
+            axios.get('/api/qmNsBnNwBQvAEZxt3rkVfEUIuiZCFwC').then((response)=>{
+                this.Payments=response.data
             })
         }
     },

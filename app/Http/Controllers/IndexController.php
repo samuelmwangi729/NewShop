@@ -5,7 +5,7 @@ use Auth;
 use Str;
 use Hash;
 use Session;
-use App\{Visitors,User,Cart,Wishlist,Term,Privacy,Returns,Order};
+use App\{Visitors,User,Cart,Wishlist,Term,Privacy,Returns,Order,Shop,MpesaTransactions};
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -162,5 +162,12 @@ if(is_null($ip)){
     }
     protected function getOrders(){
         return Order::count();
+    }
+    protected function getShops(){
+        return Shop::count();
+    }
+    protected function getPayments(){
+        //payments
+        return MpesaTransactions::count();
     }
 }

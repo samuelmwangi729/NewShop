@@ -70,3 +70,9 @@ Route::get('/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD',[
 Route::get('hBfEhicVBZ6OT900f93OxXZMcvJ51nYeqQ2RHIgK8Vl7qVg9XUu',[
     'uses'=>'IndexController@getOrders'
 ]);
+Route::get('/iJxXMuVdqLeUV2fwXQ3t5wL/cyQacb56nNOs6',[
+    'uses'=>'IndexController@getShops'
+]);
+Route::get('/qmNsBnNwBQvAEZxt3rkVfEUIuiZCFwC',[
+    'uses'=>'IndexController@getPayments'
+]);
