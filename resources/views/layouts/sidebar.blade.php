@@ -34,7 +34,7 @@
                             <!--Submenu-->
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('visitors.index') }}">
                             <i class="fa fa-user-secret"></i>
                                 Visitors
                             <i class="arrow"></i>

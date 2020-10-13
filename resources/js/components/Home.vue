@@ -8,7 +8,7 @@
                           <i class="fa fa-user-secret"></i>  Visitors|{{ Visitors }}
                         </h4>
                     </div>
-                    <a href="http://">
+                    <a href="/visitors">
                     <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
                         More Information
                     </div>
@@ -696,6 +696,36 @@ export default {
             this.loadPayments()
             this.loadProducts()
             this.loadProcessed()
+            this.loadBrands()
+            this.loadCategory()
+            this.loadLocations()
+            this.loadPickups()
+            this.loadCollection()
+        },
+        loadCollection(){
+            axios.get('/api/eN449WDp0vzRD3u1/BHd19wiTcp8/OC').then((response)=>{
+                this.Collections=response.data
+            })
+        },
+        loadPickups(){
+            axios.get('/api/XmWMzKV9QuOUJwqrJ5Rw4IUFnSK/SvS').then((response)=>{
+                this.PickupLocations=response.data
+            })
+        },
+        loadLocations(){
+            axios.get('/api/KdIvQYfBNvQX1XHoRewkpSaSIp37H9Jv1eGe05QNoEXRscaZ').then((response)=>{
+                this.Locations=response.data
+            })
+        },
+        loadCategory(){
+            axios.get('/api/BLeFMbKEt78gebi4M5').then((response)=>{
+                this.Categories=response.data
+            })
+        },
+        loadBrands(){
+            axios.get('/api/BLeFMbKEt78gebi4M5/w0o5WRQNefIo3YAu').then((response)=>{
+                this.Brands=response.data
+            })
         },
         loadVisitors(){
             axios.get('/api/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD/3hc9U9svsC').then((response)=>{

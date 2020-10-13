@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
-use App\{Visitors,Logins,Cart,Wishlist};
+use App\{Visitors,Logins,Cart,Wishlist,ReturningVisitors};
 class HomeController extends Controller
 {
     /**
@@ -47,8 +47,18 @@ class HomeController extends Controller
 
         if(Session::has('VisitorId')){
             $user=Visitors::where('VisitorId','=',Session::get('VisitorId'))->get()->first();
+            // return Session::get('VisitorId');
             $user->VisitorEmail=Auth::user()->email;
             $user->save();
+            //check if the visitor is returning visitor
+            $retvis=ReturningVisitors::where('VisitorId','=',Session::get('VisitorId'))->get();
+            if($retvis){
+                //then update the emails
+                for($i=0;$i<count($retvis);$i++){
+                    $retvis[$i]->VisitorEmail=Auth::user()->email;
+                    $retvis[$i]->save();
+                }
+            }
         }
         //check if they have a cart item
         $cart=Cart::where([

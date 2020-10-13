@@ -88,3 +88,24 @@ Route::get('/24Rm6ZmZk1xfms55/cuxtp6',[
 Route::get('/P3EGEKNwW4eKtjI8qu3kZTS7bxGw1fPTVl0UUZsTuOb5hZJ9K',[
     'uses'=>'IndexController@ApprovedShops'
 ]);
+Route::get('/BLeFMbKEt78gebi4M5/w0o5WRQNefIo3YAu',[
+    'uses'=>'IndexController@getBrands'
+]);
+Route::get('/BLeFMbKEt78gebi4M5',[
+    'uses'=>'IndexController@getCategory'
+]);
+Route::get('/KdIvQYfBNvQX1XHoRewkpSaSIp37H9Jv1eGe05QNoEXRscaZ',[
+    'uses'=>'IndexController@getLocations'
+]);
+Route::get('/XmWMzKV9QuOUJwqrJ5Rw4IUFnSK/SvS',[
+    'uses'=>'IndexController@PickUp'
+]);
+Route::get('/eN449WDp0vzRD3u1/BHd19wiTcp8/OC',[
+    'uses'=>'IndexController@getCollections'
+]);
+Route::get('/CEtZx3vKDPyrMiK1etzR3RDUjyMiOvmkuD9uD/3hc9U9s',[
+    'uses'=>'IndexController@fetchVisitors'
+]);
+Route::get('/9Xz3DukEWEbaexOe8tg0XqP8p7vAHoH1xArqget1TOfS',[
+    'uses'=>'IndexController@fetchReturningVisitors'
+]);

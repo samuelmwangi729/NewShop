@@ -5,7 +5,7 @@ use Auth;
 use Str;
 use Hash;
 use Session;
-use App\{Visitors,User,Cart,Wishlist,Term,Privacy,Returns,Order,Shop,MpesaTransactions,Product};
+use App\{Visitors,User,Cart,Wishlist,Term,Privacy,Returns,Order,Shop,MpesaTransactions,Product,Brand,Category,Country,Pickup,Collection,ReturningVisitors};
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -68,6 +68,16 @@ if(is_null($ip)){
         'VisitorEmail'=>'Null'
     ]);
     session(['VisitorId'=>$visitorId]);
+}else{
+    //means that the visitor came back
+    ReturningVisitors::create([
+        'VisitorId'=>$ip->VisitorId,
+        'VisitorIp'=>$ip_address,
+        'DateVisited'=>date('Y-m-d'),
+        'VisitorEmail'=>'Null'
+    ]);
+    session(['VisitorId'=>$ip->VisitorId]);
+
 }
         return view('welcome');
     }
@@ -190,5 +200,26 @@ if(is_null($ip)){
     protected function ApprovedShops(){
         $shops=Shop::where('ShopStatus','=',1)->get();
         return count($shops);
+    }
+    protected function getBrands(){
+        return Brand::count();
+    }
+    protected function getCategory(){
+        return Category::count();
+    }
+    protected function getLocations(){
+        return Country::count();
+    }
+    protected function Pickup(){
+        return Pickup::count();
+    }
+    protected function getCollections(){
+        return Collection::count();
+    }
+    protected function fetchVisitors(){
+        return Visitors::all();
+    }
+    protected function fetchReturningVisitors(){
+        return ReturningVisitors::all();
     }
 }

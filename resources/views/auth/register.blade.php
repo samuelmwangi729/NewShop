@@ -110,7 +110,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="registration"> Already registered! <a href="#"> <span class="text-primary"> Please Login Here </span> </a> </div>
+                <div class="registration"> Already registered! <a href="/login"> <span class="text-primary"> Please Login Here </span> </a> </div>
             </div>
             <!--===================================================-->
             <!-- REGISTRATION FORM -->

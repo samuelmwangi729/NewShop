@@ -164,6 +164,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('EfGTGYkBDAqW/lbpg/ajYPPyb2',[
         'uses'=>'IndexController@GenRand'
     ]);
+    Route::resource('visitors','VisitorsController');
     Route::resource('terms','TermsController');
     Route::resource('privacy','PrivacyController');
     Route::get('/PDEKhgO2JDUrL8Zd23OOPKEvmyQCl2m',[
