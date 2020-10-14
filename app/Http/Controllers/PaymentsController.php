@@ -51,7 +51,7 @@ class PaymentsController extends Controller
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://ab1b582605a1.ngrok.io/api/ConfirmPayment';
+        $CallBackURL='https://xpresskenya.tk/api/ConfirmPayment';
         $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
