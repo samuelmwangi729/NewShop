@@ -5453,6 +5453,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5513,8 +5539,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var name = '';
       axios.get('/k1HT1eDwpU/').then(function (response) {
-        _this7.FinalOrder = response.data;
-        console.log(response.data);
+        _this7.FinalOrder = response.data; //    console.log(response.data)
       });
     },
     print: function print() {
@@ -57074,6 +57099,86 @@ var render = function() {
                                         _vm._v(
                                           "\n                                                      Ksh: " +
                                             _vm._s(_vm.CartTotal) +
+                                            "\n                                                    "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                                                    =========="
+                                    ),
+                                    _c("br")
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("td", { attrs: { colspan: "3" } }, [
+                                    _vm._v(
+                                      "\n                                                    Shipping\n                                                "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n                                                    =========="
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "text-center",
+                                        staticStyle: {
+                                          "font-family": "courier",
+                                          color: "red !important"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                      Ksh: " +
+                                            _vm._s(_vm.CartTotal) +
+                                            "\n                                                    "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                                                    =========="
+                                    ),
+                                    _c("br")
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c("td", { attrs: { colspan: "3" } }, [
+                                    _vm._v(
+                                      "\n                                                   Grand  Total\n                                                "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      "\n                                                    =========="
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "text-center",
+                                        staticStyle: {
+                                          "font-family": "courier",
+                                          color: "red !important"
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                      Ksh: " +
+                                            _vm._s(
+                                              _vm.CartTotal + _vm.CartTotal
+                                            ) +
                                             "\n                                                    "
                                         )
                                       ]

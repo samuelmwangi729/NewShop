@@ -171,10 +171,12 @@ class CartsController extends Controller
     }
     protected function getCartOrder(){
         $username=Session::get('Username');
+        // return Session::get('OrderNumber');
         $products=[];
         $cart=Cart::where([
             ['User','=',$username],
-            ['Status','=','5']
+            ['Status','=','5'],
+            ['OrderNumber','=','#'.Session::get('OrderNumber')]
         ])->get();
         for($i=0;$i<count($cart);$i++){
             //get the product and add it to an array
@@ -217,7 +219,8 @@ class CartsController extends Controller
         $products=[];
         $cart=Cart::where([
             ['User','=',$username],
-            ['Status','=','0']
+            ['OrderNumber','=','#'.Session::get('OrderNumber')],
+            ['Status','=','5']
         ])->get();
         for($i=0;$i<count($cart);$i++){
             //get the product and add it to an array
@@ -232,9 +235,10 @@ class CartsController extends Controller
     }
     protected function countCart(){
         $username=Session::get('Username');
+        // return $username;
         $cart=Cart::where([
             ['User','=',$username],
-            ['Status','=','0']
+            ['OrderNumber','=','#'.Session::get('OrderNumber')]
         ])->get();
         return count($cart);
     }

@@ -51,7 +51,7 @@ class PaymentsController extends Controller
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://xpresskenya.tk/api/ConfirmPayment';
+        $CallBackURL='https://ab1b582605a1.ngrok.io/api/ConfirmPayment';
         $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
@@ -219,12 +219,13 @@ class PaymentsController extends Controller
             $file=Storage::get('final.txt');
         } catch (\Throwable $th) {
             //throw $th;
-            return 'error';
+            $data=['status'=>'error','message'=>'Unknown Error Occurred'];
+            return $data;
         }
         $data=json_decode($file,true);
-        // return $file;
+        // return $data;
         // return json_encode($file)['Body'];
-        if($data['Body']['stkCallback']['ResultCode']=='1032'){
+        if($data['Body']['stkCallback']['ResultCode']=='1031' || $data['Body']['stkCallback']['ResultCode']=='1032' ){
             //you should go back with the error message
             //save the cancelled request into the database
             Cancelled::create([
@@ -237,7 +238,9 @@ class PaymentsController extends Controller
                 'Email'=>Auth::user()->email,
                 'LastName'=>Auth::user()->Last_Name,
             ]);
-            $data=['status'=>'error','message'=>'Payment for the Order '.Session::get('OrderNumber').' Cancelled By the User'];
+            $data=['status'=>'error','message'=>'Payment for the Order '.Session::get('OrderNumber').' Cancelled By the User,Please try again'];
+            Storage::append('final.txt','');
+            //make sure that the file is empty
             return $data;
         }
         if($data['Body']['stkCallback']['ResultCode']=='1'){
@@ -255,6 +258,8 @@ class PaymentsController extends Controller
                 'Status'=>'Insufficient Balance'
             ]);
             $data=['status'=>'less','message'=>'Payment for the Order '.Session::get('OrderNumber').' Could not be completed. Insufficient Balance'];
+            Storage::append('final.txt','');
+            //make surethat the file is empty
             return $data;
         }
         // return $request->all();

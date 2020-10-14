@@ -108,6 +108,32 @@
                                                     ==========<br>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                 <td colspan="3">
+                                                    Shipping
+                                                </td>
+                                                <td>
+                                                    ==========<br>
+                                                    <span class="text-center" style="font-family:courier;color:red !important">
+                                                      Ksh: {{CartTotal}}
+                                                    </span>
+                                                    <br>
+                                                    ==========<br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                 <td colspan="3">
+                                                   Grand  Total
+                                                </td>
+                                                <td>
+                                                    ==========<br>
+                                                    <span class="text-center" style="font-family:courier;color:red !important">
+                                                      Ksh: {{CartTotal+ CartTotal}}
+                                                    </span>
+                                                    <br>
+                                                    ==========<br>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                     <table class="table table-condensed">
@@ -205,7 +231,7 @@ export default {
             let name=''
             axios.get('/k1HT1eDwpU/').then((response)=>{
                this.FinalOrder=response.data
-               console.log(response.data)
+            //    console.log(response.data)
             })
         },
         print(){
