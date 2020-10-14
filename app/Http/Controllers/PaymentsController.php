@@ -51,7 +51,7 @@ class PaymentsController extends Controller
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://4d04f25657bb.ngrok.io/api/ConfirmPayment';
+        $CallBackURL='https://892be9718ff6.ngrok.io/api/ConfirmPayment';
         $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
@@ -215,7 +215,12 @@ class PaymentsController extends Controller
     protected function getFileData(){
         $OrderId='#'.Str::upper(Str::random(15));
         session(['OrderNumber'=>$OrderId]);
-        $file=Storage::get('final.txt');
+        try {
+            $file=Storage::get('final.txt');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return 'error';
+        }
         $data=json_decode($file,true);
         // return $file;
         // return json_encode($file)['Body'];
@@ -255,7 +260,7 @@ class PaymentsController extends Controller
         // return $request->all();
 
         // return Auth::user()->Last_Name;
-    //    return $data['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value'];
+    //    return $data['Body'];
         $Amount=$data['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value'];
         $MpesaReceiptNumber=$data['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value'];
         $TransactionDate=$data['Body']['stkCallback']['CallbackMetadata']['Item'][3]['Value'];
@@ -298,9 +303,12 @@ class PaymentsController extends Controller
            if($payingNumber !=$transactionNumber){
                //return error and kill the process
                $data=['status'=>'error','message'=>'Unknown Error Occurred. Order '.Session::get('OrderNumber').' Not Placed'];
+               Storage::delete('final.txt');
                return $data;
            }else{
+            Storage::put('final.txt','');
             $data=['status'=>'success','message'=>'Payment Received for the Order '.Session::get('OrderNumber')];
+            Storage::put('final.txt','');
             return $data;
            }
         //    return;

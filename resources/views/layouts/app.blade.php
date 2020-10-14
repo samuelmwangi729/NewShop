@@ -19,7 +19,6 @@
     <!-- Bootstrap -->
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 	<!-- Magnific Popup -->
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.min.css') }}">
 	<!-- Font Awesome -->
@@ -216,8 +215,6 @@
 	<script src="{{ asset('js/popper.min.js') }}"></script>
 	<!-- Bootstrap JS -->
 	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-	<!-- Color JS -->
-	<script src="{{ asset('js/colors.js') }}"></script>
 	<!-- Slicknav JS -->
 	<script src="{{ asset('js/slicknav.min.js') }}"></script>
 	<!-- Owl Carousel JS -->

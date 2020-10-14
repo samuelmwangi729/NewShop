@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Events\Test;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/event',function(){
+    event(new Test('payment received'));
+});
+Route::get('/listen',function(){
+    return view('listen');
+});
 Route::get('/',['uses'=>'IndexController@Welcome']);
 Route::get('/fThtjpKy1XPtGuWbqwuOY9Rc5CQHle/{id}',[
   'uses'=>'SubCategoriesController@findSingle'

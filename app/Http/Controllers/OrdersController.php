@@ -57,25 +57,26 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-
-        // return Session::get('Number');
+        // return "sam";
         $number=Session::get('Number');
         //then confirm receipt of Payment
-        // $payment=MpesaTransactions::where('MSISDN','=',$number)->get()->first();
-        $payment=MpesaTransactions::where('MSISDN','=','254713529784')->get()->last();
-        // return $payment;
+        $payment=MpesaTransactions::where('MSISDN','=',$number)->get()->first();
+        // $payment=MpesaTransactions::where('MSISDN','=','254713529784')->get()->last();
+        // return $payment->Status;
         if(is_null($payment)){
             //then no payment as been received
             $data=['status'=>'error','message'=>'No payment received, Kindly Contact Us if any query'];
             return $data;
         }else{
             //payment received and we continue to place the order
+            // return $payment->Status;
             if($payment->Status=='Success'){
                 //update the payment status to used=1;
                 //first confirm if the amount paid is enough
                 $toBePaid=new PaymentsController();
                 $toBePaidAmount=$toBePaid->getTotalAmount($request);
-                if($toBePaidAmount<$payment->TransAmount){
+                // return $toBePaidAmount;
+                if($payment->TransAmount<$toBePaidAmount){
                     $deviation=$toBePaidAmount-$payment->TransAmount;
                     $data=['Status'=>'error','message'=>'Amount Paid Is Not Enough!','Action'=>'Kindly Pay Extra Ksh '.$deviation.' And then Contact Us'];
                     return $data;
@@ -83,17 +84,20 @@ class OrdersController extends Controller
                 $orderNumber='#'.Session::get('OrderNumber');
                 $client=Auth::user()->email;
                 $DatePlaced=date('Y-m-d');
-                Order::create([
+                $order=Order::create([
                     'OrderNumber'=>$orderNumber,
                     'Client'=>$client,
                     'DatePlaced'=>$DatePlaced,
                 ]);
+                // return $order;
                 //make the order
                 //update the cart now
               $cart=Cart::where([
                   ['User','=',Auth::user()->email],
                   ['Status','=','0']
               ])->get();
+              //call the index function to make sure it interchanges the username when the user is logge in
+            //   return Session::get('Username');
               for ($i=0; $i < count($cart); $i++) {
                   //5, the order has been placed
                   //6, the order has been dispatched

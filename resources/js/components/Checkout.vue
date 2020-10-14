@@ -328,7 +328,7 @@
                             _token:this.token
                         }).then((response)=>{
                             //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
-                            // window.open('/HTVW00xzDT5AAAW','_parent');
+                            window.open('/HTVW00xzDT5AAAW','_parent');
                         })
                     }
                     if(response.data.status=='error'){
@@ -354,7 +354,7 @@
                         return;
                     }
                 })
-                },45000)
+                },15000)
             },
             getCartTotal(){
                 axios.get('/k1HT1eDwpUe5LG95ey7').then((response)=>{
