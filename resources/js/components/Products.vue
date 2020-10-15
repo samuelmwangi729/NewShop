@@ -125,7 +125,7 @@
                   </label>
                     <input type="text" name="SKU"  class="form-control" v-model="SKU">
               </div>
-              <div class="col-sm-2 mt-4">
+              <div class="mt-4 col-sm-2">
                   <button class="btn btn-success btn-block" @click.prevent="Generate()">
                       Generate Random
                   </button>
@@ -139,7 +139,7 @@
                       <input type="number" name="Qty" id="" class="form-control">
                   </div>
               </div>
-              <div class="col-sm-3 text-center">
+              <div class="text-center col-sm-3">
                  <label for="" class="label-control">
                       Allow Orders Even if Out of Stock?
                  </label>
@@ -149,7 +149,7 @@
                       <textarea name="Description" id="demo-summernote" style="width:100%"></textarea>
               </div>
           </div>
-          <div class="container text-center mt-4 mb-4">
+          <div class="container mt-4 mb-4 text-center">
               <button class="btn btn-success">
                   Add Product
               </button>

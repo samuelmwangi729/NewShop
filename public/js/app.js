@@ -5479,6 +5479,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5495,14 +5498,14 @@ __webpack_require__.r(__webpack_exports__);
     getCartTotals: function getCartTotals() {
       var _this = this;
 
-      axios.get('/k1HT1eDwpUe5LG95ey7').then(function (response) {
+      axios.get('/k1HT1eDwpUe5LG95ey71').then(function (response) {
         _this.CartTotal = response.data;
       });
     },
     countCarts: function countCarts() {
       var _this2 = this;
 
-      axios.get('/k1HT1eDwpUe5LG9').then(function (response) {
+      axios.get('/k1HT1eDwpUe5LG91').then(function (response) {
         _this2.CartItems = response.data;
       });
     },
@@ -8379,6 +8382,8 @@ __webpack_require__.r(__webpack_exports__);
         Qty: this.MinCart,
         SKU: sku
       }).then(function (response) {
+        console.log(response.data);
+
         if (response.data.success) {
           swal({
             title: 'Success',
@@ -57278,6 +57283,10 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("img", { attrs: { src: "images/logo.png", alt: "" } })
+      ]),
+      _vm._v(" "),
       _c("div", { staticClass: "col-sm-4 offset-sm-4" }, [
         _c(
           "address",
@@ -58468,7 +58477,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-2 mt-4" }, [
+              _c("div", { staticClass: "mt-4 col-sm-2" }, [
                 _c(
                   "button",
                   {
@@ -58747,7 +58756,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-3 text-center" }, [
+    return _c("div", { staticClass: "text-center col-sm-3" }, [
       _c("label", { staticClass: "label-control", attrs: { for: "" } }, [
         _vm._v(
           "\n                    Allow Orders Even if Out of Stock?\n               "
@@ -58773,7 +58782,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container text-center mt-4 mb-4" }, [
+    return _c("div", { staticClass: "container mt-4 mb-4 text-center" }, [
       _c("button", { staticClass: "btn btn-success" }, [
         _vm._v("\n                Add Product\n            ")
       ])

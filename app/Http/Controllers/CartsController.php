@@ -36,13 +36,13 @@ class CartsController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->all();
+        // return Session::get('Username');
         $username=Session::get('Username');
         $product=Product::where('SKU','=',$request->SKU)->get()->first();
         if(is_null($product)){
             return back();
         }
-        // return $username;
+        // return $product;
         $prod=Cart::where([
             ['ProductSKU','=',$request->SKU],
             ['User','=',$username],
@@ -51,6 +51,7 @@ class CartsController extends Controller
         $quantity=$request->Qty;
         // return $prod;
         if(is_null($prod)){
+            //adding the items to cart
             Cart::create([
                 'ProductSKU'=>$request->SKU,
                 'Qty'=>$quantity,
@@ -219,6 +220,25 @@ class CartsController extends Controller
         $products=[];
         $cart=Cart::where([
             ['User','=',$username],
+            // ['OrderNumber','=','#'.Session::get('OrderNumber')],
+            ['Status','=','0']
+        ])->get();
+        for($i=0;$i<count($cart);$i++){
+            //get the product and add it to an array
+            $product=Product::where('SKU','=',$cart[$i]->ProductSKU)->get();
+            array_push($products,$product);
+        }
+        $sum=0;
+        for($i=0;$i<count($products);$i++){
+            $sum=$products[$i][0]->FinalPrice+$sum;
+        }
+        return $sum;
+    }
+    protected function getCartTotal1(){
+        $username=Session::get('Username');
+        $products=[];
+        $cart=Cart::where([
+            ['User','=',$username],
             ['OrderNumber','=','#'.Session::get('OrderNumber')],
             ['Status','=','5']
         ])->get();
@@ -238,6 +258,17 @@ class CartsController extends Controller
         // return $username;
         $cart=Cart::where([
             ['User','=',$username],
+            ['Status','=',0]
+            // ['OrderNumber','=','#'.Session::get('OrderNumber')]
+        ])->get();
+        return count($cart);
+    }
+    protected function countCart1(){
+        $username=Session::get('Username');
+        // return $username;
+        $cart=Cart::where([
+            ['User','=',$username],
+            ['Status','=',5],
             ['OrderNumber','=','#'.Session::get('OrderNumber')]
         ])->get();
         return count($cart);

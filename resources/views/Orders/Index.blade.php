@@ -6,10 +6,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name='copyright' content=''>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Title Tag  -->
-        <title>{{ config('app.name') }}.</title>
+        <title>{{ config('app.name') }} Marketplace {{ Auth::user()->First_Name }}{{ Auth::user()->Last_Name }} Order Document</title>
         <!-- Favicon -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" type="image/png" href="images/favicon.png">

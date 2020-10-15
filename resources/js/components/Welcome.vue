@@ -548,6 +548,7 @@
                    Qty:this.MinCart,
                    SKU:sku
                }).then((response)=>{
+                   console.log(response.data)
                    if(response.data.success){
                         swal({
                         title: 'Success',

@@ -7,6 +7,9 @@
         <section class="invoice-container">
             <div class="invoice-inner">
                 <div class="row">
+                    <div class="col-sm-4">
+                        <img src="images/logo.png" alt="">
+                    </div>
                     <div class="col-sm-4 offset-sm-4">
                          <address style="font-family:'courier';font-weight:bold;font-size:10px;color:red">
                              XPRESS kENYA LIMITED<br>
@@ -198,12 +201,12 @@ export default {
     },
     methods:{
         getCartTotals(){
-            axios.get('/k1HT1eDwpUe5LG95ey7').then((response)=>{
+            axios.get('/k1HT1eDwpUe5LG95ey71').then((response)=>{
                 this.CartTotal=response.data
             })
         },
         countCarts(){
-            axios.get('/k1HT1eDwpUe5LG9').then((response)=>{
+            axios.get('/k1HT1eDwpUe5LG91').then((response)=>{
                 this.CartItems=response.data
             })
         },

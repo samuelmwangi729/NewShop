@@ -148,8 +148,14 @@ Route::get('Wishlist',[
 Route::get('/k1HT1eDwpUe5LG95ey7',[
     'uses'=>'CartsController@getCartTotal'
 ]);
+Route::get('/k1HT1eDwpUe5LG95ey71',[
+    'uses'=>'CartsController@getCartTotal1'
+]);
 Route::get('/k1HT1eDwpUe5LG9',[
     'uses'=>'CartsController@countCart'
+]);
+Route::get('/k1HT1eDwpUe5LG91',[
+    'uses'=>'CartsController@countCart1'
 ]);
 Route::get('/nhepSC0ODs/{id}',[
     'uses'=>'CartsController@getUserCount'
