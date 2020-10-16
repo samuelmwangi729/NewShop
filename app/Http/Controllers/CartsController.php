@@ -179,6 +179,7 @@ class CartsController extends Controller
             ['Status','=','5'],
             ['OrderNumber','=','#'.Session::get('OrderNumber')]
         ])->get();
+        return Cart::all();
         for($i=0;$i<count($cart);$i++){
             //get the product and add it to an array
             $product=Product::where('SKU','=',$cart[$i]->ProductSKU)->get();

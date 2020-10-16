@@ -5543,6 +5543,8 @@ __webpack_require__.r(__webpack_exports__);
       var name = '';
       axios.get('/k1HT1eDwpU/').then(function (response) {
         _this7.FinalOrder = response.data; //    console.log(response.data)
+
+        console.log(_this7.FinalOrder);
       });
     },
     print: function print() {
@@ -57012,9 +57014,7 @@ var render = function() {
                                       }
                                     },
                                     [
-                                      _c("td", [
-                                        _vm._v(_vm._s(item[0][0].ProductName))
-                                      ]),
+                                      _c("td", [_vm._v(_vm._s(item))]),
                                       _vm._v(" "),
                                       _c("td", { staticClass: "text-center" }, [
                                         _vm._v(

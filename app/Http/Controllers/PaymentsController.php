@@ -51,7 +51,7 @@ class PaymentsController extends Controller
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://bcf5df29acb1.ngrok.io/api/ConfirmPayment';
+        $CallBackURL='https://f06ff85b26e6.ngrok.io/api/ConfirmPayment';
         $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
@@ -128,8 +128,14 @@ class PaymentsController extends Controller
     }
     public function QueryTransaction(Request $request,$Transaction){
         $OrderId=Str::upper( Str::random(15));
+        //if the user is logged in, change the username
+        if(Auth::check()){
+            $request->session()->forget('Username');
+            //then set the new username
+            session(['Username'=>Auth::user()->email]);
+        }
         session(['OrderNumber'=>$OrderId]);
-        return Session::get('OrderNumber');
+        // return '#'.Session::get('OrderNumber');
         // $mpesa = new \Safaricom\Mpesa\Mpesa();
         // $timestamp='20'.date(    "ymdhis");
         // $password=base64_encode('174379'.'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'.$timestamp);
@@ -140,8 +146,8 @@ class PaymentsController extends Controller
         ['Email','=',Auth::user()->email],
         ['TransactionType','=','Mpesa'],
         ['TransID','=',$Transaction],
-        ['Used','=','0'],
-    ])->get()->first();
+    ])->get()->last();
+    // return $Transaction;
     if(is_null($Transaction)){
         //then the transaction is Not Found
         //if its not found locally, then we will have to query online to check the status
@@ -152,12 +158,62 @@ class PaymentsController extends Controller
         return $data;
     }
     $toBePaid=$this->getTotalAmount();
+    $orderNumber='#'.Session::get('OrderNumber');
     // return $this->getTotalAmount();
     if($toBePaid<=$Transaction->TransAmount){
         //amount paid is Okay
-        $data=['Status'=>'success','message'=>'Payment Successfully Completed!','Action'=>''];
-        $order=new OrdersController();
-        return $order->store($request);
+        $number=Session::get('Number');
+        //then confirm receipt of Payment
+
+        if(is_null($Transaction)){
+            //then no payment as been received
+            $data=['status'=>'error','message'=>'No payment received, Kindly Contact Us if any query'];
+            return $data;
+        }else{
+            //payment received and we continue to place the order
+            // return $Transaction;
+            if($Transaction->Status=='Success'){
+                //update the payment status to used=1;
+                //first confirm if the amount paid is enough
+                $toBePaid=new PaymentsController();
+                $toBePaidAmount=$toBePaid->getTotalAmount($request);
+                // return $toBePaidAmount;
+                if($Transaction->TransAmount<$toBePaidAmount){
+                    $deviation=$toBePaidAmount-$payment->TransAmount;
+                    $data=['Status'=>'error','message'=>'Amount Paid Is Not Enough!','Action'=>'Kindly Pay Extra Ksh '.$deviation.' And then Contact Us'];
+                    return $data;
+                }
+                $client=Auth::user()->email;
+                $DatePlaced=date('Y-m-d');
+                $order=Order::create([
+                    'OrderNumber'=>'#'.Session::get('OrderNumber'),
+                    'Client'=>$client,
+                    'DatePlaced'=>$DatePlaced,
+                ]);
+                // return $order;
+                //make the order
+                //update the cart now
+              $cart=Cart::where([
+                  ['User','=',Session::get('Username')],
+                  ['Status','=','0']
+              ])->get();
+              //call the index function to make sure it interchanges the username when the user is logge in
+            //   return Session::get('Username');
+            // return $cart;
+              for ($i=0; $i < count($cart); $i++) {
+                  //5, the order has been placed
+                  //6, the order has been dispatched
+                  //7, order received
+                  $cart[$i]->OrderNumber='#'.Session::get('OrderNumber');
+                  $cart[$i]->Status=5;
+                  $cart[$i]->save();
+              }
+              $data=['status'=>'success','message'=>'order successfully placed'];
+              $Transaction->Used=1;
+              $Transaction->save();
+                return $data;
+            }
+        }
     }else{
         //the amount paid is less
         $deviation=$toBePaid-$Transaction->TransAmount;

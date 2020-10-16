@@ -80,7 +80,7 @@
                                         </thead>
                                         <tbody>
                                             <tr v-for="item in FinalOrder" :key="item.id" style="font-family:'courier-new';font-weight:normal;font-size:15px">
-                                                <td>{{item[0][0].ProductName}}</td>
+                                                <td>{{item}}</td>
                                                 <td class="text-center">Ksh: {{item[0][0].FinalPrice}}</td>
                                                 <td class="text-center">{{item[1]}}</td>
                                                 <td class="text-right">Ksh:{{item[0][0].FinalPrice * item[1] }}</td>
@@ -235,6 +235,7 @@ export default {
             axios.get('/k1HT1eDwpU/').then((response)=>{
                this.FinalOrder=response.data
             //    console.log(response.data)
+            console.log(this.FinalOrder)
             })
         },
         print(){

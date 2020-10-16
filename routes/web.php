@@ -181,6 +181,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/PDEKhgO2JDUrL8Zd23OOPKEvmyQCl2m',[
         'uses'=>'OrdersController@getOrderNumber'
     ]);
+
     Route::get('ws5xKxFILK7JiA4JlgenYZ6/dRqvsdymJLsAnNm16jS4gz5iIm',[
         'uses'=>'PaymentsController@getBilling'
     ]);
