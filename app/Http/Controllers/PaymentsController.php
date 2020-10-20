@@ -46,12 +46,13 @@ class PaymentsController extends Controller
         $LipaNaMpesaPasskey='bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType='CustomerPayBillOnline';
         $Amount=$totalAmount;
+        // return $Amount;
         // $Amount=1;
         //phone number and partyA are the same
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://f06ff85b26e6.ngrok.io/api/ConfirmPayment';
+        $CallBackURL='https://xpresskenya.tk/api/ConfirmPayment';
         $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
