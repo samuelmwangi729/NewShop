@@ -87,6 +87,7 @@ class OrdersController extends Controller
                 $order=Order::create([
                     'OrderNumber'=>$orderNumber,
                     'Client'=>$client,
+                    'Pickup'=>Session::get('Station'),
                     'DatePlaced'=>$DatePlaced,
                 ]);
                 // return $order;

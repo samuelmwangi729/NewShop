@@ -2827,6 +2827,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2865,10 +2874,15 @@ __webpack_require__.r(__webpack_exports__);
       TransactionClass: 'd-none',
       Transaction: '',
       ErrorTransaction: '',
-      ClassTransaction: ''
+      ClassTransaction: '',
+      PickClass: 'container',
+      CompleteClass: 'd-none'
     };
   },
   methods: {
+    CompleteOrder: function CompleteOrder() {
+      window.open('HTVW00xzDT5AAAW', '_parent');
+    },
     QueryMpesa: function QueryMpesa() {
       var _this = this;
 
@@ -2890,6 +2904,7 @@ __webpack_require__.r(__webpack_exports__);
               icon: 'error'
             });
           } else {
+            //show the button class
             window.open('/HTVW00xzDT5AAAW', '_parent');
           }
         });
@@ -2965,13 +2980,15 @@ __webpack_require__.r(__webpack_exports__);
               _token: _this3.token
             }).then(function (response) {
               //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
+              _this3.PickClass = 'd-none';
+              _this3.CompleteClass = 'container';
+              console.log('The transaction successfully done');
               window.open('/HTVW00xzDT5AAAW', '_parent');
             });
           }
 
           if (response.data.status == 'error') {
-            //show sweetalert, cancelled by the user
-            _this3.Processing = 'd-none';
+            $("#uploading").removeClass('d-none');
             $("#uploading").addClass('d-none');
             swal({
               title: 'Error',
@@ -2993,7 +3010,7 @@ __webpack_require__.r(__webpack_exports__);
             return;
           }
         });
-      }, 15000);
+      }, 30000);
     },
     getCartTotal: function getCartTotal() {
       var _this4 = this;
@@ -52109,52 +52126,75 @@ var render = function() {
                 _c("div", { class: _vm.HClass }, [
                   _vm._m(2),
                   _vm._v(" "),
-                  _c("form", { attrs: { action: "" } }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.PickUp,
-                              expression: "PickUp"
+                  _c("div", { class: _vm.PickClass }, [
+                    _c("form", { attrs: { action: "" } }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.PickUp,
+                                expression: "PickUp"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.PickUp = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
                             }
+                          },
+                          [
+                            _c("option", {
+                              attrs: {
+                                label: "--Select Your Pickup Location--"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _vm._l(_vm.Stations, function(location) {
+                              return _c("option", { key: location.id }, [
+                                _vm._v(_vm._s(location.StationName))
+                              ])
+                            })
                           ],
-                          staticClass: "form-control",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.PickUp = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        [
-                          _c("option", {
-                            attrs: { label: "--Select Your Pickup Location--" }
-                          }),
-                          _vm._v(" "),
-                          _vm._l(_vm.Stations, function(location) {
-                            return _c("option", { key: location.id }, [
-                              _vm._v(_vm._s(location.StationName))
-                            ])
-                          })
-                        ],
-                        2
-                      )
+                          2
+                        )
+                      ])
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { class: _vm.CompleteClass }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        on: {
+                          click: function($event) {
+                            return _vm.CompleteOrder()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                          Complete Order\n                                      "
+                        )
+                      ]
+                    )
                   ])
                 ])
               ])
@@ -52721,7 +52761,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "label-control" }, [
-      _vm._v("Choose your PickUp Location "),
+      _vm._v("Choose your PickUp Location here "),
       _c("span", [_vm._v("*")])
     ])
   },

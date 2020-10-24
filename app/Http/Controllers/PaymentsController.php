@@ -45,14 +45,15 @@ class PaymentsController extends Controller
         $BusinessShortCode=174379;
         $LipaNaMpesaPasskey='bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType='CustomerPayBillOnline';
-        $Amount=$totalAmount;
+        $Amount=round($totalAmount,0,PHP_ROUND_HALF_UP);
+        // return $Amount;
         // return $Amount;
         // $Amount=1;
         //phone number and partyA are the same
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://xpresskenya.tk/api/ConfirmPayment';
+        $CallBackURL='https://xpresskenya.tk//api/ConfirmPayment';
         $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
@@ -189,6 +190,7 @@ class PaymentsController extends Controller
                 $order=Order::create([
                     'OrderNumber'=>'#'.Session::get('OrderNumber'),
                     'Client'=>$client,
+                    'Pickup'=>Session::get('Station'),
                     'DatePlaced'=>$DatePlaced,
                 ]);
                 // return $order;

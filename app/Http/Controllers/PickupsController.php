@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pickup;
-
+use Session;
 class PickupsController extends Controller
 {
     /**
@@ -77,6 +77,9 @@ class PickupsController extends Controller
         //
     }
     protected function getCost($station){
+        session(['Station'=>$station]);
+        // return Session::get('Station');
+        //for easier referencing later
         return Pickup::where('StationName','=',$station)->get()->first()->Shipping;
     }
 

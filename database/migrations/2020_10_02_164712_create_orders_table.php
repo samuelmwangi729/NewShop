@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('OrderNumber');
             $table->string('Client');
+            $table->string('Pickup');
             $table->string('Status')->default(0);
             $table->string('DatePlaced');
             $table->string('DateSent')->nullable();

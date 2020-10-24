@@ -70,15 +70,24 @@
                                        Account Successfully Updated,Please choose your Pickup Station
                                    </strong>
                                </div>
-                                   <form action="">
+                                  <div :class="PickClass">
+                                      <!-- Set the class to invisible and set the next class as visible when the transaction is done -->
+                                       <form action="">
                                        <div class="form-group">
-											<label class="label-control">Choose your PickUp Location <span>*</span></label>
+											<label class="label-control">Choose your PickUp Location here <span>*</span></label>
 											<select v-model="PickUp" class="form-control">
 												<option label="--Select Your Pickup Location--"></option>
 												<option v-for="location in Stations" :key="location.id">{{location.StationName}}</option>
 											</select>
 										</div>
                                    </form>
+                                  </div>
+                                   <div :class="CompleteClass">
+                                      <!-- Set the class to invisible and set the next class as visible when the transaction is done -->
+                                      <button class="btn btn-success" @click="CompleteOrder()">
+                                          Complete Order
+                                      </button>
+                                  </div>
                             </div>
                         </div>
 					</div>
@@ -236,9 +245,14 @@
             Transaction:'',
             ErrorTransaction:'',
             ClassTransaction:'',
+            PickClass:'container',
+            CompleteClass:'d-none'
         }
         },
         methods:{
+            CompleteOrder(){
+                window.open('HTVW00xzDT5AAAW','_parent');
+            },
             QueryMpesa(){
                 if(this.Transaction.length==0){
                     this.ErrorTransaction='This field is required',
@@ -258,6 +272,7 @@
                                 icon:'error'
                             })
                         }else{
+                            //show the button class
                             window.open('/HTVW00xzDT5AAAW','_parent');
                         }
                     })
@@ -328,12 +343,14 @@
                             _token:this.token
                         }).then((response)=>{
                             //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
+                             this.PickClass='d-none'
+                             this.CompleteClass='container'
+                             console.log('The transaction successfully done')
                             window.open('/HTVW00xzDT5AAAW','_parent');
                         })
                     }
                     if(response.data.status=='error'){
-                        //show sweetalert, cancelled by the user
-                         this.Processing='d-none'
+                         $("#uploading").removeClass('d-none')
                          $("#uploading").addClass('d-none')
                         swal({
                             title:'Error',
@@ -354,7 +371,7 @@
                         return;
                     }
                 })
-                },15000)
+                },30000)
             },
             getCartTotal(){
                 axios.get('/k1HT1eDwpUe5LG95ey7').then((response)=>{
