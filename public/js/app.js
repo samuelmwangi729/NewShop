@@ -51988,7 +51988,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "panel-heading" }, [
       _c("h3", { staticClass: "panel-title" }, [
         _c("h2", { staticClass: "text-center" }, [
-          _vm._v("\n        My Orders\n    ")
+          _vm._v(
+            "\n                            My Orders\n                        "
+          )
         ])
       ])
     ])

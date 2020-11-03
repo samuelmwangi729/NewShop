@@ -52,7 +52,7 @@ class PaymentsController extends Controller
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://xpresskenta.tk/api/ConfirmPayment';
+        $CallBackURL='https://0d48f955ac29.ngrok.io/api/ConfirmPayment';
         $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
@@ -263,7 +263,7 @@ class PaymentsController extends Controller
     {
         //
     }
-    protected function getFileData(){
+    protected function getFileData(Request $request){
         $OrderId='#'.Str::upper(Str::random(15));
         session(['OrderNumber'=>$OrderId]);
         try {
@@ -309,7 +309,7 @@ class PaymentsController extends Controller
                 'Status'=>'Insufficient Balance'
             ]);
             $data=['status'=>'less','message'=>'Payment for the Order '.Session::get('OrderNumber').' Could not be completed. Insufficient Balance'];
-            Storage::append('final.txt','');
+            // Storage::append('final.txt','');
             //make surethat the file is empty
             return $data;
         }
@@ -364,8 +364,81 @@ class PaymentsController extends Controller
            }else{
             Storage::put('final.txt','');
             $data=['status'=>'success','message'=>'Payment Received for the Order '.Session::get('OrderNumber')];
-            Storage::put('final.txt','');
-            return $data;
+            // Storage::put('final.txt','');
+            //make sure that everything is set for the invoice
+            $Transaction= \App\MpesaTransactions::where([
+                ['Email','=',Auth::user()->email],
+                ['MSISDN','=',Session::get('Number')],
+                ['Used','=','0'],
+            ])->get()->last();
+            if(is_null($Transaction)){
+                //then the transaction is Not Found
+                //if still null,search mpesa transaction query with my LNM business number,
+                //if still null, the amount is not  paid
+                $data=['Status'=>'error','message'=>'No Such  Transaction Available!','Action'=>'Contact Us For Help'];
+                return $data;
+            }
+            $toBePaid=$this->getTotalAmount();
+            if($toBePaid<=$Transaction->TransAmount){
+                //amount paid is Okay
+                $number=Session::get('Number');
+                //then confirm receipt of Payment
+
+                if(is_null($Transaction)){
+                    //then no payment as been received
+                    $data=['status'=>'error','message'=>'No payment received, Kindly Contact Us if any query'];
+                    return $data;
+                }else{
+                    //payment received and we continue to place the order
+                    // return $Transaction;
+                    if($Transaction->Status=='Success'){
+                        //update the payment status to used=1;
+                        //first confirm if the amount paid is enough
+                        $toBePaid=new PaymentsController();
+                        $toBePaidAmount=$toBePaid->getTotalAmount($request);
+                        // return $toBePaidAmount;
+                        if($Transaction->TransAmount<$toBePaidAmount){
+                            $deviation=$toBePaidAmount-$payment->TransAmount;
+                            $data=['Status'=>'error','message'=>'Amount Paid Is Not Enough!','Action'=>'Kindly Pay Extra Ksh '.$deviation.' And then Contact Us'];
+                            return $data;
+                        }
+                        $client=Auth::user()->email;
+                        $DatePlaced=date('Y-m-d');
+                        $order=Order::create([
+                            'OrderNumber'=>Session::get('OrderNumber'),
+                            'Client'=>$client,
+                            'Pickup'=>Session::get('Station'),
+                            'DatePlaced'=>$DatePlaced,
+                        ]);
+                        //make the order
+                        //update the cart now
+                      $cart=Cart::where([
+                          ['User','=',Session::get('Username')],
+                          ['Status','=','0']
+                      ])->get();
+                      //call the index function to make sure it interchanges the username when the user is logge in
+                    // return $cart;
+                      for ($i=0; $i < count($cart); $i++) {
+                          //5, the order has been placed
+                          //6, the order has been dispatched
+                          //7, order received
+                          $cart[$i]->OrderNumber=Session::get('OrderNumber');
+                          $cart[$i]->Status=5;
+                          $cart[$i]->save();
+                      }
+                      $data=['status'=>'success','message'=>'order successfully placed'];
+                      $Transaction->Used=1;
+                      $Transaction->save();
+                        return $data;
+                    }
+                }
+            }else{
+                //the amount paid is less
+                $deviation=$toBePaid-$Transaction->TransAmount;
+                $data=['Status'=>'error','message'=>'Amount Paid Is Not Enough!','Action'=>'Kindly Pay Extra Ksh '.$deviation.' And then Contact Us'];
+                return $data;
+            }
+            // return $data;
            }
         //    return;
 

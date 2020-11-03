@@ -5,9 +5,9 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <h2 class="text-center">
-            My Orders
-        </h2
-        ></h3>
+                                My Orders
+                            </h2>
+                        </h3>
                     </div>
                     <!-- Bordered Table -->
                     <!-- =================================================== -->
