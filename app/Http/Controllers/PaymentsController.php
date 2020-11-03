@@ -289,10 +289,9 @@ class PaymentsController extends Controller
                 'Email'=>Auth::user()->email,
                 'LastName'=>Auth::user()->Last_Name,
             ]);
-            $data=['status'=>'error','message'=>'Payment for the Order '.Session::get('OrderNumber').' Cancelled By the User,Please try again'];
-            Storage::append('final.txt','');
+            $datax=['status'=>'error','message'=>'Payment for the Order '.Session::get('OrderNumber').' Cancelled By the User,Please try again'];
             //make sure that the file is empty
-            return $data;
+            return $datax;
         }
         if($data['Body']['stkCallback']['ResultCode']=='1'){
             //you should go back with the error message
@@ -308,10 +307,10 @@ class PaymentsController extends Controller
                 'LastName'=>Auth::user()->Last_Name,
                 'Status'=>'Insufficient Balance'
             ]);
-            $data=['status'=>'less','message'=>'Payment for the Order '.Session::get('OrderNumber').' Could not be completed. Insufficient Balance'];
+            $datax=['status'=>'less','message'=>'Payment for the Order '.Session::get('OrderNumber').' Could not be completed. Insufficient Balance'];
             // Storage::append('final.txt','');
             //make surethat the file is empty
-            return $data;
+            return $datax;
         }
         // return $request->all();
 
@@ -429,6 +428,7 @@ class PaymentsController extends Controller
                       $data=['status'=>'success','message'=>'order successfully placed'];
                       $Transaction->Used=1;
                       $Transaction->save();
+                      Storage::append('final.txt','');
                         return $data;
                     }
                 }
@@ -440,6 +440,7 @@ class PaymentsController extends Controller
             }
             // return $data;
            }
+           Storage::append('final.txt','');
         //    return;
 
     }
