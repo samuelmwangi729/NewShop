@@ -25,7 +25,7 @@
                       <div class="col-xs-6">
                     </div>
                     <div class="text-right col-xs-6">
-                        <h5>Order #{{OrderId}}</h5>
+                        <h5>Order {{OrderId}}</h5>
                     </div>
                 </div>
                   ========================================================================================================================================
@@ -33,27 +33,30 @@
                     <div class="col-xs-6">
                         <address style="font-family:'courier';font-weight:bold;font-size:10px">
                             <strong>Billed To:</strong><br />
-                            {{Billing.FirstName }}  {{Billing.LastName }}<br />
-                             {{Shipping.County}} County,<br />
-                            {{Shipping.Town}} Town<br />
-                            {{Shipping.email}}
+                            {{Billing.First_Name }}  {{Billing.Last_Name }}<br />
+                             {{Billing.County}} County,<br />
+                            {{Billing.Town}} Town<br />
+                            {{Billing.email}}
                         </address>
                     </div>
                     <div class="text-right col-xs-6">
                         <address style="font-family:'courier';font-weight:bold;font-size:10px">
                             <strong>Shipped To:</strong><br />
-                            {{Shipping.First_Name}} {{Shipping.Last_Name}}<br />
-                            {{Shipping.County}} County,<br />
-                            {{Shipping.Town}} Town<br />
-                            {{Shipping.email}}
+                           {{Billing.First_Name }}  {{Billing.Last_Name }}<br />
+                             {{Billing.County}} County,<br />
+                            {{Billing.Town}} Town<br />
+                            {{Billing.email}}
                         </address>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6" style="font-family:'courier';font-weight:bold;font-size:10px">
-                        <strong>Payment Method:</strong>
-                        <br /> {{ Billing.TransactionType }} Number  <i>+{{Billing.MSISDN}}</i>
-                        <br /> {{ Billing.Email }}
+                        <strong>Payment Method:</strong>{{ Shipping.Billing.TransactionType }}
+                        <br />
+                        <span v-if="Shipping.Billing.TransactionType=='Mpesa'">
+                            Number  <i>+{{Shipping.Billing.MSISDN}}</i>
+                        </span>
+                        <br /> {{ Shipping.Billing.Email }}
                     </div>
                     <div class="text-right col-xs-6" style="font-family:'courier';font-weight:bold;font-size:10px">
                         <strong>Order Date:</strong>
@@ -79,8 +82,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <!-- {{ FinalOrder }} -->
                                             <tr v-for="item in FinalOrder" :key="item.id" style="font-family:'courier-new';font-weight:normal;font-size:15px">
-                                                <td>{{item}}</td>
+                                                <td>{{item[0][0].ProductName}}</td>
                                                 <td class="text-center">Ksh: {{item[0][0].FinalPrice}}</td>
                                                 <td class="text-center">{{item[1]}}</td>
                                                 <td class="text-right">Ksh:{{item[0][0].FinalPrice * item[1] }}</td>
@@ -131,7 +135,7 @@
                                                 <td>
                                                     ==========<br>
                                                     <span class="text-center" style="font-family:courier;color:red !important">
-                                                      Ksh: {{CartTotal+ CartTotal}}
+                                                      Ksh: {{CartTotal+ parseInt(Shipping.Shipping)}}
                                                     </span>
                                                     <br>
                                                     ==========<br>
@@ -157,7 +161,7 @@
                                                kSH: {{ CartTotal }}
                                             </td>
                                             <td>
-                                                 kSH: {{ CartTotal * 14/100 }}
+                                                 kSH: {{( CartTotal * 14/100) }}
                                             </td>
                                         </tr>
                                     </table>
@@ -176,6 +180,7 @@
                 </div>
                 <div class="text-center printBtn">
                  <button class="btn btn-success noprint" @click="print()">Print</button>
+                 <a href="/" class="btn btn-primary noprint">Home</a>
                 </div>
             </div>
         </section>
@@ -230,12 +235,11 @@ export default {
                 this.Orders=response.data
             })
         },
-        getName(sku){
-            let name=''
+        getFinalOrder(){
             axios.get('/k1HT1eDwpU/').then((response)=>{
                this.FinalOrder=response.data
-            //    console.log(response.data)
-            console.log(this.FinalOrder)
+                // console.log(this.FinalOrder)
+                // alert(response.data[0])
             })
         },
         print(){
@@ -249,7 +253,7 @@ export default {
         this.getBilling()
         this.getShipping()
         this.getOrder()
-        this.getName()
+        this.getFinalOrder()
     }
 }
 </script>

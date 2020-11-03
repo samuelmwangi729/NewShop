@@ -334,7 +334,7 @@
                     //then check if its working
                     console.log(response.data)
                 })
-                 setTimeout(function(){
+                setTimeout(function(){
                    axios.get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW').then((response)=>{
                     //check the response
                     if(response.data.status=='success'){
@@ -346,8 +346,9 @@
                              this.PickClass='d-none'
                              this.CompleteClass='container'
                              console.log('The transaction successfully done')
-                            window.open('/HTVW00xzDT5AAAW','_parent');
                         })
+                        //redirect to complete the order
+                        window.open('/HTVW00xzDT5AAAW','_parent');
                     }
                     if(response.data.status=='error'){
                          $("#uploading").removeClass('d-none')
@@ -370,7 +371,7 @@
                         this.Processing='d-none'
                         return;
                     }
-                })
+                    })
                 },30000)
             },
             getCartTotal(){

@@ -7,8 +7,9 @@ use App\User;
 use Auth;
 use Str;
 use Storage;
+use DB;
 use App\Http\Controllers\OrdersController;
-use App\{CartsController,Cart,Product,Pickup,PaymentRequests,MpesaTransactions,Order,Cancelled};
+use App\{CartsController,Cart,Product,Pickup,PaymentRequests,MpesaTransactions,Order,Cancelled,Shipping};
 use Session;
 class PaymentsController extends Controller
 {
@@ -20,6 +21,9 @@ class PaymentsController extends Controller
      */
     public function index(){
         return Auth::user();
+    }
+    public function test(){
+        return "test the query";
     }
     public function PayWithMpesa($number)
     {
@@ -38,22 +42,17 @@ class PaymentsController extends Controller
             $paymentNumber=$number;
         }
         session(['PhoneNumber'=>$paymentNumber]);
-        //the stkpush code
-    //     // return $totalAmount
         $mpesa= new \Safaricom\Mpesa\Mpesa();
         $token=$mpesa::generateSandBoxToken();
         $BusinessShortCode=174379;
         $LipaNaMpesaPasskey='bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType='CustomerPayBillOnline';
         $Amount=round($totalAmount,0,PHP_ROUND_HALF_UP);
-        // return $Amount;
-        // return $Amount;
-        // $Amount=1;
         //phone number and partyA are the same
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://xpresskenya.tk//api/ConfirmPayment';
+        $CallBackURL='https://d644f0781bc9.ngrok.io/api/ConfirmPayment';
         $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
@@ -116,6 +115,9 @@ class PaymentsController extends Controller
         //save the mpesa log
         Storage::append('Mpesa.log',$callbackData);
         $mpesa->finishTransaction();
+        //return the success message
+        $data=['message'=>'payment successfully received','data'=>$callbackData,'status'=>'Done'];
+        return $data;
     }
 
     /**
@@ -129,7 +131,7 @@ class PaymentsController extends Controller
         //
     }
     public function QueryTransaction(Request $request,$Transaction){
-        $OrderId=Str::upper( Str::random(15));
+        $OrderId='#'.Str::upper( Str::random(15));
         //if the user is logged in, change the username
         if(Auth::check()){
             $request->session()->forget('Username');
@@ -137,30 +139,22 @@ class PaymentsController extends Controller
             session(['Username'=>Auth::user()->email]);
         }
         session(['OrderNumber'=>$OrderId]);
-        // return '#'.Session::get('OrderNumber');
-        // $mpesa = new \Safaricom\Mpesa\Mpesa();
-        // $timestamp='20'.date(    "ymdhis");
-        // $password=base64_encode('174379'.'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'.$timestamp);
-        // // $status=$mpesa::STKPushQuery();//i will check the status of the stk push simulation//then check if the amount paid is enough//then confirm the order
-        // $STKPushRequestStatus=$mpesa->STKPushQuery('ws_CO_061020200048066978','174379',$password,$timestamp);
-        // return $STKPushRequestStatus;
+        //for any cause, the mpesa server will hit our backend and thus the reason we are querying  database
        $Transaction= MpesaTransactions::where([
         ['Email','=',Auth::user()->email],
         ['TransactionType','=','Mpesa'],
         ['TransID','=',$Transaction],
     ])->get()->last();
-    // return $Transaction;
     if(is_null($Transaction)){
         //then the transaction is Not Found
-        //if its not found locally, then we will have to query online to check the status
-        //check mpesa stk queryMpesa
         //if still null,search mpesa transaction query with my LNM business number,
         //if still null, the amount is not  paid
         $data=['Status'=>'error','message'=>'No Such  Transaction Available!','Action'=>'Contact Us For Help'];
         return $data;
     }
     $toBePaid=$this->getTotalAmount();
-    $orderNumber='#'.Session::get('OrderNumber');
+    //this wont have a # sign since it already has one
+    $orderNumber=Session::get('OrderNumber');
     // return $this->getTotalAmount();
     if($toBePaid<=$Transaction->TransAmount){
         //amount paid is Okay
@@ -188,12 +182,11 @@ class PaymentsController extends Controller
                 $client=Auth::user()->email;
                 $DatePlaced=date('Y-m-d');
                 $order=Order::create([
-                    'OrderNumber'=>'#'.Session::get('OrderNumber'),
+                    'OrderNumber'=>Session::get('OrderNumber'),
                     'Client'=>$client,
                     'Pickup'=>Session::get('Station'),
                     'DatePlaced'=>$DatePlaced,
                 ]);
-                // return $order;
                 //make the order
                 //update the cart now
               $cart=Cart::where([
@@ -201,13 +194,12 @@ class PaymentsController extends Controller
                   ['Status','=','0']
               ])->get();
               //call the index function to make sure it interchanges the username when the user is logge in
-            //   return Session::get('Username');
             // return $cart;
               for ($i=0; $i < count($cart); $i++) {
                   //5, the order has been placed
                   //6, the order has been dispatched
                   //7, order received
-                  $cart[$i]->OrderNumber='#'.Session::get('OrderNumber');
+                  $cart[$i]->OrderNumber=Session::get('OrderNumber');
                   $cart[$i]->Status=5;
                   $cart[$i]->save();
               }
@@ -379,10 +371,7 @@ class PaymentsController extends Controller
 
     }
     protected function getBilling(){
-        $Transaction=MpesaTransactions::where([
-            ['Email','=',Auth::user()->email]
-        ])->get()->last();
-        return $Transaction;
+        return Auth::user();
     }
     protected function getFile(){
         return Auth::user();

@@ -177,9 +177,9 @@ class CartsController extends Controller
         $cart=Cart::where([
             ['User','=',$username],
             ['Status','=','5'],
-            ['OrderNumber','=','#'.Session::get('OrderNumber')]
+            ['OrderNumber','=',Session::get('OrderNumber')]
         ])->get();
-        return Cart::all();
+        // return Cart::all();
         for($i=0;$i<count($cart);$i++){
             //get the product and add it to an array
             $product=Product::where('SKU','=',$cart[$i]->ProductSKU)->get();
@@ -240,9 +240,10 @@ class CartsController extends Controller
         $products=[];
         $cart=Cart::where([
             ['User','=',$username],
-            ['OrderNumber','=','#'.Session::get('OrderNumber')],
+            ['OrderNumber','=',Session::get('OrderNumber')],
             ['Status','=','5']
         ])->get();
+        // return $username;
         for($i=0;$i<count($cart);$i++){
             //get the product and add it to an array
             $product=Product::where('SKU','=',$cart[$i]->ProductSKU)->get();
@@ -270,7 +271,7 @@ class CartsController extends Controller
         $cart=Cart::where([
             ['User','=',$username],
             ['Status','=',5],
-            ['OrderNumber','=','#'.Session::get('OrderNumber')]
+            ['OrderNumber','=',Session::get('OrderNumber')]
         ])->get();
         return count($cart);
     }

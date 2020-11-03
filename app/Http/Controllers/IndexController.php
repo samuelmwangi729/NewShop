@@ -144,7 +144,23 @@ if(is_null($ip)){
         return view('Shop.Contact');
     }
     protected function getUser(){
-        return Auth::user();
+        $center=Order::where([
+            ['Client','=',Auth::user()->email]
+        ])->get()->first()['Pickup'];
+        $pickup=Pickup::where([
+            ['TownId','=',Auth::user()->Town],
+            ['StationName','=',$center]
+        ])->get()->first();
+        if(is_null($pickup)){
+            return back();
+        }
+        else{
+            $Transaction=MpesaTransactions::where([
+                ['Email','=',Auth::user()->email]
+            ])->get()->last();
+            $data=['Shipping'=>$pickup->Shipping,'Billing'=>$Transaction];
+            return $data;
+        }
     }
     protected function promotion(){
         return view('Shop.promotion');

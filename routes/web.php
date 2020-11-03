@@ -12,6 +12,9 @@ use App\Events\Test;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test',[
+    'uses'=>'PaymentsController@test',
+]);
 Route::get('/event',function(){
     event(new Test('payment received'));
 });
@@ -174,6 +177,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('EfGTGYkBDAqW/lbpg/ajYPPyb2',[
         'uses'=>'IndexController@GenRand'
+    ]);
+    Route::get('/Orders',[
+        'uses'=>'OrdersController@getMyOrders'
+    ]);
+    Route::get('/JvNDv6EMuWNrd0BioK4alYet1V4qD',[
+        'uses'=>'OrdersController@PersonalOrders'
     ]);
     Route::resource('visitors','VisitorsController');
     Route::resource('terms','TermsController');

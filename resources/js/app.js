@@ -25,6 +25,7 @@ Vue.component(
     require("./components/ExampleComponent.vue").default
 );
 Vue.component("welcome-component", require("./components/Welcome.vue").default);
+Vue.component("order-component", require("./components/Order.vue").default);
 Vue.component("home-component", require("./components/Home.vue").default);
 Vue.component(
     "createcategories-component",

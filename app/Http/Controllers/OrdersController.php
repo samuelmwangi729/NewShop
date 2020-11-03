@@ -27,8 +27,18 @@ class OrdersController extends Controller
     {
         //
     }
+    public function PersonalOrders(){
+        // return Session::get('Username');
+        //check later if the user is an admin
+        return Order::where('Client','=',Auth::user()->email)->get();
+    }
+    public function getMyOrders(){
+        return view('Orders.Mine');
+    }
     protected function getOrderNumber(){
-        return Session::get('OrderNumber');
+        // return Auth::user()->email;
+        return Order::where('Client','=',Auth::user()->email)->get()->last()->OrderNumber;
+        // return Session::get('OrderNumber');
     }
     protected function getSingle(){
         // return Session::get('OrderNumer');

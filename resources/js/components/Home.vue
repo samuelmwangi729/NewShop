@@ -50,7 +50,7 @@
                             <i class="fa fa-file-pdf-o"></i> All Orders|{{ Orders }}
                         </h4>
                     </div>
-                     <a href="http://">
+                     <a href="/Orders">
                     <div class="text-center panel-footer" style="background-color:#3f51b5;color:white !important">
                         More Information
                     </div>
