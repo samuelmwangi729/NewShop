@@ -52,7 +52,7 @@ class PaymentsController extends Controller
          $PartyA=$paymentNumber;
         $PartyB=$this->BusinessCode;
         $PhoneNumber=$paymentNumber;
-        $CallBackURL='https://xpresskenya.tk/api/ConfirmPayment';
+        $CallBackURL='https://8b5a4dc8bc85.ngrok.io/api/ConfirmPayment';
         $AccountReference=$paymentNumber;
         $TransactionDesc='Being Payment for Comodity Ordered';
         $Remark='Being Payment for Order Id  Comodity Ordered';
@@ -274,7 +274,7 @@ class PaymentsController extends Controller
             return $datae;
         }
         $data=json_decode($file,true);
-        return $data;
+        // return $data;
         // return json_encode($file)['Body'];
         if($data['Body']['stkCallback']['ResultCode']=='1031' || $data['Body']['stkCallback']['ResultCode']=='1032' ){
             //you should go back with the error message
@@ -429,6 +429,9 @@ class PaymentsController extends Controller
                       $Transaction->Used=1;
                       $Transaction->save();
                       Storage::append('final.txt','');
+                      //Complete the order
+                        $order= new OrdersController();
+                        return $order->store($request);
                         return $data;
                     }
                 }

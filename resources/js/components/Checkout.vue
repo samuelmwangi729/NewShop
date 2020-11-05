@@ -338,16 +338,7 @@
                    axios.get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW').then((response)=>{
                     //check the response
                     if(response.data.status=='success'){
-                        //then call the order function
-                         axios.post('/HTVW00xzDT5AAAW',{
-                            _token:this.token
-                        }).then((response)=>{
-                            //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
-                             this.PickClass='d-none'
-                             this.CompleteClass='container'
-                             console.log('The transaction successfully done')
-                        })
-                        //redirect to complete the order
+                        //redirect to see if the order is complete
                         window.open('/HTVW00xzDT5AAAW','_parent');
                     }
                     if(response.data.status=='error'){
