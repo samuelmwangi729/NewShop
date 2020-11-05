@@ -270,11 +270,11 @@ class PaymentsController extends Controller
             $file=Storage::get('final.txt');
         } catch (\Throwable $th) {
             //throw $th;
-            $data=['status'=>'error','message'=>'Unknown Error Occurred'];
-            return $data;
+            $datae=['status'=>'error','message'=>'Unknown Error Occurred'];
+            return $datae;
         }
         $data=json_decode($file,true);
-        // return $data;
+        return $data;
         // return json_encode($file)['Body'];
         if($data['Body']['stkCallback']['ResultCode']=='1031' || $data['Body']['stkCallback']['ResultCode']=='1032' ){
             //you should go back with the error message
