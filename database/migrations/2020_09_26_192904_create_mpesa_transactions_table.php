@@ -30,6 +30,7 @@ class CreateMpesaTransactionsTable extends Migration
             $table->string('Email');
             $table->string('LastName');
             $table->string('Status');
+            $table->string('Used');
             $table->timestamps();
         });
     }

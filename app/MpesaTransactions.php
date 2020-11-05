@@ -22,5 +22,6 @@ class MpesaTransactions extends Model
         'Email',
         'LastName',
         'Status',
+        'Used',
     ];
 }
