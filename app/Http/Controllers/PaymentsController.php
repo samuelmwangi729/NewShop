@@ -346,7 +346,8 @@ class PaymentsController extends Controller
             'FirstName' =>Auth::user()->First_Name,
             'Email' =>Auth::user()->email,
             'LastName' =>Auth::user()->Last_Name,
-            'Status'=>$Status
+            'Status'=>$Status,
+            'Used'=>'0'
            ]);
            //this is the phone number in the transaction
            //set the session number for order completion
