@@ -50,7 +50,7 @@
             <!-- REGISTRATION FORM -->
             <!--===================================================-->
             <div class="lock-wrapper">
-                <div class="panel lock-box mt-5">
+                <div class="mt-5 panel lock-box">
                     <div class="center"> <img alt="" src="{{ asset('images/logo.png') }}"/> </div>
                     <p class="text-center">Please Login Your Account</p>
                     @if(Session::get('intended')=='checkout')

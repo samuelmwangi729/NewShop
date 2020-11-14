@@ -175,6 +175,7 @@ Route::get('/hC9z5aOk5JH6Vt2UOloy1lTnJ3kdKO1iImzNcq/{number}',[
 Route::resource('/payment','PaymentsController');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
+    Route::resource('sellers', 'SellersController');
     Route::get('EfGTGYkBDAqW/lbpg/ajYPPyb2',[
         'uses'=>'IndexController@GenRand'
     ]);
@@ -207,6 +208,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('HTVW00xzDT5AAAW','OrdersController');
     Route::get('/checkout',[
         'uses'=>'CartsController@CheckOut'
+    ]);
+    Route::get('/getAllUserData/{orderid}',[
+        'uses'=>'CartsController@getAllUserData'
+    ]);
+    Route::get('/getOrderProducts/{Order}',[
+        'uses'=>'CartsController@getOrderProducts'
+    ]);
+    Route::get('/markReceived/{Order}',[
+        'uses'=>'OrdersController@MarkReceived'
     ]);
     Route::get('/4m6TspRgOZ39fdERTge3Nyv6apuoCcdITCDBnoaK/{Transaction}',[
         'uses'=>'PaymentsController@QueryTransaction'

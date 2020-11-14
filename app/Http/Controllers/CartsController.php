@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Str;
 use Illuminate\Http\Request;
-use App\{Product,Cart,Wishlist};
+use App\{Product,Cart,Wishlist,Order};
 use Auth;
 use Session;
 class CartsController extends Controller
@@ -28,6 +28,27 @@ class CartsController extends Controller
         //
     }
 
+    public function getAllUserData(Request $request){
+        $orderId="#".$request->orderid;
+        $userData=[];
+        $order= Order::where('OrderNumber','=',$orderId)->get()->first();
+        return $order;
+    }
+    public function getOrderProducts(Request $request){
+        $orderId="#".$request->Order;
+        $cart=Cart::where([
+            ['OrderNumber','=',$orderId],
+            ['Status','=','5'],
+        ])->get();
+        // return $cart[0]->ProductSKU;
+        $products=[];
+        for($i=0;$i<count($cart);$i++){
+            //get the product and add it to an array
+            $product=Product::where('SKU','=',$cart[$i]->ProductSKU)->get();
+            array_push($products,[$product,$cart[$i]->Qty]);
+        }
+        return $products;
+    }
     /**
      * Store a newly created resource in storage.
      *

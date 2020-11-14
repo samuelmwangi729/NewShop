@@ -155,14 +155,7 @@
                                 <li><a href="{{ route('terms.index') }}"><i class="fa fa-caret-right"></i> Terms & Conditions </a></li>
                                 <li><a href="{{ route('privacy.index') }}"><i class="fa fa-caret-right"></i> Privacy & Policy </a></li>
                                 <li><a href="{{ route('returns.index') }}"><i class="fa fa-caret-right"></i> Return Policy </a></li>
-                                <li><a href="pages-profile.html"><i class="fa fa-caret-right"></i> User Profile </a></li>
-                                <li><a href="pages-invoice.html"><i class="fa fa-caret-right"></i> Invoice </a></li>
-                                <li><a href="pages-login.html"><i class="fa fa-caret-right"></i> Login </a></li>
-                                <li><a href="pages-register.html"><i class="fa fa-caret-right"></i> Register </a></li>
-                                <li><a href="pages-password-reminder.html"><i class="fa fa-caret-right"></i> Password Reminder </a></li>
-                                <li><a href="pages-lock-screen.html"><i class="fa fa-caret-right"></i> Lock Screen </a></li>
-                                <li><a href="pages-404.html"><i class="fa fa-caret-right"></i> 404 Error </a></li>
-                                <li><a href="pages-500.html"><i class="fa fa-caret-right"></i> 500 Error </a></li>
+                                <li><a href="{{ route('sellers.index') }}"><i class="fa fa-caret-right"></i> Sellers Fee </a></li>
                             </ul>
                         </li>
                         <li class="list-divider"></li>

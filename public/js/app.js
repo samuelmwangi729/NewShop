@@ -2975,16 +2975,7 @@ __webpack_require__.r(__webpack_exports__);
         axios.get('/pay/rngL1uWwlBDtTrrOQf8uVqqjes17nEW').then(function (response) {
           //check the response
           if (response.data.status == 'success') {
-            //then call the order function
-            axios.post('/HTVW00xzDT5AAAW', {
-              _token: _this3.token
-            }).then(function (response) {
-              //then if the order is placed, then the user to be redirected to the invoicing page, view the invoice and print it
-              _this3.PickClass = 'd-none';
-              _this3.CompleteClass = 'container';
-              console.log('The transaction successfully done');
-            }); //redirect to complete the order
-
+            //redirect to see if the order is complete
             window.open('/HTVW00xzDT5AAAW', '_parent');
           }
 
@@ -5967,18 +5958,151 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      Orders: []
+      Orders: [],
+      OrderNumber: '',
+      AllClientData: [],
+      AllProducts: []
     };
   },
   methods: {
-    getOrders: function getOrders() {
+    Print: function Print(Order) {
+      alert(Order);
+    },
+    setOrder: function setOrder(id) {
       var _this = this;
 
+      this.OrderNumber = id; //fetch all the cart products with the current logged in users and also the order number plus the user details
+
+      axios.get('/getAllUserData/' + id.split("#")[1]).then(function (response) {
+        _this.AllClientData = response.data;
+      }); //then get all the products data from the order
+
+      this.getAllData(id.split("#")[1]);
+    },
+    getAllData: function getAllData(id) {
+      var _this2 = this;
+
+      axios.get('/getOrderProducts/' + id).then(function (response) {
+        _this2.AllProducts = response.data;
+      });
+    },
+    getOrders: function getOrders() {
+      var _this3 = this;
+
       axios.get('/JvNDv6EMuWNrd0BioK4alYet1V4qD').then(function (response) {
-        _this.Orders = response.data; // console.log(response.data)
+        _this3.Orders = response.data; // console.log(response.data)
+      });
+    },
+    Received: function Received(Order) {
+      // alert(Order.split("#")[1])
+      axios.get('/markReceived/' + Order.split("#")[1]).then(function (response) {
+        //show sweetalert
+        if (response.data.Status == 'error') {
+          swal({
+            title: 'An Error Occurred',
+            text: response.data.message,
+            icon: 'error'
+          });
+        }
+
+        if (response.data.Status == 'success') {
+          swal({
+            title: 'Completed',
+            text: response.data.message,
+            icon: 'success'
+          });
+        }
       });
     }
   },
@@ -51899,21 +52023,231 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "mt-5 container-fluid" }, [
+  return _c("div", { staticClass: "mt-5 container-fluid noprint" }, [
     _c("div", { staticClass: "mt-3 container-fluid" }, [
       _c("div", { staticClass: "panel" }, [
         _vm._m(0),
         _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "exampleModal",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "exampleModalLabel",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "exampleModalLabel" }
+                      },
+                      [_vm._v("Order Number " + _vm._s(_vm.OrderNumber))]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table table-bordered table-stripped" },
+                      [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", [
+                            _c("td", [
+                              _vm._v(
+                                "\n                                            " +
+                                  _vm._s(_vm.AllClientData.Pickup) +
+                                  "\n                                        "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                            " +
+                                  _vm._s(_vm.AllClientData.Client) +
+                                  "\n                                        "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm.AllClientData.Status == 1
+                                ? _c(
+                                    "span",
+                                    { staticStyle: { color: "green" } },
+                                    [
+                                      _vm._v(
+                                        "\n                                                 Shipped\n                                             "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.AllClientData.Status == 0
+                                ? _c(
+                                    "span",
+                                    { staticStyle: { color: "red" } },
+                                    [
+                                      _vm._v(
+                                        "\n                                                 Pending Shipping\n                                             "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.AllClientData.Status == 2
+                                ? _c(
+                                    "span",
+                                    { staticStyle: { color: "green" } },
+                                    [
+                                      _vm._v(
+                                        "\n                                                 Cancelled By The You\n                                             "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.AllClientData.Status == 3
+                                ? _c(
+                                    "span",
+                                    { staticStyle: { color: "green" } },
+                                    [
+                                      _vm._v(
+                                        "\n                                                 Cancelled By The Seller\n                                             "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                            " +
+                                  _vm._s(_vm.AllClientData.DateSent) +
+                                  "\n                                        "
+                              )
+                            ])
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("h2", { staticClass: "text-center" }, [
+                      _vm._v(
+                        "\n                                Order Item(s)\n                            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "table",
+                      {
+                        staticClass:
+                          "table table-condensed table-bordered table-striped"
+                      },
+                      [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.AllProducts, function(products) {
+                            return _c("tr", { key: products.id }, [
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(products[0][0].ProductName) +
+                                    "\n                                        "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                             " +
+                                    _vm._s(products[1]) +
+                                    "\n                                        "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                         Ksh. " +
+                                    _vm._s(products[0][0].FinalPrice) +
+                                    "\n                                        "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                         Ksh. " +
+                                    _vm._s(
+                                      products[0][0].FinalPrice * products[1]
+                                    ) +
+                                    "\n                                        "
+                                )
+                              ])
+                            ])
+                          }),
+                          0
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.Print(_vm.OrderNumber)
+                          }
+                        }
+                      },
+                      [_vm._v("Print")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-info btn-xs",
+                        staticStyle: { "font-size": "10px" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Complain\n                            "
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
         _c("div", { staticClass: "panel-body" }, [
           _c("div", { staticClass: "table-responsive" }, [
             _c("table", { staticClass: "table table-bordered" }, [
-              _vm._m(1),
+              _vm._m(4),
               _vm._v(" "),
               _c(
                 "tbody",
                 _vm._l(_vm.Orders, function(order) {
                   return _c("tr", { key: order.id }, [
                     _c("td", [_vm._v(_vm._s(order.OrderNumber))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(order.Client))]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(order.Pickup))]),
                     _vm._v(" "),
@@ -51955,7 +52289,60 @@ var render = function() {
                           ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(2, true)
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary btn-xs",
+                          staticStyle: { "font-size": "10px" },
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target": "#exampleModal"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.setOrder(order.OrderNumber)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                            View Order\n                                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success btn-xs",
+                          staticStyle: { "font-size": "10px" },
+                          on: {
+                            click: function($event) {
+                              return _vm.Received(order.OrderNumber)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                            Mark Received\n                                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-xs",
+                          staticStyle: { "font-size": "10px" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                            Rating\n                                        "
+                          )
+                        ]
+                      )
+                    ])
                   ])
                 }),
                 0
@@ -51999,9 +52386,76 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("td", [
+          _vm._v(
+            "\n                                            Pickup Station\n                                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("td", [
+          _vm._v(
+            "\n                                            Shipped To:\n                                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("td", [
+          _vm._v(
+            "\n                                            Order Status\n                                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("td", [
+          _vm._v(
+            "\n                                            Date Sent\n                                        "
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Product")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Qty")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Price/Piece")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Total")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("Order Number")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Client")]),
         _vm._v(" "),
         _c("th", [_vm._v("Pickup Station")]),
         _vm._v(" "),
@@ -52012,40 +52466,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Date Received")]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center" }, [_vm._v("Actions")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-secondary" }, [
-        _c("i", { staticClass: "fa fa-eye" }),
-        _vm._v(
-          "\n                                            View Order\n                                        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-success" }, [
-        _c("i", { staticClass: "fa fa-check-circle" }),
-        _vm._v(
-          "\n                                            Mark Received\n                                        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-primary" }, [
-        _c("i", { staticClass: "fa fa-star" }),
-        _vm._v(
-          "\n                                            Rate Products\n                                        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-info" }, [
-        _c("i", { staticClass: "fa fa-times-circle" }),
-        _vm._v(
-          "\n                                            Complain\n                                        "
-        )
       ])
     ])
   }

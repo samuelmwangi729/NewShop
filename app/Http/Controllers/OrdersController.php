@@ -27,6 +27,25 @@ class OrdersController extends Controller
     {
         //
     }
+    public function MarkReceived(Request $request){
+        $orderId='#'.$request->Order;
+        $order=Order::where('OrderNumber','=',$orderId)->get()->first();
+        if(is_null($order)){
+            $data=['message'=>'No Such Order Found','Status'=>'error'];
+            return $data;
+        }
+        if($order->Status==0){
+            $data=['message'=>'You can Not receive an order that has not been sent','Status'=>'error'];
+            return $data;
+        }
+        if($order->Status==1){
+            $date=date('Y-m-d');
+            $order->DateReceived=$date;
+            $order->save();
+            $data=['message'=>'Order Marked as Received','Status'=>'success'];
+            return $data;
+        }
+    }
     public function PersonalOrders(){
         // return Session::get('Username');
         //check later if the user is an admin

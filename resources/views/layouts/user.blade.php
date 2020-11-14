@@ -20,6 +20,7 @@
         <link href="{{ asset('user/css/bootstrap.min.css') }}" rel="stylesheet">
         <!--Jasmine Stylesheet [ REQUIRED ]-->
         <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('user/css/themify-icons.css') }}" rel="stylesheet">
         <!--Font Awesome [ OPTIONAL ]-->
         <link href="{{ asset('user/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
         <!--Switchery [ OPTIONAL ]-->
