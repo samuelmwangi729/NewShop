@@ -46,8 +46,9 @@ class HomeController extends Controller
         ]);
 
         if(Session::has('VisitorId')){
-            $user=Visitors::where('VisitorId','=',Session::get('VisitorId'))->get()->first();
-            // return Session::get('VisitorId');
+            $user=Visitors::orderBy('id','desc')->first();
+            // return $user;
+            // return 
             $user->VisitorEmail=Auth::user()->email;
             $user->save();
             //check if the visitor is returning visitor

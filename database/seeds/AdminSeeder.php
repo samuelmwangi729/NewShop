@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
             'PhoneNumber'=>'0704922042',
             'Town'=>'Ol Kalou',
             'County'=>'Nyandarua',
-            'Password'=>'$2y$10$6U70eEptENqQEFrpaULjyOVpJ2dizIxsDe63kv5CHCkN2vbGQQ6vy',
+            'Password'=>'$2y$10$kNkyLyuqTaqwfd2rlAt4beuUimg8lG26yLzv6QqecyUCBvWDNA12q',
             'Status'=>0,
         ]);
     }
